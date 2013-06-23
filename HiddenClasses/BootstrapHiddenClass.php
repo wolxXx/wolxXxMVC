@@ -1,0 +1,2 @@
+<?
+class Bootstrap extends CoreBootstrap{}

@@ -1,0 +1,94 @@
+KlassenÜbersicht für DatenbankSection in wolxXxMVC
+
+QueryStringInterface
+- Objekt zum Austauschen von QueryStrings
+
+-> methods
+
+QueryResultObject
+- Ein Wrapper für mysqli::query()
+- Setter returnen $this (fluent interface)
+
+-> properties: error, lastInsertId, result, query
+-> methods: queryWasSuccessfull, {getter und setter für properties}
+
+
+Connection
+- Eine simple Verbindung zur Datenbank
+- Setter returnen $this (fluent interface)
+
+-> properties: user, password, host, databasename
+-> methods: connect, disconnect, query, {getter und setter für properties}
+ 
+
+DatabaseManager
+- Hat Connection zur DB
+- Nimmt Queries entgegen
+- Übernimmt logging
+- Ist nach dem SingletonPattern implementiert
+- bis auf find returnen alle CRUD-Methoden eine Instanz des QueryResultObjects
+
+-> properties: connection
+-> methods: getConnection, save, update, delete, find
+
+
+
+SaveObject
+- Bietet Schnittstelle zur Datenbank zum Speichern eines neuen Objekts
+- Gibt seine Daten an SaveQueryBuilder weiter, der ein SQL-Statement zurück liefert
+- Das Statement wird dann an den DatabaseManager geschickt
+
+-> properties: table, DatabaseManager, {Was immer gewünscht ist. Muss nur in die Struktur der Tabelle passen}
+-> methods: __get, __set, save
+
+
+UpdateObject
+- Bietet Schnittstelle zur Datenbank zum Aktualisieren eines bestehenden Objektes
+- Identifizierung des Datensatzes anhand des primary Keys (id)
+- Gibt seine Daten an DeleteQueryBuilder weiter, der ein SQL-Statement zurück liefert
+- Das Statement wird an den DatabaseManager geschickt
+
+
+-> properties: table, DatabaseManager, id, {Was immer gewünscht ist. Muss nur in die Struktur der Tabelle passen}
+-> methods: __get, __set, update
+
+DeleteObject
+- Bietet Schnittstelle zur Datenbank zum Löschen eines bestehenden Objektes
+- Identifizierung des Datensatzes anhand des primary Keys (id)
+
+-> properties: table, DatabaseManager, id
+-> methods: delete
+
+MultiDeleteObject
+- Bietet Schnittstelle zur Datenbank zum Löschen mehrerer bestehender Objekte
+- where Bedingung wird generiert über array
+
+-> properties: table, DatabaseManager, where
+-> methods: delete
+
+
+findobject
+
+querybuilder	
+savequery extends querybuilder
+updatequery extends querybuilder
+deletequery extends querybuilder
+findquerybuilder extends querybuilder
+
+
+use cases: 
+
+finden
+speichern
+updaten
+löschen
+
+
+
+finden: schicke array an objekt. 
+das erste objekt: gibt ein ResultObject zurück oder null, wenn kein Result 
+alle objekte: liefert array aus ResultObjects zurück oder ein leeres Array
+
+speichern: einfaches objekt 
+object members sind tabellenspalten
+hat save methode, die die gesetzten daten an insetquerybuilder schickt und das ergebnis an 

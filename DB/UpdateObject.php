@@ -1,0 +1,132 @@
+<?
+/**
+ * OO-Wrapper for having a saveable object for the core model update function
+ * this is only usable for one table. no composed objects are supported.. yet!
+ *
+ * @author wolxXx
+ * @package wolxXxMVC
+ * @subpackage Database
+ * @version 1.2
+ */
+class UpdateObject{
+	/**
+	 * instance of a database manager
+	 * @var DatabaseManager
+	 */
+	private $databaseManager;
+
+	/**
+	 * the id of the to save object
+	 * @var integer
+	 */
+	private $id;
+
+	/**
+	 * the table name
+	 * @var string
+	 */
+	private $table;
+
+	/**
+	 * data set
+	 * @var array
+	 */
+	private $data;
+
+	/**
+	 * constructor
+	 * @param string $table
+	 * @return SaveObject
+	 */
+	public function __construct($table = null, $id = null){
+		$this->databaseManager = DatabaseManager::getInstance();
+		$this->table = $table;
+		$this->id = $id;
+		return $this;
+	}
+
+	/**
+	 * setter for values
+	 * @param string $key
+	 * @param mixed $value
+	 * @return SaveObject
+	 */
+	public function __set($key, $value){
+		$this->data[$key] = $value;
+		return $this;
+	}
+
+	/**
+	 * getter for values
+	 * @param string $key
+	 * @return null | mixed
+	 */
+	public function __get($key){
+		if(!isset($this->data[$key])){
+			Helper::logerror('warning: property "'.$key.'" not set in updateobject!');
+			return null;
+		}
+		return $this->data[$key];
+	}
+
+	/**
+	 * setter for the data array
+	 * caution: overwrites data set before!
+	 * for merging use addData function!!
+	 * @param array $data
+	 * @return UpdateObject
+	 */
+	public function setData($data){
+		$this->data = $data;
+		return $this;
+	}
+
+	/**
+	 * merges data with data that was set before
+	 * values with the same key will be overwritten by the new data array
+	 * @param array $data
+	 * @return UpdateObject
+	 */
+	public function addData($data){
+		$this->data = array_merge($this->data, $data);
+		return $this;
+	}
+
+	/**
+	 * resets the internal data array
+	 * @return UpdateObject
+	 */
+	public function resetData(){
+		$this->data = array();
+		return $this;
+	}
+
+	/**
+	 * setter for table name
+	 * @param string $table
+	 * @return UpdateObject
+	 */
+	public function setTable($table){
+		$this->table = $table;
+		return $this;
+	}
+
+	/**
+	 * setter for row id
+	 * @param integer $id
+	 * @return UpdateObject
+	 */
+	public function setId($id){
+		$this->id = $id;
+		return $this;
+	}
+
+	/**
+	 * updates the set data to the set table
+	 * @return ResultObject
+	 */
+	public function update(){
+		$queryBuilder = new UpdateQueryBuilder($this->table, $this->data, $this->id);
+		return $this->databaseManager->update($queryBuilder->getQueryString());
+	}
+}

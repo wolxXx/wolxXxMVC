@@ -1,0 +1,11 @@
+<Files *.ss>
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.1
+</Files>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_URI} ^(.*)$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !\.(css|gif|ico|jpg|js|png|swf|txt|less|tar|tar.gz|zip|rar|webm|flv)$
+RewriteRule .* index.php?url=%1&%{QUERY_STRING} [L]

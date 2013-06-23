@@ -1,0 +1,2 @@
+<?
+class HostConfig extends AppConfig{}
