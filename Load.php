@@ -67,6 +67,7 @@ class Load{
 	 * constructor is private because of singleton access
 	 */
 	private final function __construct(){
+		$this->params = array();
 		$this->stack = Stack::getInstance();
 		$this->setLayout($this->layout);
 	}
@@ -87,6 +88,7 @@ class Load{
 	 * @return Load
 	 */
 	public static function clearInstance(){
+		ob_clean();
 		self::$instance = new Load();
 		return self::getInstance();
 	}
@@ -181,6 +183,7 @@ class Load{
 		}elseif(is_file(Helper::getDocRoot().'views'.DIRECTORY_SEPARATOR.$file_name.'.php')){
 			$file = Helper::getDocRoot(). 'views'.DIRECTORY_SEPARATOR.$file_name.'.php';
 		}
+		Helper::dieDebug($prefix, $file_name, $file, Helper::getDocRoot());
 		return $file;
 	}
 	/**
@@ -222,7 +225,7 @@ class Load{
 	function partial($name, $datas = null, $passtrough = false){
 		$file = $this->getView($name);
 		if(null === $file){
-			Helper::logerror('partial '.$name.' nicht gefunden! uri = '.$_SERVER['REQUEST_URI']);
+			Helper::logerror('partial '.$name.' nicht gefunden! uri = '.Helper::getCurrentURI());
 			return;
 		}
 		if(true === is_array($datas) && false === $passtrough){
@@ -390,6 +393,12 @@ class Load{
 			echo file_get_contents(ltrim($current, '/'));
 		}
 		return ob_get_clean();
+	}
+
+	public function clearBuffer(){
+		ob_clean();
+		ob_end_clean();
+		return $this;
 	}
 
 	/**

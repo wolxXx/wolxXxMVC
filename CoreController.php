@@ -13,105 +13,117 @@ abstract class CoreController{
 
 	/**
 	 * name of the action that is running
+	 *
 	 * @var string
 	 */
 	protected $action;
 
 	/**
-	 *
 	 * the name of the view which should be displayed
+	 *
 	 * @var string
 	 */
 	public $view;
 
 	/**
-	 *
 	 * files sent via post-requests
+	 *
 	 * @var array
 	 */
 	public $files = array();
 
 	/**
 	 * all files sent wrapped into object
+	 *
 	 * @var array
 	 */
 	public $fileObjects = array();
 
 	/**
-	 *
 	 * if the request is an ajax-request
+	 *
 	 * @var boolean
+	 * @deprecated
 	 */
 	public $isAjax = false;
+
 	/**
-	 *
 	 * if the request is a post-request
+	 *
 	 * @var boolean
 	 * @deprecated
 	 */
 	public $isPost = false;
+
 	/**
-	 *
 	 * if the viewer is a mobile device
+	 *
 	 * @var boolean
+	 * @deprecated
 	 */
 	protected $isMobile = false;
+
 	/**
-	 *
 	 * an instance of the Load-class
+	 *
 	 * @var Load
 	 */
 	protected $load;
 
 	/**
-	 *
 	 * an instance of the stack
+	 *
 	 * @var Stack
 	 */
 	protected $stack;
 
 	/**
 	 * where the postlog is saved
+	 *
 	 * @var string
 	 */
 	protected $postLogFile = 'postlog';
 
 	/**
 	 * an instance of the data object for accessing the GET,POST and FILES
+	 *
 	 * @var DataObject
 	 */
 	protected $dataObject;
 
 	/**
 	 * an insance of the access checker
+	 *
 	 * @var AccessChecker
 	 */
 	protected $accessChecker;
 
 	/**
 	 * information holder of the request
+	 *
 	 * @var Request
 	 */
 	protected $request;
 
 	/**
-	 *
 	 * an instance of the model
+	 *
 	 * @var Model
 	 */
 	protected $model;
 
 	/**
-	 *
 	 * constructor
+	 *
 	 * generates the data, the modes, logs post data
 	 */
 	public final function __construct(){
-		$this->_init();
+		$this->init();
 	}
 
 	/**
 	 * set if after the run method should be a redirect
+	 *
 	 * @var Redirect
 	 */
 	protected $registeredRedirect = null;
@@ -119,7 +131,7 @@ abstract class CoreController{
 	/**
 	 * initialises the controller
 	 */
-	private final function _init(){
+	private final function init(){
 		$this->load = Load::getInstance();
 		$this->model = new Model();
 		$this->stack = Stack::getInstance();
@@ -141,6 +153,7 @@ abstract class CoreController{
 
 	/**
 	 * register a redirect
+	 *
 	 * @param string | Redirect $url
 	 * @param string $method
 	 * @return CoreController
@@ -156,6 +169,7 @@ abstract class CoreController{
 
 	/**
 	 * return the registered redirect
+	 *
 	 * @return Redirect | null
 	 */
 	public function getRegisteredRedirect(){
@@ -166,6 +180,7 @@ abstract class CoreController{
 	 * sets the default access rule
 	 * everything is allowed!
 	 * overwrite this method for your controller if needed
+	 *
 	 * @return CoreController
 	 */
 	public function setAccessRules(){
@@ -176,6 +191,7 @@ abstract class CoreController{
 	/**
 	 * creates a new instance of the access checker
 	 * and sets logged in and user type
+	 *
 	 * @return CoreController
 	 */
 	private final function initAccessChecker(){
@@ -188,34 +204,35 @@ abstract class CoreController{
 
 	/**
 	 * check if the requested action has any restrictions
+	 *
 	 * @throws NotAllowedException
 	 * @throws AuthRequestedException
 	 */
-	public function checkAccess(){
+	public final function checkAccess(){
 		$authRequired = $this->accessChecker->requiresAuth($this->action);
 		if(false === $authRequired){
 			return;
 		}
 		if(false === Auth::isLoggedIn()){
-			Helper::debug('auth requested but not logged in');
 			throw new AuthRequestedException();
 		}
 		if(false === $this->accessChecker->checkAccess($this->action)){
-			Helper::debug('logged in but insufficant user level');
 			throw new NotAllowedException();
 		}
 	}
 
 	/**
 	 * returns the currently active access checker
+	 *
 	 * @return AccessChecker
 	 */
-	public function getAccessChecker(){
+	public final function getAccessChecker(){
 		return $this->accessChecker;
 	}
 
 	/**
 	 * gets all FileUploadObjects with index = $index
+	 *
 	 * @param string $index
 	 * @return array
 	 */
@@ -230,6 +247,7 @@ abstract class CoreController{
 	}
 
 	/**
+	 * getter for the current request object
 	 *
 	 * @return Request
 	 */
@@ -239,6 +257,7 @@ abstract class CoreController{
 
 	/**
 	 * getter for the wished view to be displayed
+	 *
 	 * @return string
 	 */
 	public function getView(){
@@ -247,6 +266,7 @@ abstract class CoreController{
 
 	/**
 	 * setter for the view
+	 *
 	 * @param string $view
 	 * @return CoreController
 	 */
@@ -257,6 +277,7 @@ abstract class CoreController{
 
 	/**
 	 * setter for the action
+	 *
 	 * @param string $action
 	 * @return CoreController
 	 */
@@ -266,6 +287,7 @@ abstract class CoreController{
 	}
 
 	/**
+	 * getter for the action
 	 *
 	 * @return string
 	 */
@@ -276,6 +298,7 @@ abstract class CoreController{
 	/**
 	 * sets the name of the post log file
 	 * directory will remain log/
+	 *
 	 * @param string $filename
 	 * @return CoreController
 	 */
@@ -286,6 +309,7 @@ abstract class CoreController{
 
 	/**
 	 * getter for the file name of the post log file
+	 *
 	 * @return string
 	 */
 	public function getPostLogFile(){
@@ -296,6 +320,7 @@ abstract class CoreController{
 	 *
 	 * tells the request object to log the post vars
 	 * passwords will be saved as stars
+	 *
 	 * @return CoreController
 	 */
 	public function postlog(){
@@ -305,6 +330,7 @@ abstract class CoreController{
 
 	/**
 	 * default routing mechanism
+	 *
 	 * @throws NoViewException
 	 * @return CoreController
 	 */
@@ -339,8 +365,8 @@ abstract class CoreController{
 	public final function noopAction(){}
 
 	/**
-	 *
 	 * returns the called class
+	 *
 	 * @return string
 	 */
 	public final function __toString(){
@@ -348,14 +374,12 @@ abstract class CoreController{
 	}
 
 	/**
-	 *
 	 * is always be runned before any operation was made
 	 * useful for authorisation cases, measurement
 	 */
 	function beforeRun(){}
 
 	/**
-	 *
 	 * is always runned after the run function finished and before view rendering
 	 * useful for measurements
 	 */
@@ -367,9 +391,9 @@ abstract class CoreController{
 	function setModels(){}
 
 	/**
-	 *
 	 * this method should be implemented by all extending classes if own routing is needed
 	 * usefull for routing etc
+	 *
 	 * @param array $args
 	 */
 	public final function run(){

@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class RouterTest extends PHPUnit_Framework_TestCase{
 	public function testReplace(){
 		$this->assertEquals(Router::clearForUrl('hallo welt'), 'hallo-welt');

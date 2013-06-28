@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class UpdateQueryBuilderTest extends  PHPUnit_Framework_TestCase{
 	public function testUpdateQueryBuilder(){
 		$update = new UpdateQueryBuilder('user', array('name' => 'linus'), 1337);

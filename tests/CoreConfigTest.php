@@ -1,7 +1,11 @@
 <?
-
+/**
+ * @codeCoverageIgnore
+ */
 class FooConfig extends CoreConfig{}
-
+/**
+ * @codeCoverageIgnore
+ */
 class CoreConfigTest extends  PHPUnit_Framework_TestCase{
 	public function testUsual(){
 		$config = new HostConfig();

@@ -1,0 +1,2 @@
+<?
+class HTML extends CoreHTML{}

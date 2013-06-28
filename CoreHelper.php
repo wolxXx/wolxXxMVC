@@ -66,7 +66,7 @@ class CoreHelper{
 	public static function debug(){
 		$stack = Stack::getInstance();
 		if(false === in_array($stack->get('debug'), array('1', true, 'true'))){
-			return;
+			#return;
 		}
 		$backtrace = debug_backtrace(true);
 		$trace = $backtrace[0];
@@ -458,6 +458,12 @@ class CoreHelper{
 		return array_chunk($array, ceil(count($array) / $slots));
 	}
 
+	/**
+	 * decorator for arrays
+	 * @param array $array
+	 * @param string $string
+	 * @return array
+	 */
 	public static function array_decorate($array, $string = ''){
 		foreach($array as $index => $current){
 			if(true === is_array($current)){
@@ -569,7 +575,15 @@ class CoreHelper{
 			Helper::logToFile('empty directory! can not scan '.$path, 'debug');
 			return array();
 		}
-		$excludeDefault = array('.', '..');
+		$excludeDefault = array(
+			'.',
+			'..',
+			'.svn',
+			'.project',
+			'tests',
+			'tmp',
+			'log'
+		);
 		if(true === is_array($exclude)){
 			$exclude = array_merge($excludeDefault, $exclude);
 		}elseif(true === is_string($exclude)){
@@ -578,23 +592,26 @@ class CoreHelper{
 		}else{
 			$exclude = $excludeDefault;
 		}
-		$exclude[] = '.svn';
 		$return = array();
 
 		$path = '/' === $path[strlen($path) - 1]? $path : $path.'/';
 
 		if(false === $recursive){
 			foreach (new DirectoryIterator($path) as $fileInfo) {
-				if(true === $fileInfo->isDot() || $fileInfo->isDir()){
+				if(
+					true === $fileInfo->isDot() ||
+					true === $fileInfo->isDir() ||
+					true === in_array(basename($fileInfo->getFilename()), $exclude)
+				){
 					continue;
 				}
 				$return[] = $path.$fileInfo->getFilename();
 			}
 		}else{
 			$mode = true === $filesOnly? RecursiveIteratorIterator::LEAVES_ONLY : RecursiveIteratorIterator::SELF_FIRST;
-
 			$files =  new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::LEAVES_ONLY);
 			foreach(array_keys(iterator_to_array($files,true)) as $current){
+				Helper::debug(basename($current), $current);
 				if(true === in_array(basename($current), $exclude)){
 					continue;
 				}
@@ -701,31 +718,31 @@ class CoreHelper{
 		$return = '';
 		switch($errno){
 			case UPLOAD_ERR_CANT_WRITE:{
-				$return = 'Konnte Datei nicht schreiben.';
+				$return = Translator::translate('Konnte Datei nicht schreiben.');
 			}break;
 			case UPLOAD_ERR_EXTENSION:{
-				$return = 'Dateityp nicht akzeptiert.';
+				$return = Translator::translate('Dateityp nicht akzeptiert.');
 			}break;
 			case UPLOAD_ERR_FORM_SIZE:{
-				$return = 'Datei zu groß.';
+				$return = Translator::translate('Datei zu groß.');
 			}break;
 			case UPLOAD_ERR_INI_SIZE:{
-				$return = 'Datei zu groß.';
+				$return = Translator::translate('Datei zu groß.');
 			}break;
 			case UPLOAD_ERR_NO_FILE:{
-				$return = 'Keine Datei gesendet.';
+				$return = Translator::translate('Keine Datei gesendet.');
 			}break;
 			case UPLOAD_ERR_NO_TMP_DIR:{
-				$return = 'Kein Temp-Ordner gefunden.';
+				$return = Translator::translate('Kein Temp-Ordner gefunden.');
 			}break;
 			case UPLOAD_ERR_OK:{
-				$return = 'Kein Fehler aufgetreten.';
+				$return = Translator::translate('Kein Fehler aufgetreten.');
 			}break;
 			case UPLOAD_ERR_PARTIAL:{
-				$return = 'Unvollständiger Upload.';
+				$return = Translator::translate('Unvollständiger Upload.');
 			}break;
 			default:{
-				$return = 'Unbekannter Fehler. Mulder und Scully ermitteln schon!';
+				$return = Translator::translate('Unbekannter Fehler. Mulder und Scully ermitteln schon!');
 			}break;
 		}
 		return $return;
@@ -802,6 +819,39 @@ class CoreHelper{
 		$content_attributes = $group->content->attributes();
 		$return->duration = intval($content_attributes['duration'].'');
 		return $return;
+	}
+
+	/**
+	 * function for getting the first pages for a google search
+	 * @todo guggn, obs geht
+	 * @param string $terms
+	 * @param integer $numpages
+	 * @param string $user_agent
+	 * @return boolean
+	 */
+	public static function fetch_google($terms = 'sample search', $numpages = 1, $user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0'){
+		$searched="";
+		for($i = 0; $i <= $numpages; $i++){
+			$ch = curl_init();
+			$url="http://www.google.com/searchbyimage?hl=en&image_url=".urlencode($terms);
+			curl_setopt ($ch, CURLOPT_URL, $url);
+			curl_setopt ($ch, CURLOPT_USERAGENT, $user_agent);
+			curl_setopt ($ch, CURLOPT_HEADER, 0);
+			curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 1);
+			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt ($ch, CURLOPT_REFERER, 'http://www.google.com/');
+			curl_setopt ($ch,CURLOPT_CONNECTTIMEOUT,120);
+			curl_setopt ($ch,CURLOPT_TIMEOUT,120);
+			curl_setopt ($ch,CURLOPT_MAXREDIRS,10);
+			curl_setopt ($ch,CURLOPT_COOKIEFILE,"cookie.txt");
+			curl_setopt ($ch,CURLOPT_COOKIEJAR,"cookie.txt");
+			$searched=$searched.curl_exec ($ch);
+			curl_close ($ch);
+		}
+
+		$matches = array();
+		preg_match('/Best guess for this image:[^<]+<a[^>]+>([^<]+)/', $searched, $matches);
+		return (count($matches) > 1 ? $matches[1] : false);
 	}
 
 	/**

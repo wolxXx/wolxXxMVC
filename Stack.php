@@ -56,6 +56,16 @@ class Stack{
 	}
 
 	/**
+	 * clears the instance
+	 * @return Stack
+	 */
+	public static function getClearInstance(){
+		session_destroy();
+		self::$instance = null;
+		return self::getInstance();
+	}
+
+	/**
 	 *
 	 * gets the value for the provided key or null if not exists
 	 * @param string $key

@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class FileUploadObjectTest extends  PHPUnit_Framework_TestCase{
 	public function testFileUploadError(){
 		$file = new FileUploadObject('header.png', 'image/png', __DIR__.DIRECTORY_SEPARATOR.'_src/header.png', UPLOAD_ERR_OK, 1234, '');

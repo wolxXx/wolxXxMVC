@@ -1,11 +1,14 @@
 <?
+
 require_once __DIR__.'/../Stack.php';
 require_once __DIR__.'/../CoreHelper.php';
 
 if(false === class_exists('Helper')){
 	class Helper extends CoreHelper{}
 }
-
+/**
+ * @codeCoverageIgnore
+ */
 class StackTest extends  PHPUnit_Framework_TestCase{
 	public function testUsual(){
 		Stack::getInstance()->set('a', 'b');
@@ -17,6 +20,10 @@ class StackTest extends  PHPUnit_Framework_TestCase{
 		Stack::getInstance()->set('blubb', 'yeah');
 		Stack::getInstance()->get('blubb');
 		$this->assertNotContains('blubb not found in stack', Stack::getInstance()->getMessages());
+	}
+
+	public function testClearInstance(){
+		$this->assertNull(Stack::getClearInstance()->get('def', null));
 	}
 
 	public function testNull(){

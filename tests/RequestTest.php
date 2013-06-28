@@ -1,5 +1,7 @@
 <?
-
+/**
+ * @codeCoverageIgnore
+ */
 class RequestTest extends  PHPUnit_Framework_TestCase{
 	protected function getRequest(){
 		return new Request();
@@ -40,6 +42,10 @@ class RequestTest extends  PHPUnit_Framework_TestCase{
 	public function testPostLog(){
 		$this->getRequest()->postLog('log/postlog');
 		$_POST['foo'] = 'bar';
+		$_POST['pass'] = 'bar';
+		$_POST['base64data'] = base64_decode('bar');
+		$_POST['foo'] = array('foo', 'bar', 'pewpew');
+		$_POST['foo']['foo2'] = 'bar';
 		$this->getRequest()->postLog('testpost');
 	}
 }

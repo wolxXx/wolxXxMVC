@@ -1,5 +1,7 @@
 <?
-
+/**
+ * @codeCoverageIgnore
+ */
 class JustAnotherTestController extends CoreController{
 	public function testAction(){
 		$this->registerRedirect('/pewpew', Redirect::$redirect);
@@ -11,7 +13,9 @@ class JustAnotherTestController extends CoreController{
 
 	public function pewpewAction(){}
 }
-
+/**
+ * @codeCoverageIgnore
+ */
 class AnotherTestController extends CoreController{
 	public function indexAction(){}
 
@@ -25,7 +29,9 @@ class AnotherTestController extends CoreController{
 
 	public function pewpewAction(){}
 }
-
+/**
+ * @codeCoverageIgnore
+ */
 class TestController extends CoreController{
 	public function testAction(){
 		$this->registerRedirect('/pewpew', Redirect::$redirect);
@@ -46,7 +52,9 @@ class TestController extends CoreController{
 		$this->action = 'pewpew';
 	}
 }
-
+/**
+ * @codeCoverageIgnore
+ */
 class CoreControllerTest extends  PHPUnit_Framework_TestCase{
 	public function tearDown(){
 		if(file_exists(Helper::getDocRoot().'views'.DIRECTORY_SEPARATOR.'anothercontroller'.DIRECTORY_SEPARATOR.'pewpew2.php')){

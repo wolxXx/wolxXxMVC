@@ -3,49 +3,62 @@
  * provides all sent data as object access
  *
  * @author wolxXx
- * @version 1.0
+ * @version 1.2
  * @package wolxXxMVC
  */
 class DataObject{
+	/**
+	 * instance for wanted singleton pattern
+	 *
+	 * @var DataObject
+	 */
+	protected static $instance;
 
 	/**
 	 * the main data storage
+	 *
 	 * @var array
 	 */
 	private $data;
 
 	/**
 	 * storage for file-array
+	 *
 	 * @var array
 	 */
 	private $files;
 
 	/**
 	 * set of FileUploadObjects
+	 *
 	 * @var array
 	 */
 	private $fileObjects;
 
 	/**
 	 * a save of the original GET-array
+	 *
 	 * @var array
 	 */
 	private $rawGET;
 
 	/**
 	 * a save of the original POST-array
+	 *
 	 * @var array
 	 */
 	private $rawPOST;
 
 	/**
 	 * a save of the original FILES-array
+	 *
 	 * @var array
 	 */
 	private $rawFILES;
 
 	/**
 	 * instanciates all arrays, starts scanning the data
+	 *
 	 * @return DataObject
 	 */
 	public function __construct(){
@@ -53,7 +66,21 @@ class DataObject{
 	}
 
 	/**
+	 * singleton instance getter
+	 *
+	 * @return DataObject
+	 */
+	public static function getInstance(){
+		if(null === self::$instance){
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	/**
 	 * initialises the data object
+	 *
+	 * @return DataObject
 	 */
 	protected function init(){
 		$this->data = array();
@@ -65,10 +92,12 @@ class DataObject{
 		$this->scanGetData();
 		$this->scanPostData();
 		$this->scanFiles();
+		return $this;
 	}
 
 	/**
 	 * scans the post array and saves the data
+	 *
 	 * @return DataObject
 	 */
 	private function scanPostData(){
@@ -80,6 +109,7 @@ class DataObject{
 
 	/**
 	 * scans the get array and saves the data
+	 *
 	 * @return DataObject
 	 */
 	private function scanGetData(){
@@ -91,6 +121,7 @@ class DataObject{
 
 	/**
 	 * scans the files and saves all files as new FileUploadObjects
+	 *
 	 * @return DataObject
 	 */
 	private function scanFiles(){
@@ -109,6 +140,7 @@ class DataObject{
 
 	/**
 	 * returns all FileUploadObjects
+	 *
 	 * @return array
 	 */
 	public function getFiles(){
@@ -117,6 +149,7 @@ class DataObject{
 
 	/**
 	 * returns the whole original POST data
+	 *
 	 * @return array
 	 */
 	public function getRawPOST(){
@@ -125,6 +158,7 @@ class DataObject{
 
 	/**
 	 * returns the whole original GET data
+	 *
 	 * @return array
 	 */
 	public function getRawGET(){
@@ -133,6 +167,7 @@ class DataObject{
 
 	/**
 	 * returns the whole data array
+	 *
 	 * @return array
 	 */
 	public function getData(){
@@ -142,6 +177,7 @@ class DataObject{
 	/**
 	 * returns data for the key
 	 * post data has higher priority than get data
+	 *
 	 * @param string $key
 	 * @throws KeyNotExistsInDataObject
 	 * @return mixed
@@ -160,6 +196,13 @@ class DataObject{
 		throw new KeyNotExistsInDataObject($key.' not found in DataObject!');
 	}
 
+	/**
+	 * tries to retrieve a value directly from the post array by its key
+	 *
+	 * @param string $key
+	 * @throws KeyNotExistsInDataObject
+	 * @return mixed
+	 */
 	public function getFromPost($key){
 		if(true === isset($this->rawPOST[$key])){
 			return $this->rawPOST[$key];
@@ -167,6 +210,13 @@ class DataObject{
 		throw new KeyNotExistsInDataObject($key.' not found in DataObject in POST-Section!');
 	}
 
+	/**
+	 * tries to retrieve a value directly from the get array by its key
+	 *
+	 * @param string $key
+	 * @throws KeyNotExistsInDataObject
+	 * @return mixed
+	 */
 	public function getFromGet($key){
 		if(true === isset($this->rawGET[$key])){
 			return $this->rawGET[$key];
@@ -177,6 +227,7 @@ class DataObject{
 
 	/**
 	 * tries to get data via direct object access
+	 *
 	 * @param string $key
 	 * @throws KeyNotExistsInDataObject
 	 * @return mixed
@@ -187,6 +238,7 @@ class DataObject{
 
 	/**
 	 * checks, if data was set for $key
+	 *
 	 * @param boolean $key
 	 */
 	public function hasDataForKey($key){
@@ -195,6 +247,7 @@ class DataObject{
 
 	/**
 	 * debug all set data
+	 *
 	 * @return DataObject
 	 */
 	public function debug(){

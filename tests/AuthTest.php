@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class MockUser extends Result{
 	public $id = 1337;
 	public $nick = 'Linus Torvalds';
@@ -8,7 +11,9 @@ class MockUser extends Result{
 	public $status = 2;
 	public $password = 'e206a54e97690cce50cc872dd70ee896';
 }
-
+/**
+ * @codeCoverageIgnore
+ */
 class AuthTest extends  PHPUnit_Framework_TestCase{
 
 	public function testLogin(){

@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class DataObjectTest extends  PHPUnit_Framework_TestCase{
 	public function testPostData(){
 		$dataObject = new DataObject();

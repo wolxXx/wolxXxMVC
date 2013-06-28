@@ -11,12 +11,14 @@ class KeyValueStore{
 
 	/**
 	 * the stored data
+	 *
 	 * @var array
 	 */
 	protected $data;
 
 	/**
 	 * constructor
+	 *
 	 * @param array $data
 	 */
 	public function __construct($data = array()){
@@ -25,6 +27,7 @@ class KeyValueStore{
 
 	/**
 	 * setter for a single key value pair
+	 *
 	 * @param string $key
 	 * @param mixed $value
 	 * @return KeyValueStore
@@ -36,6 +39,7 @@ class KeyValueStore{
 
 	/**
 	 * getter for a single key value pair
+	 *
 	 * @param string $key
 	 * @throws Exception if key not found
 	 * @return mixed
@@ -84,5 +88,26 @@ class KeyValueStore{
 	 */
 	public function getData(){
 		return $this->data;
+	}
+
+	/**
+	 * removes a key value pair
+	 *
+	 * @param string $key
+	 * @return KeyValueStore
+	 */
+	public function removeData($key){
+		unset($this->data[$key]);
+		return $this;
+	}
+
+	/**
+	 * clears the whole store
+	 *
+	 * @return KeyValueStore
+	 */
+	public function clear(){
+		$this->data = array();
+		return $this;
 	}
 }

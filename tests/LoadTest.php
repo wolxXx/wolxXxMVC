@@ -1,5 +1,7 @@
 <?
-
+/**
+ * @codeCoverageIgnore
+ */
 require_once __DIR__.'/../Stack.php';
 require_once __DIR__.'/../Load.php';
 require_once __DIR__.'/../CoreHelper.php';
@@ -8,9 +10,37 @@ if(false === class_exists('Helper')){
 }
 Stack::getInstance()->set('controller', 'cms');
 
-
+/**
+ * @codeCoverageIgnore
+ */
 class LoadTest extends  PHPUnit_Framework_TestCase{
+	public function testPartialWithDirectVars(){
+		Load::getInstance()->setLayout('../Lib/wolxXxMVC/tests/_src/');
+		$this->expectOutputString('foo');
+		Load::getInstance()->partial('testview', array('testvar' => 'foo'));
+	}
+
+	public function testPartialWithIndirectVars(){
+		Load::getInstance()->setLayout('../Lib/wolxXxMVC/tests/_src/');
+		$this->expectOutputString('foo');
+		Load::getInstance()->partial('testview2', array('testvar' => 'foo'), true);
+	}
+
+	public function testPartialWithoutHavingView(){
+		Load::getInstance()->setLayout('../Lib/wolxXxMVC/tests/_src/');
+		$this->expectOutputString('partial testview2XYS nicht gefunden! uri = localhost');
+		Load::getInstance()->partial('testview2XYS', array('testvar' => 'foo'), true);
+	}
+
+	public function testView(){
+		Load::getInstance()->setLayout('../Lib/wolxXxMVC/tests/_src/nix');
+		Load::getInstance()->set('testvar', 'foo');
+		Load::getInstance()->view('testview');
+	}
+
 	public function testSetterAndGetter(){
+		Load::getInstance()->clearBuffer();
+		Load::clearInstance();
 		Load::getInstance()->set('hallo', 'ja?');
 		$this->assertEquals(Load::getInstance()->get('hallo'), 'ja?');
 		$this->assertEquals(Load::getInstance()->get('halloo'), null);

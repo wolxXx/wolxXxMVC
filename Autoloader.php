@@ -10,17 +10,27 @@ class AutoLoader{
 
 	/**
 	 * the found paths in the application directory
+	 *
 	 * @var array
 	 */
 	public static $paths = array();
 
 	/**
+	 * default classes are classes that do not really need to be extended
+	 *
+	 * @var array
+	 */
+	protected $defaultClasses = array(
+		'Helper', 'Bootstrap', 'Model', 'HTML'
+	);
+
+	/**
 	 * ignore these paths
+	 *
 	 * @var array
 	 */
 	protected $excludePaths = array(
 		'Lib/wolxXxMVC/Setup/',
-		'Lib/wolxXxMVC/Setup/src/',
 		'Lib/wolxXxMVC/tests/',
 		'files/',
 		'log/',
@@ -29,7 +39,6 @@ class AutoLoader{
 		'js/',
 		'img/',
 		'views/',
-		'tests/'
 	);
 
 	/**
@@ -43,7 +52,7 @@ class AutoLoader{
 			$path = getcwd();
 		}
 		if(false === isset($_SERVER['DOCUMENT_ROOT']) || '' === $_SERVER['DOCUMENT_ROOT']){
-			$_SERVER['DOCUMENT_ROOT'] = realpath(__DIR__.'../../../');
+			$_SERVER['DOCUMENT_ROOT'] = realpath(__DIR__.'/../../');
 		}
 		$this->grabPaths($path.DIRECTORY_SEPARATOR);
 		self::$paths = array_unique(self::$paths);
@@ -52,6 +61,7 @@ class AutoLoader{
 
 	/**
 	 * scans the application directory for subdirectories
+	 *
 	 * @param string $directory
 	 */
 	protected function grabPaths($directory){
@@ -72,12 +82,17 @@ class AutoLoader{
 
 	/**
 	 * determines if the requested class name can be loaded via the autoloader
+	 *
 	 * @param string $className
 	 * @return boolean
 	 */
 	public static function isLoadable($className){
 		foreach(self::$paths as $path){
-			if(true === in_array(true, array(is_file("$path/$className.php"),is_file($path.'/'.strtolower($className).'.php'),is_file($path.'/'.ucfirst($className).'.php')))){
+			if(
+				true === is_file("$path/$className.php") ||
+				true === is_file($path.'/'.strtolower($className).'.php') ||
+				true === is_file($path.'/'.ucfirst($className).'.php')
+			){
 				return true;
 			}
 		}
@@ -86,6 +101,8 @@ class AutoLoader{
 
 	/**
 	 * loads a requested file
+	 * checks for default classes
+	 *
 	 * @param string $className
 	 * @throws Exception
 	 */
@@ -93,14 +110,22 @@ class AutoLoader{
 		$found = false;
 		foreach(self::$paths as $path){
 			if(is_file("$path/$className.php")){
+				$found = true;
 				require_once("$path/$className.php");
 				return;
 			}elseif(is_file($path.'/'.strtolower($className).'.php')){
+				$found = true;
 				require_once($path.'/'.strtolower($className).'.php');
 				return;
 			}elseif(is_file($path.'/'.ucfirst($className).'.php')){
+				$found = true;
 				require_once($path.'/'.ucfirst($className).'.php');
 				return;
+			}
+		}
+		foreach($this->defaultClasses as $class){
+			if($class === $className){
+				require_once __DIR__.DIRECTORY_SEPARATOR.'HiddenClasses'.DIRECTORY_SEPARATOR.$class.'HiddenClass.php';
 			}
 		}
 	}

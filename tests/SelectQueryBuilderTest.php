@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class SelectQueryBuilderTest extends  PHPUnit_Framework_TestCase{
 	public function testSelectQueryBuilder(){
 		$select = new SelectQueryBuilder();

@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class JsonResponseTest extends  PHPUnit_Framework_TestCase{
 	public function testJsonWithError(){
 		$response = new JsonResponse();

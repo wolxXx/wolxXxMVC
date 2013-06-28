@@ -14,34 +14,46 @@
 abstract class CoreBootstrap{
 	/**
 	 * the cleared query string
+	 *
 	 * @var string
 	 */
 	public $request;
+
 	/**
 	 * contains the splitted url blocks of the $request
+	 *
 	 * @var array
 	 */
 	public $path;
+
 	/**
 	 * instance of Load
+	 *
 	 * @var Load
 	 */
 	public $load;
+
 	/**
 	 * instance of Model
+	 *
 	 * @var Model
 	 */
 	public $model;
+
 	/**
 	 * instance of Stack
+	 *
 	 * @var Stack
 	 */
 	public $stack;
+
 	/**
 	 * instanciated object of a controller
+	 *
 	 * @var CoreController
 	 */
 	public $controller;
+
 	/**
 	 * constructor
 	 * gets all needed singleton instances
@@ -53,6 +65,7 @@ abstract class CoreBootstrap{
 	/**
 	 * getter for dynamic classes
 	 * $var should be the class name
+	 *
 	 * @param string $var
 	 * @throws Exception
 	 */
@@ -68,9 +81,40 @@ abstract class CoreBootstrap{
 	}
 
 	/**
+	 * error handling function
+	 *
+	 * @param integer $errno
+	 * @param string $errstr
+	 * @param string $errfile
+	 * @param integer $errline
+	 * @param string $errcontext
+	 * @throws ApocalypseException
+	 */
+	public function errorHandler($errno, $errstr, $errfile, $errline, $errcontext){
+		Load::getInstance()->clearBuffer();
+		Helper::dieDebug(func_get_args());
+		throw new ApocalypseException('wtf?!');
+	}
+
+	/**
+	 * catches the exception that is thrown in error handler
+	 */
+	public static function catchException(){
+		Load::getInstance()->clearBuffer();
+		Helper::dieDebug(func_get_args());
+	}
+
+	/**
 	 * initing everything usefull
 	 */
 	private final function init(){
+		set_exception_handler(array('CoreBootstrap', 'catchException'));
+		set_error_handler(
+			function ($code, $message, $file, $line) {
+				die('WTF?!!');
+				throw new Exception();
+			}, -1
+		);
 		if(true === file_exists('application/config/defines.php')){
 			require_once 'application/config/defines.php';
 		}
@@ -123,30 +167,35 @@ abstract class CoreBootstrap{
 		$this->model = new Model();
 		$this->load = Load::getInstance();
 	}
+
 	/**
 	 * called by mvc before the main run function
 	 * can be overwriten by user's wanted own bootstrap class
 	 * default behaviour: do the wolxXx style. do nothing :)
 	 */
 	public function beforeRun(){}
+
 	/**
 	 * called by mvc after the main run function
 	 * can be overwriten by user's wanted own bootstrap class
 	 * default behaviour: do the wolxXx style. do nothing :)
 	 */
 	public function afterRun(){}
+
 	/**
 	 * called by mvc before the main view function
 	 * can be overwriten by user's wanted own bootstrap class
 	 * default behaviour: do the wolxXx style. do nothing :)
 	 */
 	public function beforeView(){}
+
 	/**
 	 * called by mvc after  the main run function
 	 * can be overwriten by user's wanted own bootstrap class
 	 * default behaviour: do the wolxXx style. do nothing :)
 	 */
 	public function afterView(){}
+
 	/**
 	 * calls analyze
 	 * instanciates controller
@@ -182,12 +231,14 @@ abstract class CoreBootstrap{
 			$this->controller->getRegisteredRedirect()->redirect();
 		}
 	}
+
 	/**
 	 * calls the loader's view function
 	 */
 	public function view(){
 		$this->load->view($this->controller->getView());
 	}
+
 	/**
 	 * splitts the request_uri from http request
 	 * clears all get params
@@ -199,9 +250,11 @@ abstract class CoreBootstrap{
 		$this->request = trim($this->path[0], '/');
 		$this->path = explode('/', $this->request);
 	}
+
 	/**
 	 * determines if a file exists that contains a controller class
 	 * if no match is found, the cms controller is returned
+	 *
 	 * @return string
 	 */
 	public function getController(){

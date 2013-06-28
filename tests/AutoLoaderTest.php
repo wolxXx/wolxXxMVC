@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class AutoLoaderTest extends  PHPUnit_Framework_TestCase{
 	public function testLoadClassUcfirst(){
 		$autoloader = new AutoLoader();

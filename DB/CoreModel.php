@@ -34,7 +34,7 @@ abstract class CoreModel{
 				return call_user_func_array(array($current, $function), $params);
 			}
 		}
-		die('WTF?!');
+		throw new ApocalypseException($function.' not found for any model');
 	}
 
 	/**
@@ -46,10 +46,14 @@ abstract class CoreModel{
 			$manager = DatabaseManager::getInstance();
 		}
 		$this->databaseManager = $manager;
-		if(true === in_array(get_called_class(), array('Model', 'CoreModel'))){
+
+		$calledClass = get_called_class();
+		$allowedClasses = array('Model', 'CoreModel');
+		$isAllowedClass = in_array($calledClass, $allowedClasses);
+		if(false === $isAllowedClass){
 			return;
 		}
-		foreach(Helper::scanDirectory(Helper::getDocRoot().'application'.DIRECTORY_SEPARATOR.'models', null, null, true) as $current){
+		foreach(Helper::scanDirectory(Helper::getDocRoot().'application'.DIRECTORY_SEPARATOR.'models') as $current){
 			$className = str_replace(Helper::getFileExtension($current, true), '', Helper::getFileName($current));
 			$this->availableModels[] = new $className();
 		}

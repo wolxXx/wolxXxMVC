@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class AccessCheckerTest extends  PHPUnit_Framework_TestCase{
 	public function testGeneral(){
 		$accessChecker = new AccessChecker();

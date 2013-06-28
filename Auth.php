@@ -9,17 +9,18 @@
  * @author wolxXx
  * @version 1.0
  * @package wolxXxMVC
- *
  */
 abstract class Auth{
 	/**
 	 * the user
+	 *
 	 * @var Result
 	 */
 	public static $User;
 
 	/**
 	 * getter for the stack
+	 *
 	 * @param string $key
 	 * @return mixed
 	 */
@@ -28,6 +29,7 @@ abstract class Auth{
 	}
 	/**
 	 * setter for the stack
+	 *
 	 * @param string $key
 	 * @param mixed $value
 	 */
@@ -47,6 +49,7 @@ abstract class Auth{
 	/**
 	 * creates auth session data
 	 * does NOT prove the integriry (yet, maybe later..)
+	 *
 	 * @param Result $result
 	 * @todo remove redirects!!!
 	 */
@@ -124,6 +127,7 @@ abstract class Auth{
 
 	/**
 	 * setter for the user
+	 *
 	 * @param Result $user
 	 */
 	public static function setUser($user){
@@ -147,6 +151,7 @@ abstract class Auth{
 
 	/**
 	 * checks if a user is banned
+	 *
 	 * @return boolean
 	 */
 	public static function isBanned(){
@@ -155,6 +160,7 @@ abstract class Auth{
 
 	/**
 	 * returns the seconds the user will be banned
+	 *
 	 * @return integer
 	 */
 	public static function getRemainingBanTime(){
@@ -163,6 +169,7 @@ abstract class Auth{
 
 	/**
 	 * setter for the logged in state
+	 *
 	 * @param boolean $isLoggedIn
 	 */
 	public static function setIsLoggedIn($isLoggedIn = true){
@@ -171,6 +178,7 @@ abstract class Auth{
 
 	/**
 	 * checks if user is logged in
+	 *
 	 * @return boolean
 	 */
 	public static function isLoggedIn(){
@@ -181,6 +189,7 @@ abstract class Auth{
 	 * checks if user has access to the level
 	 * eg requested page (admin) has level 3, if user has 2 it returns false
 	 * if requested page (home) has access level 0, if user has at least 1, it returns true
+	 *
 	 * @param integer $level
 	 */
 	public static function hasAccess($level){
@@ -192,6 +201,7 @@ abstract class Auth{
 
 	/**
 	 * returns the id of the current loggedin user
+	 *
 	 * @return integer
 	 * @throws Exception
 	 */
@@ -204,6 +214,7 @@ abstract class Auth{
 
 	/**
 	 * returns the type of the currently logged in user
+	 *
 	 * @return integer
 	 * @throws Exception
 	 */
@@ -216,6 +227,7 @@ abstract class Auth{
 
 	/**
 	 * returns the nick name of the currently logged in user
+	 *
 	 * @throws Exception
 	 * @return string
 	 */
@@ -229,6 +241,7 @@ abstract class Auth{
 
 	/**
 	 * returns the email of the currently logged in user
+	 *
 	 * @return string
 	 * @throws Exception
 	 */
@@ -241,6 +254,7 @@ abstract class Auth{
 
 	/**
 	 * returns the status of the currently logged in user
+	 *
 	 * @return integer
 	 * @throws Exception
 	 */
@@ -253,6 +267,7 @@ abstract class Auth{
 
 	/**
 	 * returns the date of the last login of the currently logged in user
+	 *
 	 * @return DateTime
 	 * @throws Exception
 	 */
@@ -265,6 +280,7 @@ abstract class Auth{
 
 	/**
 	 * returns the amount of failed logins of the current user
+	 *
 	 * @return integer
 	 */
 	public static function getUserFailedLogins(){

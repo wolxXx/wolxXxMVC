@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class QueryBuilderTest extends  PHPUnit_Framework_TestCase{
 	public function testSetConnection(){
 		$select = new SelectQueryBuilder();

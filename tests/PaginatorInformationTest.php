@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class PaginatorInformationTest extends  PHPUnit_Framework_TestCase{
 	function testDefaultConstructor(){
 		$paginator = new PaginatorInformation();

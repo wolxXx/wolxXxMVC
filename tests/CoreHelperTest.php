@@ -1,4 +1,7 @@
 <?
+/**
+ * @codeCoverageIgnore
+ */
 class CoreHelperTest extends  PHPUnit_Framework_TestCase{
 	protected static $timestamp = 1343146996;
 
