@@ -10,6 +10,13 @@
 */
 class Label extends DomElementAbstract{
 	/**
+	 * position of the label, can be before or after
+	 *
+	 * @var string
+	 */
+	protected $position = 'before';
+
+	/**
 	 * (non-PHPdoc)
 	 * @see DomElementInterface::getDefaultConf()
 	 */
@@ -18,6 +25,27 @@ class Label extends DomElementAbstract{
 			'for' => 'text',
 			'text' => 'foo!',
 		);
+	}
+
+	/**
+	 * setter for the position of the element
+	 * can be before or after
+	 *
+	 * @param string $position
+	 * @return Label
+	 */
+	public function setPosition($position){
+		$this->position = 'before' === $position? 'before' : 'after';
+		return $this;
+	}
+
+	/**
+	 * returns the wanted position
+	 *
+	 * @return string
+	 */
+	public function getPosition(){
+		return $this->position;
 	}
 
 	/**
@@ -36,7 +64,7 @@ class Label extends DomElementAbstract{
 	 * (non-PHPdoc)
 	 * @see DomElementAbstract::addLabel()
 	 */
-	function addLabel($label = null){
+	function addLabel($label = null, $position = 'before'){
 		return $this;
 	}
 

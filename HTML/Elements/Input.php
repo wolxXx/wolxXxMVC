@@ -16,7 +16,8 @@ class Input extends DomElementAbstract{
 	public static function getDefaultConf(){
 		return array(
 			'type' => 'text',
-			'value' => null
+			'value' => null,
+			'autocomplete' => null
 		);
 	}
 
@@ -47,10 +48,9 @@ class Input extends DomElementAbstract{
 	 * @see DomElementInterface::display()
 	 */
 	public function display(){
-		if(null !== $this->label){
-			$this->label->display();
-		}
+		$this->displayLabelBefore();
 		HTML::renderInput($this->data->getData());
+		$this->displayLabelAfter();
 		return $this;
 	}
 }

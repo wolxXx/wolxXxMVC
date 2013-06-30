@@ -183,7 +183,6 @@ class Load{
 		}elseif(is_file(Helper::getDocRoot().'views'.DIRECTORY_SEPARATOR.$file_name.'.php')){
 			$file = Helper::getDocRoot(). 'views'.DIRECTORY_SEPARATOR.$file_name.'.php';
 		}
-		Helper::dieDebug($prefix, $file_name, $file, Helper::getDocRoot());
 		return $file;
 	}
 	/**

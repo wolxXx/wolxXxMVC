@@ -44,7 +44,7 @@ class wolxXxMVC{
 			}
 			die($x->getMessage());
 		}catch(Exception $x){
-			if('production' !== Stack::getInstance()->get('version')){
+			if(true === Helper::isDebugEnabled()){
 				Helper::dieDebug($x);
 			}
 			Helper::logerror('exeption in inital try catch: '.$x->getMessage());

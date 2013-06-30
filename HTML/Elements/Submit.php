@@ -47,7 +47,9 @@ class Submit extends DomElementAbstract{
 	 * @see DomElementInterface::display()
 	 */
 	public function display(){
+		$this->displayLabelBefore();
 		HTML::renderSubmit($this->data->getData());
+		$this->displayLabelAfter();
 		return $this;
 	}
 }

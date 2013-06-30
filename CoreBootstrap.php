@@ -101,7 +101,10 @@ abstract class CoreBootstrap{
 	 */
 	public static function catchException(){
 		Load::getInstance()->clearBuffer();
-		Helper::dieDebug(func_get_args());
+		if(true === Helper::isDebugEnabled()){
+			Helper::dieDebug(func_get_args());
+		}
+		throw new Exception('oO');
 	}
 
 	/**
@@ -111,7 +114,9 @@ abstract class CoreBootstrap{
 		set_exception_handler(array('CoreBootstrap', 'catchException'));
 		set_error_handler(
 			function ($code, $message, $file, $line) {
-				die('WTF?!!');
+				if(true === Helper::isDebugEnabled()){
+					Helper::dieDebug(func_get_args());
+				}
 				throw new Exception();
 			}, -1
 		);
