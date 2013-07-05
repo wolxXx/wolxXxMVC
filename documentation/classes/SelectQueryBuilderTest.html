@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta charset="utf-8"/>
+    <title>    API Documentation &raquo; \SelectQueryBuilderTest
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+            <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">API Documentation</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                                            </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <div class="row">
+        <div class="span4">
+                    <span class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </span>
+    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                    <li class="method public">
+        <a href="#method_testSelectQueryBuilder" title="testSelectQueryBuilder :: ">
+            <span class="description"></span><pre>testSelectQueryBuilder</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithLimitWithOneEntry" title="testSelectQueryBuilderWithLimitWithOneEntry :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithLimitWithOneEntry</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithLimitWithOneEntryAsArray" title="testSelectQueryBuilderWithLimitWithOneEntryAsArray :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithLimitWithOneEntryAsArray</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithLimitFromMethodIsOne" title="testSelectQueryBuilderWithLimitFromMethodIsOne :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithLimitFromMethodIsOne</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithLimitWithTwoEntriesAsArray" title="testSelectQueryBuilderWithLimitWithTwoEntriesAsArray :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithLimitWithTwoEntriesAsArray</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithOrder" title="testSelectQueryBuilderWithOrder :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithOrder</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithGroup" title="testSelectQueryBuilderWithGroup :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithGroup</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithFieldsAsArray" title="testSelectQueryBuilderWithFieldsAsArray :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithFieldsAsArray</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithFieldsAsNull" title="testSelectQueryBuilderWithFieldsAsNull :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithFieldsAsNull</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithDistinct" title="testSelectQueryBuilderWithDistinct :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithDistinct</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithoutFrom" title="testSelectQueryBuilderWithoutFrom :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithoutFrom</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithoutWhereAsArray" title="testSelectQueryBuilderWithoutWhereAsArray :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithoutWhereAsArray</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithoutWhereAsNotArray" title="testSelectQueryBuilderWithoutWhereAsNotArray :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithoutWhereAsNotArray</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderORLIKE" title="testSelectQueryBuilderORLIKE :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderORLIKE</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testWhere" title="testWhere :: ">
+            <span class="description"></span><pre>testWhere</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithEmptyFrom" title="testSelectQueryBuilderWithEmptyFrom :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithEmptyFrom</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithFieldsAsEmpty" title="testSelectQueryBuilderWithFieldsAsEmpty :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithFieldsAsEmpty</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithFieldsAsFilledArray" title="testSelectQueryBuilderWithFieldsAsFilledArray :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithFieldsAsFilledArray</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderIsQueryForAll" title="testSelectQueryBuilderIsQueryForAll :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderIsQueryForAll</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithoudConditions" title="testSelectQueryBuilderWithoudConditions :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithoudConditions</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSelectQueryBuilderWithoudFromCondition" title="testSelectQueryBuilderWithoudFromCondition :: ">
+            <span class="description"></span><pre>testSelectQueryBuilderWithoudFromCondition</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>SelectQueryBuilderTest</h1>
+                <small style="display: block; text-align: right">
+                                            Extends \PHPUnit_Framework_TestCase
+                                                        </small>
+                <p class="short_description"></p>
+                <div class="details">
+                    <div class="long_description">
+                        
+
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        codeCoverageIgnore
+                                                                            </th>
+                                    <td>
+                                                                                
+
+                                    </td>
+                                </tr>
+                                                                        </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method_testSelectQueryBuilder"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilder" data-toggle="collapse" data-target=".method_testSelectQueryBuilder .collapse">
+                            <h2>testSelectQueryBuilder</h2>
+                            <pre>testSelectQueryBuilder() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithLimitWithOneEntry"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithLimitWithOneEntry" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithLimitWithOneEntry .collapse">
+                            <h2>testSelectQueryBuilderWithLimitWithOneEntry</h2>
+                            <pre>testSelectQueryBuilderWithLimitWithOneEntry() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithLimitWithOneEntryAsArray"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithLimitWithOneEntryAsArray" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithLimitWithOneEntryAsArray .collapse">
+                            <h2>testSelectQueryBuilderWithLimitWithOneEntryAsArray</h2>
+                            <pre>testSelectQueryBuilderWithLimitWithOneEntryAsArray() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithLimitFromMethodIsOne"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithLimitFromMethodIsOne" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithLimitFromMethodIsOne .collapse">
+                            <h2>testSelectQueryBuilderWithLimitFromMethodIsOne</h2>
+                            <pre>testSelectQueryBuilderWithLimitFromMethodIsOne() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithLimitWithTwoEntriesAsArray"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithLimitWithTwoEntriesAsArray" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithLimitWithTwoEntriesAsArray .collapse">
+                            <h2>testSelectQueryBuilderWithLimitWithTwoEntriesAsArray</h2>
+                            <pre>testSelectQueryBuilderWithLimitWithTwoEntriesAsArray() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithOrder"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithOrder" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithOrder .collapse">
+                            <h2>testSelectQueryBuilderWithOrder</h2>
+                            <pre>testSelectQueryBuilderWithOrder() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithGroup"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithGroup" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithGroup .collapse">
+                            <h2>testSelectQueryBuilderWithGroup</h2>
+                            <pre>testSelectQueryBuilderWithGroup() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithFieldsAsArray"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithFieldsAsArray" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithFieldsAsArray .collapse">
+                            <h2>testSelectQueryBuilderWithFieldsAsArray</h2>
+                            <pre>testSelectQueryBuilderWithFieldsAsArray() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithFieldsAsNull"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithFieldsAsNull" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithFieldsAsNull .collapse">
+                            <h2>testSelectQueryBuilderWithFieldsAsNull</h2>
+                            <pre>testSelectQueryBuilderWithFieldsAsNull() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithDistinct"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithDistinct" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithDistinct .collapse">
+                            <h2>testSelectQueryBuilderWithDistinct</h2>
+                            <pre>testSelectQueryBuilderWithDistinct() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithoutFrom"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithoutFrom" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithoutFrom .collapse">
+                            <h2>testSelectQueryBuilderWithoutFrom</h2>
+                            <pre>testSelectQueryBuilderWithoutFrom() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    expectedException
+                                                </th>
+                                                <td>
+                                                                                                                                                                    <p>QueryGeneratorException</p>
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithoutWhereAsArray"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithoutWhereAsArray" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithoutWhereAsArray .collapse">
+                            <h2>testSelectQueryBuilderWithoutWhereAsArray</h2>
+                            <pre>testSelectQueryBuilderWithoutWhereAsArray() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    expectedException
+                                                </th>
+                                                <td>
+                                                                                                                                                                    <p>QueryGeneratorException</p>
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithoutWhereAsNotArray"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithoutWhereAsNotArray" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithoutWhereAsNotArray .collapse">
+                            <h2>testSelectQueryBuilderWithoutWhereAsNotArray</h2>
+                            <pre>testSelectQueryBuilderWithoutWhereAsNotArray() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    expectedException
+                                                </th>
+                                                <td>
+                                                                                                                                                                    <p>QueryGeneratorException</p>
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderORLIKE"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderORLIKE" data-toggle="collapse" data-target=".method_testSelectQueryBuilderORLIKE .collapse">
+                            <h2>testSelectQueryBuilderORLIKE</h2>
+                            <pre>testSelectQueryBuilderORLIKE() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testWhere"></a>
+                        <div class="element clickable method public method_testWhere" data-toggle="collapse" data-target=".method_testWhere .collapse">
+                            <h2>testWhere</h2>
+                            <pre>testWhere() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithEmptyFrom"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithEmptyFrom" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithEmptyFrom .collapse">
+                            <h2>testSelectQueryBuilderWithEmptyFrom</h2>
+                            <pre>testSelectQueryBuilderWithEmptyFrom() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    expectedException
+                                                </th>
+                                                <td>
+                                                                                                                                                                    <p>QueryGeneratorException</p>
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithFieldsAsEmpty"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithFieldsAsEmpty" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithFieldsAsEmpty .collapse">
+                            <h2>testSelectQueryBuilderWithFieldsAsEmpty</h2>
+                            <pre>testSelectQueryBuilderWithFieldsAsEmpty() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithFieldsAsFilledArray"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithFieldsAsFilledArray" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithFieldsAsFilledArray .collapse">
+                            <h2>testSelectQueryBuilderWithFieldsAsFilledArray</h2>
+                            <pre>testSelectQueryBuilderWithFieldsAsFilledArray() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderIsQueryForAll"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderIsQueryForAll" data-toggle="collapse" data-target=".method_testSelectQueryBuilderIsQueryForAll .collapse">
+                            <h2>testSelectQueryBuilderIsQueryForAll</h2>
+                            <pre>testSelectQueryBuilderIsQueryForAll() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithoudConditions"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithoudConditions" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithoudConditions .collapse">
+                            <h2>testSelectQueryBuilderWithoudConditions</h2>
+                            <pre>testSelectQueryBuilderWithoudConditions() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    expectedException
+                                                </th>
+                                                <td>
+                                                                                                                                                                    <p>QueryGeneratorException</p>
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSelectQueryBuilderWithoudFromCondition"></a>
+                        <div class="element clickable method public method_testSelectQueryBuilderWithoudFromCondition" data-toggle="collapse" data-target=".method_testSelectQueryBuilderWithoudFromCondition .collapse">
+                            <h2>testSelectQueryBuilderWithoudFromCondition</h2>
+                            <pre>testSelectQueryBuilderWithoudFromCondition() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    expectedException
+                                                </th>
+                                                <td>
+                                                                                                                                                                    <p>QueryGeneratorException</p>
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                    
+                    
+                                                        </div>
+            </div>
+            <a id="\SelectQueryBuilderTest"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/default.html">\</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/SelectQueryBuilderTest.html">SelectQueryBuilderTest</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Thu, 04 Jul 2013 17:22:00 +0000.<br/>
+    </footer>
+    </body>
+</html>

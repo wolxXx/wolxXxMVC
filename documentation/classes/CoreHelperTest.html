@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta charset="utf-8"/>
+    <title>    API Documentation &raquo; \CoreHelperTest
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+            <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">API Documentation</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                                            </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <div class="row">
+        <div class="span4">
+                    <span class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </span>
+    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                    <li class="method public">
+        <a href="#method_testRemoveHtmlTags" title="testRemoveHtmlTags :: ">
+            <span class="description"></span><pre>testRemoveHtmlTags</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testRemoveLinkTagFromText" title="testRemoveLinkTagFromText :: ">
+            <span class="description"></span><pre>testRemoveLinkTagFromText</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testDateByTimeStampDefaultFormat" title="testDateByTimeStampDefaultFormat :: ">
+            <span class="description"></span><pre>testDateByTimeStampDefaultFormat</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testDateToTimestamp" title="testDateToTimestamp :: ">
+            <span class="description"></span><pre>testDateToTimestamp</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testRenderDate" title="testRenderDate :: ">
+            <span class="description"></span><pre>testRenderDate</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetDateForYear" title="testGetDateForYear :: ">
+            <span class="description"></span><pre>testGetDateForYear</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testDateByTimestamp" title="testDateByTimestamp :: ">
+            <span class="description"></span><pre>testDateByTimestamp</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testDateForTimestampNull" title="testDateForTimestampNull :: ">
+            <span class="description"></span><pre>testDateForTimestampNull</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testRenderUTCDate" title="testRenderUTCDate :: ">
+            <span class="description"></span><pre>testRenderUTCDate</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testCreateUTCDate" title="testCreateUTCDate :: ">
+            <span class="description"></span><pre>testCreateUTCDate</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testFileSize" title="testFileSize :: ">
+            <span class="description"></span><pre>testFileSize</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testArrayChunk" title="testArrayChunk :: ">
+            <span class="description"></span><pre>testArrayChunk</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testIsImage" title="testIsImage :: ">
+            <span class="description"></span><pre>testIsImage</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetDocRoot" title="testGetDocRoot :: ">
+            <span class="description"></span><pre>testGetDocRoot</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGeneratePassword" title="testGeneratePassword :: ">
+            <span class="description"></span><pre>testGeneratePassword</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetCurrentURLForEmptyServer" title="testGetCurrentURLForEmptyServer :: ">
+            <span class="description"></span><pre>testGetCurrentURLForEmptyServer</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetCurrentURLWithHttps" title="testGetCurrentURLWithHttps :: ">
+            <span class="description"></span><pre>testGetCurrentURLWithHttps</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetCurrentURLWithoutHttps" title="testGetCurrentURLWithoutHttps :: ">
+            <span class="description"></span><pre>testGetCurrentURLWithoutHttps</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetCurrentURIWithoutURI" title="testGetCurrentURIWithoutURI :: ">
+            <span class="description"></span><pre>testGetCurrentURIWithoutURI</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetCurrentURIWithURI" title="testGetCurrentURIWithURI :: ">
+            <span class="description"></span><pre>testGetCurrentURIWithURI</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testCheckMailSyntaxForFailure" title="testCheckMailSyntaxForFailure :: ">
+            <span class="description"></span><pre>testCheckMailSyntaxForFailure</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testCheckMailSyntaxForSuccess" title="testCheckMailSyntaxForSuccess :: ">
+            <span class="description"></span><pre>testCheckMailSyntaxForSuccess</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testDeprecatedCheckMailSyntaxForFailure" title="testDeprecatedCheckMailSyntaxForFailure :: ">
+            <span class="description"></span><pre>testDeprecatedCheckMailSyntaxForFailure</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testDeprecatedCheckMailSyntaxForSuccess" title="testDeprecatedCheckMailSyntaxForSuccess :: ">
+            <span class="description"></span><pre>testDeprecatedCheckMailSyntaxForSuccess</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testFloatToDecimalPrice" title="testFloatToDecimalPrice :: ">
+            <span class="description"></span><pre>testFloatToDecimalPrice</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testFloatToDecimal" title="testFloatToDecimal :: ">
+            <span class="description"></span><pre>testFloatToDecimal</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testCutText" title="testCutText :: ">
+            <span class="description"></span><pre>testCutText</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testSecondsToRemainingTime" title="testSecondsToRemainingTime :: ">
+            <span class="description"></span><pre>testSecondsToRemainingTime</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testUploadErrorToString" title="testUploadErrorToString :: ">
+            <span class="description"></span><pre>testUploadErrorToString</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetFileName" title="testGetFileName :: ">
+            <span class="description"></span><pre>testGetFileName</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetFileExtension" title="testGetFileExtension :: ">
+            <span class="description"></span><pre>testGetFileExtension</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetFileExtensionWithPrependPointTrue" title="testGetFileExtensionWithPrependPointTrue :: ">
+            <span class="description"></span><pre>testGetFileExtensionWithPrependPointTrue</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testGetFileExtensionWithPrependPointFalse" title="testGetFileExtensionWithPrependPointFalse :: ">
+            <span class="description"></span><pre>testGetFileExtensionWithPrependPointFalse</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testScanDirectoryNonRecursive" title="testScanDirectoryNonRecursive :: ">
+            <span class="description"></span><pre>testScanDirectoryNonRecursive</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testScanDirectoryRecursively" title="testScanDirectoryRecursively :: ">
+            <span class="description"></span><pre>testScanDirectoryRecursively</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testAddSplash" title="testAddSplash :: ">
+            <span class="description"></span><pre>testAddSplash</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testAddMultipleSplash" title="testAddMultipleSplash :: ">
+            <span class="description"></span><pre>testAddMultipleSplash</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_testClearSplashes" title="testClearSplashes :: ">
+            <span class="description"></span><pre>testClearSplashes</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>CoreHelperTest</h1>
+                <small style="display: block; text-align: right">
+                                            Extends \PHPUnit_Framework_TestCase
+                                                        </small>
+                <p class="short_description"></p>
+                <div class="details">
+                    <div class="long_description">
+                        
+
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        codeCoverageIgnore
+                                                                            </th>
+                                    <td>
+                                                                                
+
+                                    </td>
+                                </tr>
+                                                                        </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method_testRemoveHtmlTags"></a>
+                        <div class="element clickable method public method_testRemoveHtmlTags" data-toggle="collapse" data-target=".method_testRemoveHtmlTags .collapse">
+                            <h2>testRemoveHtmlTags</h2>
+                            <pre>testRemoveHtmlTags() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testRemoveLinkTagFromText"></a>
+                        <div class="element clickable method public method_testRemoveLinkTagFromText" data-toggle="collapse" data-target=".method_testRemoveLinkTagFromText .collapse">
+                            <h2>testRemoveLinkTagFromText</h2>
+                            <pre>testRemoveLinkTagFromText() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testDateByTimeStampDefaultFormat"></a>
+                        <div class="element clickable method public method_testDateByTimeStampDefaultFormat" data-toggle="collapse" data-target=".method_testDateByTimeStampDefaultFormat .collapse">
+                            <h2>testDateByTimeStampDefaultFormat</h2>
+                            <pre>testDateByTimeStampDefaultFormat() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testDateToTimestamp"></a>
+                        <div class="element clickable method public method_testDateToTimestamp" data-toggle="collapse" data-target=".method_testDateToTimestamp .collapse">
+                            <h2>testDateToTimestamp</h2>
+                            <pre>testDateToTimestamp() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testRenderDate"></a>
+                        <div class="element clickable method public method_testRenderDate" data-toggle="collapse" data-target=".method_testRenderDate .collapse">
+                            <h2>testRenderDate</h2>
+                            <pre>testRenderDate() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetDateForYear"></a>
+                        <div class="element clickable method public method_testGetDateForYear" data-toggle="collapse" data-target=".method_testGetDateForYear .collapse">
+                            <h2>testGetDateForYear</h2>
+                            <pre>testGetDateForYear() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testDateByTimestamp"></a>
+                        <div class="element clickable method public method_testDateByTimestamp" data-toggle="collapse" data-target=".method_testDateByTimestamp .collapse">
+                            <h2>testDateByTimestamp</h2>
+                            <pre>testDateByTimestamp() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testDateForTimestampNull"></a>
+                        <div class="element clickable method public method_testDateForTimestampNull" data-toggle="collapse" data-target=".method_testDateForTimestampNull .collapse">
+                            <h2>testDateForTimestampNull</h2>
+                            <pre>testDateForTimestampNull() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testRenderUTCDate"></a>
+                        <div class="element clickable method public method_testRenderUTCDate" data-toggle="collapse" data-target=".method_testRenderUTCDate .collapse">
+                            <h2>testRenderUTCDate</h2>
+                            <pre>testRenderUTCDate() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testCreateUTCDate"></a>
+                        <div class="element clickable method public method_testCreateUTCDate" data-toggle="collapse" data-target=".method_testCreateUTCDate .collapse">
+                            <h2>testCreateUTCDate</h2>
+                            <pre>testCreateUTCDate() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testFileSize"></a>
+                        <div class="element clickable method public method_testFileSize" data-toggle="collapse" data-target=".method_testFileSize .collapse">
+                            <h2>testFileSize</h2>
+                            <pre>testFileSize() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testArrayChunk"></a>
+                        <div class="element clickable method public method_testArrayChunk" data-toggle="collapse" data-target=".method_testArrayChunk .collapse">
+                            <h2>testArrayChunk</h2>
+                            <pre>testArrayChunk() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testIsImage"></a>
+                        <div class="element clickable method public method_testIsImage" data-toggle="collapse" data-target=".method_testIsImage .collapse">
+                            <h2>testIsImage</h2>
+                            <pre>testIsImage() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetDocRoot"></a>
+                        <div class="element clickable method public method_testGetDocRoot" data-toggle="collapse" data-target=".method_testGetDocRoot .collapse">
+                            <h2>testGetDocRoot</h2>
+                            <pre>testGetDocRoot() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGeneratePassword"></a>
+                        <div class="element clickable method public method_testGeneratePassword" data-toggle="collapse" data-target=".method_testGeneratePassword .collapse">
+                            <h2>testGeneratePassword</h2>
+                            <pre>testGeneratePassword() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetCurrentURLForEmptyServer"></a>
+                        <div class="element clickable method public method_testGetCurrentURLForEmptyServer" data-toggle="collapse" data-target=".method_testGetCurrentURLForEmptyServer .collapse">
+                            <h2>testGetCurrentURLForEmptyServer</h2>
+                            <pre>testGetCurrentURLForEmptyServer() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetCurrentURLWithHttps"></a>
+                        <div class="element clickable method public method_testGetCurrentURLWithHttps" data-toggle="collapse" data-target=".method_testGetCurrentURLWithHttps .collapse">
+                            <h2>testGetCurrentURLWithHttps</h2>
+                            <pre>testGetCurrentURLWithHttps() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetCurrentURLWithoutHttps"></a>
+                        <div class="element clickable method public method_testGetCurrentURLWithoutHttps" data-toggle="collapse" data-target=".method_testGetCurrentURLWithoutHttps .collapse">
+                            <h2>testGetCurrentURLWithoutHttps</h2>
+                            <pre>testGetCurrentURLWithoutHttps() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetCurrentURIWithoutURI"></a>
+                        <div class="element clickable method public method_testGetCurrentURIWithoutURI" data-toggle="collapse" data-target=".method_testGetCurrentURIWithoutURI .collapse">
+                            <h2>testGetCurrentURIWithoutURI</h2>
+                            <pre>testGetCurrentURIWithoutURI() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetCurrentURIWithURI"></a>
+                        <div class="element clickable method public method_testGetCurrentURIWithURI" data-toggle="collapse" data-target=".method_testGetCurrentURIWithURI .collapse">
+                            <h2>testGetCurrentURIWithURI</h2>
+                            <pre>testGetCurrentURIWithURI() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testCheckMailSyntaxForFailure"></a>
+                        <div class="element clickable method public method_testCheckMailSyntaxForFailure" data-toggle="collapse" data-target=".method_testCheckMailSyntaxForFailure .collapse">
+                            <h2>testCheckMailSyntaxForFailure</h2>
+                            <pre>testCheckMailSyntaxForFailure() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testCheckMailSyntaxForSuccess"></a>
+                        <div class="element clickable method public method_testCheckMailSyntaxForSuccess" data-toggle="collapse" data-target=".method_testCheckMailSyntaxForSuccess .collapse">
+                            <h2>testCheckMailSyntaxForSuccess</h2>
+                            <pre>testCheckMailSyntaxForSuccess() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testDeprecatedCheckMailSyntaxForFailure"></a>
+                        <div class="element clickable method public method_testDeprecatedCheckMailSyntaxForFailure" data-toggle="collapse" data-target=".method_testDeprecatedCheckMailSyntaxForFailure .collapse">
+                            <h2>testDeprecatedCheckMailSyntaxForFailure</h2>
+                            <pre>testDeprecatedCheckMailSyntaxForFailure() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testDeprecatedCheckMailSyntaxForSuccess"></a>
+                        <div class="element clickable method public method_testDeprecatedCheckMailSyntaxForSuccess" data-toggle="collapse" data-target=".method_testDeprecatedCheckMailSyntaxForSuccess .collapse">
+                            <h2>testDeprecatedCheckMailSyntaxForSuccess</h2>
+                            <pre>testDeprecatedCheckMailSyntaxForSuccess() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testFloatToDecimalPrice"></a>
+                        <div class="element clickable method public method_testFloatToDecimalPrice" data-toggle="collapse" data-target=".method_testFloatToDecimalPrice .collapse">
+                            <h2>testFloatToDecimalPrice</h2>
+                            <pre>testFloatToDecimalPrice() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testFloatToDecimal"></a>
+                        <div class="element clickable method public method_testFloatToDecimal" data-toggle="collapse" data-target=".method_testFloatToDecimal .collapse">
+                            <h2>testFloatToDecimal</h2>
+                            <pre>testFloatToDecimal() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testCutText"></a>
+                        <div class="element clickable method public method_testCutText" data-toggle="collapse" data-target=".method_testCutText .collapse">
+                            <h2>testCutText</h2>
+                            <pre>testCutText() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testSecondsToRemainingTime"></a>
+                        <div class="element clickable method public method_testSecondsToRemainingTime" data-toggle="collapse" data-target=".method_testSecondsToRemainingTime .collapse">
+                            <h2>testSecondsToRemainingTime</h2>
+                            <pre>testSecondsToRemainingTime() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testUploadErrorToString"></a>
+                        <div class="element clickable method public method_testUploadErrorToString" data-toggle="collapse" data-target=".method_testUploadErrorToString .collapse">
+                            <h2>testUploadErrorToString</h2>
+                            <pre>testUploadErrorToString() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetFileName"></a>
+                        <div class="element clickable method public method_testGetFileName" data-toggle="collapse" data-target=".method_testGetFileName .collapse">
+                            <h2>testGetFileName</h2>
+                            <pre>testGetFileName() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetFileExtension"></a>
+                        <div class="element clickable method public method_testGetFileExtension" data-toggle="collapse" data-target=".method_testGetFileExtension .collapse">
+                            <h2>testGetFileExtension</h2>
+                            <pre>testGetFileExtension() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetFileExtensionWithPrependPointTrue"></a>
+                        <div class="element clickable method public method_testGetFileExtensionWithPrependPointTrue" data-toggle="collapse" data-target=".method_testGetFileExtensionWithPrependPointTrue .collapse">
+                            <h2>testGetFileExtensionWithPrependPointTrue</h2>
+                            <pre>testGetFileExtensionWithPrependPointTrue() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testGetFileExtensionWithPrependPointFalse"></a>
+                        <div class="element clickable method public method_testGetFileExtensionWithPrependPointFalse" data-toggle="collapse" data-target=".method_testGetFileExtensionWithPrependPointFalse .collapse">
+                            <h2>testGetFileExtensionWithPrependPointFalse</h2>
+                            <pre>testGetFileExtensionWithPrependPointFalse() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testScanDirectoryNonRecursive"></a>
+                        <div class="element clickable method public method_testScanDirectoryNonRecursive" data-toggle="collapse" data-target=".method_testScanDirectoryNonRecursive .collapse">
+                            <h2>testScanDirectoryNonRecursive</h2>
+                            <pre>testScanDirectoryNonRecursive() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testScanDirectoryRecursively"></a>
+                        <div class="element clickable method public method_testScanDirectoryRecursively" data-toggle="collapse" data-target=".method_testScanDirectoryRecursively .collapse">
+                            <h2>testScanDirectoryRecursively</h2>
+                            <pre>testScanDirectoryRecursively() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testAddSplash"></a>
+                        <div class="element clickable method public method_testAddSplash" data-toggle="collapse" data-target=".method_testAddSplash .collapse">
+                            <h2>testAddSplash</h2>
+                            <pre>testAddSplash() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testAddMultipleSplash"></a>
+                        <div class="element clickable method public method_testAddMultipleSplash" data-toggle="collapse" data-target=".method_testAddMultipleSplash .collapse">
+                            <h2>testAddMultipleSplash</h2>
+                            <pre>testAddMultipleSplash() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_testClearSplashes"></a>
+                        <div class="element clickable method public method_testClearSplashes" data-toggle="collapse" data-target=".method_testClearSplashes .collapse">
+                            <h2>testClearSplashes</h2>
+                            <pre>testClearSplashes() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                    
+                    
+                                                                <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                    <a id="property_timestamp"> </a>
+                            <div class="element clickable property protected property_timestamp" data-toggle="collapse" data-target=".property_timestamp .collapse">
+                                <h2>timestamp</h2>
+                                <pre>timestamp</pre>
+                                <div class="labels">
+                                                                        <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <a id="\CoreHelperTest"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/default.html">\</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/CoreHelperTest.html">CoreHelperTest</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Thu, 04 Jul 2013 17:21:58 +0000.<br/>
+    </footer>
+    </body>
+</html>
