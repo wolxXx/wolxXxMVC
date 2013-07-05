@@ -16,7 +16,8 @@ class Textarea extends ContainableDomElementAbstract{
 	public static function getDefaultConf(){
 		return array(
 			'rows' => '1000',
-			'cols' => '1000'
+			'cols' => '1000',
+			'text' => ''
 		);
 	}
 
@@ -58,10 +59,9 @@ class Textarea extends ContainableDomElementAbstract{
 	 * @see DomElementInterface::display()
 	 */
 	public function display(){
-		if(null !== $this->label){
-			$this->label->display();
-		}
+		$this->displayLabelBefore();
 		HTML::renderTextarea($this->data->getData());
+		$this->displayLabelAfter();
 		return $this;
 	}
 }

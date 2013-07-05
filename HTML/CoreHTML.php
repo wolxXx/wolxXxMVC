@@ -56,25 +56,58 @@ class CoreHTML{
 		$function = $trace[1]['function'];
 		$default = DomElementAbstract::getDefaultConf();
 		switch($function){
+			case 'renderBr':{
+				$default = array_merge($default, Br::getDefaultConf());
+			}break;
+			case 'renderClear':{
+				$default = array_merge($default, Clear::getDefaultConf());
+			}break;
 			case 'renderFormStart':{
 				$default = array_merge($default, Form::getDefaultConf());
+			}break;
+			case 'renderGrid':{
+				$default = array_merge($default, Grid::getDefaultConf());
+			}break;
+			case 'renderHeadline':{
+				$default = array_merge($default, Headline::getDefaultConf());
 			}break;
 			case 'renderInput':{
 				$default = array_merge($default, Input::getDefaultConf());
 			}break;
+			case 'renderLabel':{
+				$default = array_merge($default, Label::getDefaultConf());
+			}break;
 			case 'renderPassword':{
 				$default = array_merge($default, Password::getDefaultConf());
+			}break;
+			case 'renderRadio':{
+				$default = array_merge($default, Radio::getDefaultConf());
+			}break;
+			case 'renderRadioOption':{
+				$default = array_merge($default, RadioOption::getDefaultConf());
+			}break;
+			case 'renderSpan':{
+				$default = array_merge($default, Input::getSpanConf());
 			}break;
 			case 'renderSubmit':{
 				$default = array_merge($default, Submit::getDefaultConf());
 			}break;
 			case 'renderTextarea':{
-				$default['rows'] = 1000;
-				$default['cols'] = 1000;
-				$default['text'] = '';
+				$default = array_merge($default, Textarea::getDefaultConf());
 			}break;
 		}
 		return (object) array_merge($default, $conf);
+	}
+
+	/**
+	 * echoes something and prints the new line
+	 *
+	 * @param string $text
+	 */
+	protected static function out(){
+		foreach(func_get_args() as $current){
+			echo $text.PHP_EOL;
+		}
 	}
 
 	/**
@@ -140,8 +173,10 @@ class CoreHTML{
 			'cols' => $conf->cols,
 			'class' => $conf->class
 		));
-		echo $conf->text;
-		echo self::closeTag('textarea');
+		self::out(
+			$conf->text,
+			self::closeTag('textarea')
+		);
 	}
 
 	/**
@@ -152,14 +187,44 @@ class CoreHTML{
 	 */
 	public static function renderSubmit($conf = array()){
 		$conf = self::mergeConf($conf);
-		echo self::openSingleTag('input', array(
-			'class' => $conf->class,
-			'type' => 'submit',
-			'id' => $conf->id,
-			'name' => $conf->name,
-			'value' => $conf->value
-		));
-		echo self::closeSingleTag();
+		self::out(
+			self::openSingleTag('input', array(
+				'class' => $conf->class,
+				'type' => 'submit',
+				'id' => $conf->id,
+				'name' => $conf->name,
+				'value' => $conf->value
+			)),
+			self::closeSingleTag()
+		);
+	}
+
+	/**
+	 * renders a div class clear tag
+	 */
+	public static function renderClear(){
+		self::out(
+			self::openTag('div', array(
+				'class' => 'clear'
+			)),
+			self::closeTag('div')
+		);
+	}
+
+	/**
+	 * renders a span element
+	 * @param array $conf
+	 */
+	public static function renderSpan($conf = array()){
+		$conf = self::mergeConf($conf);
+		self::out(
+			self::openTag('span', array(
+				'class' => $conf->class,
+				'id' => $conf->id,
+			)),
+			$conf->text,
+			self::closeTag('span')
+		);
 	}
 
 	/**
@@ -170,14 +235,36 @@ class CoreHTML{
 	 */
 	public static function renderInput($conf = array()){
 		$conf = self::mergeConf($conf);
-		echo self::openSingleTag('input', array(
-			'class' => $conf->class,
-			'type' => $conf->type,
-			'id' => $conf->id,
-			'name' => $conf->name,
-			'value' => $conf->value
-		));
-		echo self::closeSingleTag();
+		self::out(
+			self::openSingleTag('input', array(
+				'class' => $conf->class,
+				'type' => $conf->type,
+				'id' => $conf->id,
+				'name' => $conf->name,
+				'value' => $conf->value,
+				'autocomplete' => $conf->autocomplete
+			)),
+			self::closeSingleTag()
+		);
+	}
+
+	/**
+	 * renders a radio option
+	 *
+	 * @param array $conf
+	 */
+	public static function renderRadioOption($conf = array()){
+		$conf = self::mergeConf($conf);
+		self::out(
+			self::openSingleTag('input', array(
+				'id' => $conf->id,
+				'name' => $conf->name,
+				'value' => $conf->value,
+				'type' => 'radio',
+				'checked' => $conf->checked
+			)),
+			self::closeSingleTag('input')
+		);
 	}
 
 	/**
@@ -188,12 +275,28 @@ class CoreHTML{
 	 */
 	public static function renderPassword($conf = array()){
 		$conf = self::mergeConf($conf);
-		echo self::openSingleTag('input', array(
-			'id' => $conf->id,
-			'name' => $conf->name,
-			'type' => 'password',
-		));
-		echo self::closeSingleTag();
+		self::out(
+			self::openSingleTag('input', array(
+				'id' => $conf->id,
+				'name' => $conf->name,
+				'type' => 'password',
+			)),
+			self::closeSingleTag()
+		);
+	}
+
+	/**
+	 * renders a headline element
+	 *
+	 * @param array $conf
+	 */
+	public static function renderHeadline($conf = array()){
+		$conf = self::mergeConf($conf);
+		self::out(
+			self::openTag('h'.$conf->size),
+			$conf->text,
+			self::closeTag('h'.$conf->size)
+		);
 	}
 
 	/**
@@ -204,19 +307,23 @@ class CoreHTML{
 	 */
 	public static function renderFormStart($conf = array()){
 		$conf = self::mergeConf($conf);
-		echo self::openTag('form', array(
+		self::out(
+			self::openTag('form', array(
 			'method' => $conf->method,
 			'action' => $conf->action,
 			'class' => $conf->class,
 			'id' => $conf->id
-		));
+			))
+		);
 	}
 
 	/**
 	 * renders a closing form tag
 	 */
 	public static function renderFormClose(){
-		echo self::closeTag('form');
+		self::out(
+			self::closeTag('form')
+		);
 	}
 
 	/**
@@ -227,12 +334,24 @@ class CoreHTML{
 	 */
 	public static function renderLabel($conf = array()){
 		$conf = self::mergeConf($conf);
-		echo self::openTag('label', array(
-			'for' => $conf->for,
-			'id' => $conf->id,
-			'class' => $conf->class
-		));
-		echo $conf->text;
-		echo self::closeTag('label');
+		self::out(
+			self::openTag('label', array(
+				'for' => $conf->for,
+				'id' => $conf->id,
+				'class' => $conf->class
+			)),
+			$conf->text,
+			self::closeTag('label')
+		);
+	}
+
+	/**
+	 * renders a break tag
+	 */
+	public static function renderBr(){
+		self::out(
+			self::openSingleTag('br'),
+			self::closeSingleTag()
+		);
 	}
 }

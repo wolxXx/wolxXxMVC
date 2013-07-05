@@ -40,14 +40,18 @@ abstract class DomElementAbstract implements DomElementInterface{
 	/**
 	 * adds a label to the element
 	 * the text param will be the visible text for the label
+	 * position determines if the label shall be displayed before or after element
 	 *
 	 * @param string $text
+	 * @param string $position
 	 * @return DomElementAbstract
 	 */
-	public function addLabel($text = null){
+	public function addLabel($text = null, $position = 'before'){
 		$this->label = HTML::Factory('label')
 			->setText($text)
-			->setFor($this->getId());
+			->setFor($this->getId())
+			->setPosition($position)
+		;
 		return $this;
 	}
 
@@ -118,6 +122,17 @@ abstract class DomElementAbstract implements DomElementInterface{
 		return $this;
 	}
 
+
+	/**
+	 * returns the wanted value for the key
+	 *
+	 * @param string $key
+	 * @return mixed
+	 */
+	public function get($key){
+		return $this->data->get($key);
+	}
+
 	/**
 	 * removes a key from the data object
 	 *
@@ -151,6 +166,7 @@ abstract class DomElementAbstract implements DomElementInterface{
 		return $this;
 	}
 
+
 	/**
 	 * sets the id and the name of this element
 	 *
@@ -170,6 +186,24 @@ abstract class DomElementAbstract implements DomElementInterface{
 	 */
 	public function getId(){
 		return $this->data->get('id');
+	}
+
+	/**
+	 * renders the label if one is set and the position is before
+	 */
+	public function displayLabelBefore(){
+		if(null !== $this->label && 'before' === $this->label->getPosition()){
+			$this->label->display();
+		}
+	}
+
+	/**
+	 * renders the label if one is set and the position is after
+	 */
+	public function displayLabelAfter(){
+		if(null !== $this->label && 'after' === $this->label->getPosition()){
+			$this->label->display();
+		}
 	}
 
 	/**

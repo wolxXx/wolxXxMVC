@@ -55,14 +55,13 @@ class Form extends ContainableDomElementAbstract{
 	 * @see DomElementInterface::display()
 	 */
 	public function display(){
-		if(null !== $this->label){
-			$this->label->display();
-		}
+		$this->displayLabelBefore();
 		HTML::renderFormStart($this->data->getData());
 		foreach($this->children as $current){
 			$current->display();
 		}
 		HTML::renderFormClose();
+		$this->displayLabelAfter();
 		return $this;
 	}
 }

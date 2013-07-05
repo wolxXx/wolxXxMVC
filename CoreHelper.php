@@ -61,12 +61,20 @@ class CoreHelper{
 	}
 
 	/**
+	 * checks if debugging is enabled
+	 * @return boolean
+	 */
+	public static function isDebugEnabled(){
+		return true === in_array(Stack::getInstance()->get('debug'), array('1', true, 'true'));
+	}
+
+	/**
 	 * var_dumps all provided elements if debugging is enabled in stack
 	 */
 	public static function debug(){
 		$stack = Stack::getInstance();
 		if(false === in_array($stack->get('debug'), array('1', true, 'true'))){
-			#return;
+			return;
 		}
 		$backtrace = debug_backtrace(true);
 		$trace = $backtrace[0];

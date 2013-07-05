@@ -32,15 +32,27 @@ class Grid extends ContainableDomElementAbstract{
 	}
 
 	/**
+	 * clears the floating
+	 *
+	 * @return Grid
+	 */
+	public function clear(){
+		HTML::renderClear();
+		return $this;
+	}
+
+	/**
 	 * (non-PHPdoc)
 	 * @see DomElementInterface::display()
 	 */
 	public function display(){
-		HTML::renderFormStart($this->data->getData());
-		foreach($this->children as $current){
-			$current->display();
-		}
-		HTML::renderFormClose();
+		?>
+			<div class="grid_<?= $this->get('size') ?>">
+				<? foreach($this->children as $current){
+					$current->display();
+				} ?>
+			</div>
+		<?
 		return $this;
 	}
 }

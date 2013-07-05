@@ -185,15 +185,30 @@ class DataObject{
 	public function get($key){
 		try{
 			return $this->getFromPost($key);
-		}catch (Exception $x){
+		}catch (KeyNotExistsInDataObject $x){
 
 		}
 		try{
 			return $this->getFromGet($key);
-		}catch (Exception $x){
+		}catch (KeyNotExistsInDataObject $x){
 
 		}
 		throw new KeyNotExistsInDataObject($key.' not found in DataObject!');
+	}
+
+	/**
+	 * tries to recieve the value for the key
+	 * returns null if nothing was found
+	 *
+	 * @param string $key
+	 * @return mixed | NULL
+	 */
+	public function getSavely($key){
+		try{
+			return $this->get($key);
+		}catch (KeyNotExistsInDataObject $x){
+			return null;
+		}
 	}
 
 	/**
@@ -243,6 +258,19 @@ class DataObject{
 	 */
 	public function hasDataForKey($key){
 		return isset($this->data[$key]);
+	}
+
+	/**
+	 * removes the key from post, get and internal data arrays
+	 *
+	 * @param string $key
+	 * @return DataObject
+	 */
+	public function removeKey($key){
+		unset($this->rawGET[$key]);
+		unset($this->rawPOST[$key]);
+		unset($this->data[$key]);
+		return $this;
 	}
 
 	/**
