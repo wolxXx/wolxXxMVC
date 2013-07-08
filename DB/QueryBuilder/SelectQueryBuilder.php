@@ -1,8 +1,8 @@
 <?
 /**
- * prototype for a select query builder
- * 
- * 
+ * select query builder
+ * wrappes a condition array to a select query string
+ *
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage QueryBuilder
@@ -17,12 +17,12 @@ class SelectQueryBuilder extends QueryBuilder{
 		if(true === empty($this->conditions)){
 			throw new QueryGeneratorException('empty conditions');
 		}
-		
+
 		if(false === isset($this->conditions['from'])){
 			throw new QueryGeneratorException();
 		}
 	}
-	
+
 	/**
 	 * checks if the query was a query for selecting more than one element
 	 * @return boolean
@@ -48,7 +48,7 @@ class SelectQueryBuilder extends QueryBuilder{
 		$query = "SELECT $distinct\n\t\t$fields\n\tFROM\n\t\t$from\n\tWHERE\n\t\t$where\n\t$group\n\t$order\n\t$limit;";
 		return $query;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::getQueryString()

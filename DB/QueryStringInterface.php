@@ -10,12 +10,15 @@
  */
 interface QueryStringInterface{
 	/**
+	 * getter for the query string
+	 *
 	 * @return string
 	 * @param boolean $cleared
 	 */
 	public function getQueryString($cleared = false);
 
 	/**
+	 *constructor
 	 *
 	 * @param string $queryString
 	 */
@@ -23,6 +26,7 @@ interface QueryStringInterface{
 
 	/**
 	 * setter for the query string
+	 *
 	 * @param string
 	 */
 	public function setQueryString($string);

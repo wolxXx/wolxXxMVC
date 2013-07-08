@@ -1,6 +1,7 @@
 <?
 /**
  * sets the access rules for one action
+ *
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage AccessCheck
@@ -9,24 +10,28 @@
 class AccessRule{
 	/**
 	 * the action name
+	 *
 	 * @var string
 	 */
 	protected $actionName;
-	
+
 	/**
 	 * if the user must be loggedin
+	 *
 	 * @var boolean
 	 */
 	protected $authNeeded;
-	
+
 	/**
 	 * the user level required
+	 *
 	 * @var integer
 	 */
-	protected $levelNeeded; 
-	
+	protected $levelNeeded;
+
 	/**
 	 * constructor
+	 *
 	 * @param string $actionName
 	 * @param boolean $authNeeded
 	 * @param integer $levelNeeded
@@ -37,9 +42,10 @@ class AccessRule{
 			->setAuthNeeded($authNeeded)
 			->setLevelNeeded($levelNeeded);
 	}
-	
+
 	/**
 	 * setter for the action name
+	 *
 	 * @param string $actionName
 	 * @return AccessRule
 	 */
@@ -47,17 +53,19 @@ class AccessRule{
 		$this->actionName = $actionName;
 		return $this;
 	}
-	
+
 	/**
 	 * getter for the action name
+	 *
 	 * @return string
 	 */
 	public function getActionName(){
 		return $this->actionName;
 	}
-	
+
 	/**
 	 * setter for auth needed
+	 *
 	 * @param boolean $authNeeded
 	 * @return AccessRule
 	 */
@@ -65,17 +73,19 @@ class AccessRule{
 		$this->authNeeded = $authNeeded;
 		return $this;
 	}
-	
+
 	/**
 	 * getter for auth needed
+	 *
 	 * @return boolean
 	 */
-	public function getAuthNeeded(){
+	public function isAuthNeeded(){
 		return $this->authNeeded;
 	}
-	
+
 	/**
 	 * setter for the needed level
+	 *
 	 * @param integer $levelNeeded
 	 * @return AccessRule
 	 */
@@ -83,9 +93,10 @@ class AccessRule{
 		$this->levelNeeded = $levelNeeded;
 		return $this;
 	}
-	
+
 	/**
 	 * getter for the needed level
+	 *
 	 * @return integer
 	 */
 	public function getLevelNeeded(){

@@ -73,6 +73,10 @@ abstract class DomElementAbstract implements DomElementInterface{
 	 * @return DomElementAbstract
 	 */
 	public function addClass($class){
+		if(false === $this->data->hasKey('class')){
+			$this->data->set('class', $class);
+			return $this;
+		}
 		$this->data->set('class', $this->data->get('class').' '.$class);
 		return $this;
 	}

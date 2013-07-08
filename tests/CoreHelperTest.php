@@ -5,6 +5,95 @@
 class CoreHelperTest extends  PHPUnit_Framework_TestCase{
 	protected static $timestamp = 1343146996;
 
+	public function testMultiArrayDecorate(){
+		$array = array('foo', array('foo'));
+		$array = Helper::array_decorate($array, '_');
+		$this->assertSame('_foo_', $array[0]);
+		$this->assertSame('_foo_', $array[1][0]);
+	}
+
+	public function testScanDirWithNotProvidingDir(){
+		$this->assertSame(array(), Helper::scanDirectory(null));
+	}
+
+	public function testArrayDiffRecursiveNoDiffs(){
+		$array1 = array(
+			range(0,10),
+			range(0,100),
+		);
+		$array2 = array(
+			range(0,10),
+			range(0,100)
+		);
+		$this->assertSame(array(), Helper::array_diff_recursive($array1, $array2));
+	}
+
+	public function testArrayDiffRecursive(){
+		$array1 = array(
+			range(0,10),
+			range(0,100),
+		);
+		$array2 = array(
+			range(0,9),
+			range(0,99)
+		);
+		$this->assertSame(array(0 => array(10 => 10), 1 => array(100 => 100)), Helper::array_diff_recursive($array1, $array2));
+	}
+
+	public function testDecorateArray(){
+		$array = array('foo');
+		$array = Helper::array_decorate($array, '_');
+		$this->assertSame('_foo_', $array[0]);
+	}
+
+	public function testSecondsToRemaining(){
+		$this->assertSame(0, Helper::secondsToRemainingTime(0));
+	}
+
+	public function testIsUrlSyntaxNotOk(){
+		$this->assertFalse(Helper::isURLSyntaxOk('asd'));
+	}
+
+	public function testIsUrlSyntaxOk(){
+		$this->assertTrue(Helper::isURLSyntaxOk('http://wolxxx.de'));
+	}
+
+	public function testGetIpIfRemoteAddrIsNotSet(){
+		$_SERVER['REMOTE_ADDR'] = null;
+		$this->assertSame('127.0.0.1', Helper::getUserIP());
+	}
+
+	public function testGetIpIfRemoteAddrIsSet(){
+		$_SERVER['REMOTE_ADDR'] = '1.2.3.4';
+		$this->assertSame('1.2.3.4', Helper::getUserIP());
+	}
+
+	public function testDebugIsDisabledByDefault(){
+		$this->assertFalse(Helper::isDebugEnabled());
+	}
+
+	public function testDebugIsEnabledAfterEnabling(){
+		Stack::getInstance()->set('debug', true);
+		$this->assertTrue(Helper::isDebugEnabled());
+	}
+
+	public function testDebugIsDisabledAfterEnablingAndClearingStack(){
+		Stack::getInstance()->set('debug', true);
+		$this->assertTrue(Helper::isDebugEnabled());
+		Stack::getClearInstance();
+		$this->assertFalse(Helper::isDebugEnabled());
+	}
+
+	public function testNormalizeString(){
+		$string = 'Hällö! wWü gehts?!';
+		$this->assertSame('haelloe! wWue gehts?!', Helper::normalizeString($string));
+	}
+
+	public function testCleanString(){
+		$string = 'Hällö! wWü gehts?!';
+		$this->assertSame('Haelloe!_wWue_gehts?!', Helper::cleanString($string));
+	}
+
 	public function testRemoveHtmlTags(){
 		$text = '<a href="test.html">huhu</a> test';
 		$this->assertSame('huhu test', CoreHelper::removeTagsFromText($text));
@@ -139,6 +228,11 @@ class CoreHelperTest extends  PHPUnit_Framework_TestCase{
 	public function testCheckMailSyntaxForSuccess(){
 		$mail = 'wolxXx@wolxXx.de';
 		$this->assertTrue(CoreHelper::isMailSyntaxOk($mail));
+	}
+
+	public function testCheckMailSyntaxForSuccessAndDeprecated(){
+		$mail = 'wolxXx@wolxXx.de';
+		$this->assertTrue(CoreHelper::checkMailSyntax($mail));
 	}
 
 	public function testDeprecatedCheckMailSyntaxForFailure(){

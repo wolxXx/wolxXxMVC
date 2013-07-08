@@ -6,10 +6,6 @@
  * @version 0.2
  * @package wolxXxMVC
  * @subpackage HTML
-<<<<<<< HEAD
-=======
- *
->>>>>>> aff1b8d8aa3d5064fa17e1ed831c087c732905cc
  */
 class Span extends DomElementAbstract{
 	/**
@@ -23,7 +19,6 @@ class Span extends DomElementAbstract{
 	}
 
 	/**
-<<<<<<< HEAD
 	 * setter for the text
 	 *
 	 * @param string $text
@@ -35,8 +30,6 @@ class Span extends DomElementAbstract{
 	}
 
 	/**
-=======
->>>>>>> aff1b8d8aa3d5064fa17e1ed831c087c732905cc
 	 * (non-PHPdoc)
 	 * @see DomElementInterface::display()
 	 */

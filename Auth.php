@@ -47,8 +47,36 @@ abstract class Auth{
 	}
 
 	/**
+	 * increases the counter of failed logins
+	 */
+	protected static function increaseFailures(){
+		self::set(FAILEDLOGINS, self::get(FAILEDLOGINS) + 1);
+	}
+
+	/**
+	 * checks if the user shall be banned after failed login
+	 * generates automaticaly a new password for the given user
+	 */
+	protected static function checkBanAfterFailedLogin($result){
+		if(true === self::get(ACTIVATEUSERBANNING)){
+			self::increaseFailures();
+			if(self::get(FAILEDLOGINS) > 2){
+				self::set(BANNED, time() + BAN_TIME);
+				self::set(FAILEDLOGINS, 0);
+				if(method_exists(Helper, 'sendBanMail')){
+					Helper::sendBanMail();
+					Helper::sendBanMail($result);
+				}
+				$password = Helper::generatePassword();
+				$update = new UpdateObject('user', $result->id);
+				$update->password = md5($password);
+				$update->update();
+			}
+		}
+	}
+
+	/**
 	 * creates auth session data
-	 * does NOT prove the integriry (yet, maybe later..)
 	 *
 	 * @param Result $result
 	 * @todo remove redirects!!!
@@ -67,23 +95,7 @@ abstract class Auth{
 		 * is a user found with this credentials?
 		 */
 		if(null === $result){
-			/**
-			 * shall the ban-mode be activated?
-			 */
-			if(true === self::get(ACTIVATEUSERBANNING)){
-				self::set(FAILEDLOGINS, self::get(FAILEDLOGINS) + 1);
-				if(self::get(FAILEDLOGINS) > 2){
-					self::set(BANNED, time() + self::get(USERBANTIME));
-					self::set(FAILEDLOGINS, 0);
-					if(true === method_exists(Helper, 'sendBanMail')){
-						Helper::sendBanMail();
-					}
-					Helper::redirect('/auth/login');
-				}
-			}
-			/**
-			 * give feedback
-			 */
+			self::checkBanAfterFailedLogin($result);
 			Helper::addSplash('Unbekannter Nutzer.');
 			Helper::redirect('/auth/login');
 		}
@@ -92,22 +104,7 @@ abstract class Auth{
 		 */
 
 		if($result->password !== md5($dataObject->get(self::get(CREDENTIALUSERACCESS)))){
-			if(true === self::get(ACTIVATEUSERBANNING)){
-				self::set(FAILEDLOGINS, self::get(FAILEDLOGINS) + 1);
-				if(self::get(FAILEDLOGINS) > 2){
-					self::set(BANNED, time() + BAN_TIME);
-					self::set(FAILEDLOGINS, 0);
-					if(method_exists(Helper, 'sendBanMail')){
-						Helper::sendBanMail();
-						Helper::sendBanMail($result);
-					}
-					$password = Helper::generatePassword();
-					$update = new UpdateObject('user', $result->id);
-					$update->password = md5($password);
-					$update->update();
-					Helper::redirect('/auth/login');
-				}
-			}
+			self::checkBanAfterFailedLogin($result);
 			Helper::addSplash('Falsches Passwort!');
 			Helper::redirect('/auth/login');
 		}
@@ -159,7 +156,7 @@ abstract class Auth{
 	}
 
 	/**
-	 * returns the seconds the user will be banned
+	 * returns the seconds the user will is banned
 	 *
 	 * @return integer
 	 */

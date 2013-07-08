@@ -134,6 +134,18 @@ class CoreHelper{
 	}
 
 	/**
+	 * retrieves the user's ip adress
+	 *
+	 * @return string
+	 */
+	public static function getUserIP(){
+		if(false === isset($_SERVER['REMOTE_ADDR'])){
+			return '127.0.0.1';
+		}
+		return $_SERVER['REMOTE_ADDR'];
+	}
+
+	/**
 	 * retrieves the absolute and complete url of the current site
 	 * @return string
 	 */
@@ -174,8 +186,9 @@ class CoreHelper{
 	/**
 	 * copies an external source to the local file system
 	 * eg an image from youtube: http://img.youtube.com/vi/JKPvx38D4GM/default.jpg to files/yt/JKPvx38D4GM.jpg
-	 * returns true if the $path is a file after the operation
+	 * returns true if the $path is a file after the operation and the file size is greater than 0 kb
 	 * if the directory does not exist, it creates the directory recursivly
+	 *
 	 * @param string $url
 	 * @param string $path
 	 * @return boolean
@@ -186,15 +199,12 @@ class CoreHelper{
 		if(false === is_dir($directory)){
 			mkdir($directory, 0777, true);
 		}
-		$ch = curl_init($url);
-		$fp = fopen($path, 'wb');
-		curl_setopt($ch, CURLOPT_FILE, $fp);
-		curl_setopt($ch, CURLOPT_HEADER, 0);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		curl_exec($ch);
-		curl_close($ch);
-		fclose($fp);
-		$result = is_file($path);
+		$url = escapeshellarg($url);
+		$file = escapeshellarg($path);
+		$command = 'wget -t 2 -q -o log/grabimages --timeout=2 --no-check-certificate -O %s %s';
+		$command = sprintf($command, $file, $url);
+		exec($command);
+		$result = is_file($path) && filesize($path) > 0;
 		return $result;
 	}
 
@@ -476,7 +486,7 @@ class CoreHelper{
 		foreach($array as $index => $current){
 			if(true === is_array($current)){
 				$array[$index] = Helper::array_decorate($current, $string);
-				return;
+				continue;
 			}
 			if(true === is_string($current)){
 				$array[$index] = $string.$current.$string;
@@ -521,10 +531,9 @@ class CoreHelper{
 	public static function logerror($message){
 		$trace = debug_backtrace();
 		$trace = $trace[1];
-		$_SERVER['REQUEST_URI'] = isset($_SERVER['REQUEST_URI'])? $_SERVER['REQUEST_URI'] : 'CLI';
-		$stack = Stack::getInstance();
+		#$_SERVER['REQUEST_URI'] = isset($_SERVER['REQUEST_URI'])? $_SERVER['REQUEST_URI'] : 'CLI';
 		$user = ' | user: '.(true === Auth::isLoggedIn()? Auth::getUserNick() : 'arno nym');
-		$url = ' | url: '.($_SERVER['REQUEST_URI']);
+		$url = ' | url: '.Helper::getCurrentURI();
 		$ref = isset($_SERVER['HTTP_REFERER'])? ' | ref: '.$_SERVER['HTTP_REFERER'] : '';
 		$line = isset($trace['line'])? $trace['line'] : 666;
 		$file = isset($trace['file'])? $trace['file'] : 'somewhere';
@@ -641,8 +650,8 @@ class CoreHelper{
 			mkdir('log', 0777, true);
 		}
 		$text .= "\n";
-		$file = fopen(self::getDocRoot().'log/'.$dest, 'a+');
-		fputs($file, $text, strlen($text));
+		$file = fopen(self::getDocRoot().'log'.DIRECTORY_SEPARATOR.$dest, 'a+');
+		fputs($file, $text);
 		fclose($file);
 	}
 
@@ -667,6 +676,19 @@ class CoreHelper{
 			return $size .' GB';
 		}
 		return $size;
+	}
+
+	/**
+	 * adds a tailing slash to the string if it does not have one
+	 *
+	 * @param string $string
+	 * @return string
+	 */
+	public static function addTailingSlashIfNeeded($string){
+		if(DIRECTORY_SEPARATOR !== $string[strlen($string)-1]){
+			return $string.DIRECTORY_SEPARATOR;
+		}
+		return $string;
 	}
 
 	/**
@@ -715,6 +737,48 @@ class CoreHelper{
 	public static function clearSplashes(){
 		$stack = Stack::getInstance();
 		$stack->set('splash', null);
+	}
+
+	/**
+	 * transcodes the php error codes to string
+	 *
+	 * @param integer $code
+	 * @return string
+	 */
+	public static function errorCodeToString($code){
+		switch($code){
+			case E_ERROR: // 1 //
+				return 'E_ERROR';
+			case E_WARNING: // 2 //
+				return 'E_WARNING';
+			case E_PARSE: // 4 //
+				return 'E_PARSE';
+			case E_NOTICE: // 8 //
+				return 'E_NOTICE';
+			case E_CORE_ERROR: // 16 //
+				return 'E_CORE_ERROR';
+			case E_CORE_WARNING: // 32 //
+				return 'E_CORE_WARNING';
+			case E_CORE_ERROR: // 64 //
+				return 'E_COMPILE_ERROR';
+			case E_CORE_WARNING: // 128 //
+				return 'E_COMPILE_WARNING';
+			case E_USER_ERROR: // 256 //
+				return 'E_USER_ERROR';
+			case E_USER_WARNING: // 512 //
+				return 'E_USER_WARNING';
+			case E_USER_NOTICE: // 1024 //
+				return 'E_USER_NOTICE';
+			case E_STRICT: // 2048 //
+				return 'E_STRICT';
+			case E_RECOVERABLE_ERROR: // 4096 //
+				return 'E_RECOVERABLE_ERROR';
+			case E_DEPRECATED: // 8192 //
+				return 'E_DEPRECATED';
+			case E_USER_DEPRECATED: // 16384 //
+				return 'E_USER_DEPRECATED';
+		}
+		return '';
 	}
 
 	/**

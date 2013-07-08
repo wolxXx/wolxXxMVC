@@ -11,6 +11,7 @@
 abstract class CoreModel{
 	/**
 	 * an instance of the databaseManager
+	 *
 	 * @var DatabaseManager
 	 */
 	protected $databaseManager;
@@ -18,12 +19,14 @@ abstract class CoreModel{
 	/**
 	 * all available models
 	 * they are called if the requested function does not exist
+	 *
 	 * @var array
 	 */
 	private $availableModels = array();
 
 	/**
 	 * tries to call a moved or refactored model function
+	 *
 	 * @param string $function
 	 * @param array $params
 	 * @throws Exception
@@ -39,6 +42,7 @@ abstract class CoreModel{
 
 	/**
 	 * constructor
+	 *
 	 * @param DatabaseManager $manager
 	 */
 	public function __construct(DatabaseManager $manager = null){
@@ -60,8 +64,10 @@ abstract class CoreModel{
 	}
 
 	/**
+	 * fires a query
 	 *
 	 * @param QueryString $queryStringObject
+	 * @return QueryResultObject
 	 */
 	protected function query($queryStringObject){
 		$result = $this->databaseManager->find($queryStringObject);
@@ -70,6 +76,7 @@ abstract class CoreModel{
 
 	/**
 	 * finds one item by a query string object
+	 *
 	 * @param QueryStringInterface $queryString
 	 * @return Result | null
 	 */
@@ -86,6 +93,7 @@ abstract class CoreModel{
 
 	/**
 	 * finds all occurences by a query string
+	 *
 	 * @param QueryStringInterface $queryString
 	 * @return array
 	 */
@@ -98,7 +106,8 @@ abstract class CoreModel{
 	}
 
 	/**
-	 * finder
+	 * builds a query with the given conditions
+	 *
 	 * @param array $conditions
 	 * @return null | Result | array
 	 */
@@ -114,6 +123,7 @@ abstract class CoreModel{
 	/**
 	 * shortcut for just finding one item for a table
 	 * if no $field is provided, it takes the id-field
+	 *
 	 * @param string $model
 	 * @param string | integer $key
 	 * @param string $field
@@ -134,7 +144,9 @@ abstract class CoreModel{
 
 	/**
 	 * returns the amount of found elems
+	 *
 	 * @param array $conditions
+	 * @return integer
 	 */
 	public function count($conditions){
 		$conditions['fields'] = array('COUNT(*) as count');

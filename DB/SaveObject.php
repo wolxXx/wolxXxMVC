@@ -2,7 +2,7 @@
 /**
  * OO-Wrapper for having a saveable object for the core model save
  * this is only usable for one table. no composed objects are supported.. yet!
- * 
+ *
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage Database
@@ -11,21 +11,28 @@
 class SaveObject{
 	/**
 	 * instance of a database manager
+	 *
 	 * @var DatabaseManager
 	 */
 	private $databaseManager;
+
 	/**
 	 * name of the table whrere the set should be saved
+	 *
 	 * @var string
 	 */
+
 	private $table;
 	/**
 	 * data to save
+	 *
 	 * @var array
 	 */
 	private $data;
+
 	/**
 	 * constructor
+	 *
 	 * @param string $table
 	 * @return SaveObject
 	 */
@@ -35,9 +42,10 @@ class SaveObject{
 			->reset()
 			->setTable($table);
 	}
-	
+
 	/**
 	 * setter for values
+	 *
 	 * @param string $key
 	 * @param mixed $value
 	 * @return SaveObject
@@ -46,9 +54,10 @@ class SaveObject{
 		$this->data[$key] = $value;
 		return $this;
 	}
-	
+
 	/**
 	 * getter for values
+	 *
 	 * @param string $key
 	 * @return null | mixed
 	 */
@@ -59,9 +68,10 @@ class SaveObject{
 		}
 		return $this->data[$key];
 	}
-	
+
 	/**
 	 * deletes a set field, so it is not saved to database
+	 *
 	 * @param string $key
 	 * @return SaveObject
 	 */
@@ -69,18 +79,20 @@ class SaveObject{
 		unset($this->data[$key]);
 		return $this;
 	}
-	
+
 	/**
 	 * unsets all set datas
+	 *
 	 * @return SaveObject
 	 */
 	public function reset(){
 		$this->data = array();
 		return $this;
 	}
-	
+
 	/**
 	 * setter for the table name
+	 *
 	 * @param string $table
 	 * @return SaveObject
 	 */
@@ -88,11 +100,12 @@ class SaveObject{
 		$this->table = $table;
 		return $this;
 	}
-	
+
 	/**
 	 * setter for the data array
 	 * caution: overwrites data set before!
 	 * for merging use addData function!!
+	 *
 	 * @param array $data
 	 * @return SaveObject
 	 */
@@ -100,10 +113,11 @@ class SaveObject{
 		$this->data = $data;
 		return $this;
 	}
-	
+
 	/**
 	 * merges data with data that was set before
 	 * values with the same key will be overwritten by the new data array
+	 *
 	 * @param array $data
 	 * @return SaveObject
 	 */
@@ -111,9 +125,10 @@ class SaveObject{
 		$this->data = array_merge($this->data, $data);
 		return $this;
 	}
-	
+
 	/**
 	 * saves the set data to the set table
+	 *
 	 * @return QueryResultObject
 	 */
 	public function save(){

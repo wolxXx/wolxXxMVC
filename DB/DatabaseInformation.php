@@ -11,6 +11,7 @@
 class DatabaseInformation{
 	/**
 	 * retrieves all columns for a table
+	 *
 	 * @param string $databaseName
 	 * @param string $tableName
 	 * @return array

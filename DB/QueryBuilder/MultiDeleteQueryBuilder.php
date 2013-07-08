@@ -1,7 +1,7 @@
 <?
 /**
  * query builder for deleting items in the database
- * 
+ *
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage QueryBuilder
@@ -10,24 +10,28 @@
 class MultiDeleteQueryBuilder extends QueryBuilder{
 	/**
 	 * the name of the table
+	 *
 	 * @var string
 	 */
 	protected $table;
-	
+
 	/**
 	 * an instance of the DatabaseManager
+	 *
 	 * @var DatabaseManager
 	 */
 	protected $databaseManager;
-	
+
 	/**
 	 * the conditions array
+	 *
 	 * @var array
 	 */
 	protected $conditions;
-	
+
 	/**
 	 * constructor
+	 *
 	 * @param string $table
 	 * @param array $conditions
 	 */
@@ -37,7 +41,7 @@ class MultiDeleteQueryBuilder extends QueryBuilder{
 			->setConditions($conditions);
 		$this->databaseManager = DatabaseManager::getInstance();
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::checkConditions()
@@ -46,12 +50,12 @@ class MultiDeleteQueryBuilder extends QueryBuilder{
 		if(null === $this->conditions){
 			throw new QueryGeneratorException('please specify conditions');
 		}
-		
+
 		if(true === empty($this->conditions)){
 			throw new QueryGeneratorException('please specify conditions');
 		}
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::generateQuery()
@@ -62,7 +66,7 @@ class MultiDeleteQueryBuilder extends QueryBuilder{
 		$query = "DELETE FROM `".$this->table."` WHERE ".$where.";";
 		return $query;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::getQueryString()
@@ -70,9 +74,10 @@ class MultiDeleteQueryBuilder extends QueryBuilder{
 	public function getQueryString(){
 		return new QueryString($this->generateQuery());
 	}
-	
+
 	/**
 	 * setter for the table name
+	 *
 	 * @param string $table
 	 * @return MultiDeleteQueryBuilder
 	 */
@@ -80,7 +85,7 @@ class MultiDeleteQueryBuilder extends QueryBuilder{
 		$this->table = $table;
 		return $this;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::setConditions()

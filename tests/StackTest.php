@@ -35,7 +35,7 @@ class StackTest extends  PHPUnit_Framework_TestCase{
 		Stack::getInstance()->clear();
 		$this->assertEmpty(Stack::getInstance()->getMessages());
 		Stack::getInstance()->get('hamwanet');
-		$this->assertContains('hamwanet not found in stack', Stack::getInstance()->getMessages());
+		$this->assertContains('hamwanet not found in stack. using default: ', Stack::getInstance()->getMessages());
 	}
 
 	public function testClear(){

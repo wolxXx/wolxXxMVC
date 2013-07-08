@@ -11,11 +11,13 @@
 class QueryString implements QueryStringInterface{
 	/**
 	 * the query string
+	 *
 	 * @var string
 	 */
 	protected $querystring;
 
 	/**
+	 * constructor
 	 *
 	 * @param string $queryString
 	 */

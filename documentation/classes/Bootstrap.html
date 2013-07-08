@@ -126,29 +126,12 @@ gets all needed singleton instances</span><pre>__construct</pre>
     </li>
 
                                                                                                         <li class="method public inherited">
-<<<<<<< HEAD
-=======
-        <a href="#method___get" title="__get :: getter for dynamic classes
-$var should be the class name">
-            <span class="description">getter for dynamic classes
-$var should be the class name</span><pre>__get</pre>
-        </a>
-    </li>
-
-                                                                                                        <li class="method public inherited">
->>>>>>> aff1b8d8aa3d5064fa17e1ed831c087c732905cc
-        <a href="#method_errorHandler" title="errorHandler :: error handling function">
-            <span class="description">error handling function</span><pre>errorHandler</pre>
-        </a>
-    </li>
-
-                                                                                                        <li class="method public inherited">
         <a href="#method_catchException" title="catchException :: catches the exception that is thrown in error handler">
             <span class="description">catches the exception that is thrown in error handler</span><pre>catchException</pre>
         </a>
     </li>
 
-                                                                                                                                                                <li class="method public inherited">
+                                                                                                                                                                                                                                                                                                                                        <li class="method public inherited">
         <a href="#method_afterRun" title="afterRun :: called by mvc after the main run function
 can be overwriten by user&#039;s wanted own bootstrap class
 default behaviour: do the wolxXx style. do nothing :)">
@@ -192,7 +175,7 @@ calls controller&#039;s after run action</span><pre>run</pre>
         </a>
     </li>
 
-                                                                                                        <li class="method public inherited">
+                                                                                                                                                                <li class="method public inherited">
         <a href="#method_view" title="view :: calls the loader&#039;s view function">
             <span class="description">calls the loader&#039;s view function</span><pre>view</pre>
         </a>
@@ -220,24 +203,44 @@ if no match is found, the cms controller is returned</span><pre>getController</p
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-<<<<<<< HEAD
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                                                                                                                                                                        <li class="method protected inherited">
+                            <a href="#method_grabModeAndVersion" title="grabModeAndVersion :: grabs the version and mode of the application
+it is grabbed from the apache directive
+SetEnv APPLICATION_ENV &quot;main-dev&quot;
+version 	€{main, mobile, .">
+                                <span class="description">grabs the version and mode of the application
+it is grabbed from the apache directive
+SetEnv APPLICATION_ENV &quot;main-dev&quot;
+version 	€{main, mobile, .</span><pre>grabModeAndVersion</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected inherited">
+                            <a href="#method_grabHostName" title="grabHostName :: grab the host name
+if it was set before">
+                                <span class="description">grab the host name
+if it was set before</span><pre>grabHostName</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected inherited">
+                            <a href="#method_config" title="config :: get the config">
+                                <span class="description">get the config</span><pre>config</pre>
+                            </a>
+                        </li>
+                                                                                                                                                                                                                                                                    <li class="method protected inherited">
+                            <a href="#method_checkRegisteredRedirect" title="checkRegisteredRedirect :: ">
+                                <span class="description"></span><pre>checkRegisteredRedirect</pre>
+                            </a>
+                        </li>
+                                                                                                                                                            </ul>
         </li>
         <li class="nav-header private">» Private
             <ul>
-                                                                                                                                                                                                            <li class="method private inherited">
-=======
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
-        </li>
-        <li class="nav-header private">» Private
-            <ul>
-                                                                                                                                                                                                                                                <li class="method private inherited">
->>>>>>> aff1b8d8aa3d5064fa17e1ed831c087c732905cc
+                                                                                                                                                                                                                                                                                    <li class="method private inherited">
                             <a href="#method_init" title="init :: initing everything usefull">
                                 <span class="description">initing everything usefull</span><pre>init</pre>
                             </a>
                         </li>
-                                                                                                                                                                                                                                                                                                            </ul>
+                                                                                                                                                                                                                                                                                                                                                </ul>
         </li>
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
@@ -367,130 +370,105 @@ gets all needed singleton instances</h2>
                                                                     </div>
                             </div>
                         </div>
-<<<<<<< HEAD
-=======
-                                            <a id="method___get"></a>
-                        <div class="element clickable method public method___get inherited" data-toggle="collapse" data-target=".method___get .collapse">
-                            <h2>getter for dynamic classes
-$var should be the class name</h2>
-                            <pre>__get(string $var) </pre>
-                            <div class="labels">
-                                <span class="label">inherited</span>                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
-
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    throws
-                                                </th>
-                                                <td>
-                                                                                                                                                                    
-
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
-
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$var</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                    </div>
-                            </div>
-                        </div>
->>>>>>> aff1b8d8aa3d5064fa17e1ed831c087c732905cc
-                                            <a id="method_errorHandler"></a>
-                        <div class="element clickable method public method_errorHandler inherited" data-toggle="collapse" data-target=".method_errorHandler .collapse">
-                            <h2>error handling function</h2>
-                            <pre>errorHandler(integer $errno, string $errstr, string $errfile, integer $errline, string $errcontext) </pre>
-                            <div class="labels">
-                                <span class="label">inherited</span>                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
-
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    throws
-                                                </th>
-                                                <td>
-                                                                                                                                                                    
-
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
-
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$errno</h4>
-                                                <code>integer</code><p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$errstr</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$errfile</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$errline</h4>
-                                                <code>integer</code><p>
-</p>
-                                            </div>
-                                                                                    <div class="subelement argument">
-                                                <h4>$errcontext</h4>
-                                                <code>string</code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                    </div>
-                            </div>
-                        </div>
                                             <a id="method_catchException"></a>
                         <div class="element clickable method public method_catchException inherited" data-toggle="collapse" data-target=".method_catchException .collapse">
                             <h2>catches the exception that is thrown in error handler</h2>
                             <pre>catchException() </pre>
                             <div class="labels">
                                 <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_grabModeAndVersion"></a>
+                        <div class="element clickable method protected method_grabModeAndVersion inherited" data-toggle="collapse" data-target=".method_grabModeAndVersion .collapse">
+                            <h2>grabs the version and mode of the application
+it is grabbed from the apache directive
+SetEnv APPLICATION_ENV &quot;main-dev&quot;
+version 	€{main, mobile, .</h2>
+                            <pre>grabModeAndVersion() : \CoreBootstrap</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>.}
+mode        €{production, dev, ..}</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/CoreBootstrap.html">\CoreBootstrap</a></code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_grabHostName"></a>
+                        <div class="element clickable method protected method_grabHostName inherited" data-toggle="collapse" data-target=".method_grabHostName .collapse">
+                            <h2>grab the host name
+if it was set before</h2>
+                            <pre>grabHostName() : \CoreBootstrap</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/CoreBootstrap.html">\CoreBootstrap</a></code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_config"></a>
+                        <div class="element clickable method protected method_config inherited" data-toggle="collapse" data-target=".method_config .collapse">
+                            <h2>get the config</h2>
+                            <pre>config() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description">
@@ -661,6 +639,38 @@ calls controller&#039;s after run action</h2>
                             <pre>run() </pre>
                             <div class="labels">
                                 <span class="label">inherited</span>                                                                <span class="label">final</span>                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_checkRegisteredRedirect"></a>
+                        <div class="element clickable method protected method_checkRegisteredRedirect inherited" data-toggle="collapse" data-target=".method_checkRegisteredRedirect .collapse">
+                            <h2>checkRegisteredRedirect</h2>
+                            <pre>checkRegisteredRedirect() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description">
@@ -997,11 +1007,7 @@ if no match is found, the cms controller is returned</h2>
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-<<<<<<< HEAD
-            generated on Thu, 04 Jul 2013 17:22:00 +0000.<br/>
-=======
-            generated on Sat, 29 Jun 2013 16:19:38 +0000.<br/>
->>>>>>> aff1b8d8aa3d5064fa17e1ed831c087c732905cc
+            generated on Mon, 08 Jul 2013 14:06:26 +0000.<br/>
     </footer>
     </body>
 </html>

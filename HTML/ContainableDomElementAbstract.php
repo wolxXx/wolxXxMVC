@@ -6,7 +6,6 @@
  * @version 0.2
  * @package wolxXxMVC
  * @subpackage HTML
- *
  */
 abstract class ContainableDomElementAbstract extends DomElementAbstract implements ContainableDomElementInterface{
 	/**
@@ -24,6 +23,19 @@ abstract class ContainableDomElementAbstract extends DomElementAbstract implemen
 	 */
 	public function addChild(DomElementInterface $child){
 		$this->children[] = $child;
+		return $this;
+	}
+
+	/**
+	 * adds children to the children array
+	 *
+	 * @param array $children
+	 * @return ContainableDomElementAbstract
+	 */
+	public function addChildren($children = array()){
+		foreach($children as $current){
+			$this->addChild($current);
+		}
 		return $this;
 	}
 }

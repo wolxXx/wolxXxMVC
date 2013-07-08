@@ -59,8 +59,14 @@ class CoreHTML{
 			case 'renderBr':{
 				$default = array_merge($default, Br::getDefaultConf());
 			}break;
+			case 'renderCheckbox':{
+				$default = array_merge($default, Checkbox::getDefaultConf());
+			}break;
 			case 'renderClear':{
 				$default = array_merge($default, Clear::getDefaultConf());
+			}break;
+			case 'renderOption':{
+				$default = array_merge($default, DropdownElement::getDefaultConf());
 			}break;
 			case 'renderFormStart':{
 				$default = array_merge($default, Form::getDefaultConf());
@@ -87,7 +93,7 @@ class CoreHTML{
 				$default = array_merge($default, RadioOption::getDefaultConf());
 			}break;
 			case 'renderSpan':{
-				$default = array_merge($default, Input::getSpanConf());
+				$default = array_merge($default, Span::getDefaultConf());
 			}break;
 			case 'renderSubmit':{
 				$default = array_merge($default, Submit::getDefaultConf());
@@ -106,7 +112,7 @@ class CoreHTML{
 	 */
 	protected static function out(){
 		foreach(func_get_args() as $current){
-			echo $text.PHP_EOL;
+			echo $current.PHP_EOL;
 		}
 	}
 
@@ -212,6 +218,23 @@ class CoreHTML{
 	}
 
 	/**
+	 * renders a checkbox
+	 */
+	public static function renderCheckbox($conf = array()){
+		$conf = self::mergeConf($conf);
+		self::out(
+			self::openSingleTag('input', array(
+				'checked' => $conf->checked,
+				'class' => $conf->class,
+				'name' => $conf->name,
+				'id' => $conf->id,
+				'type' => 'checkbox'
+			)),
+			self::closeSingleTag()
+		);
+	}
+
+	/**
 	 * renders a span element
 	 * @param array $conf
 	 */
@@ -309,10 +332,11 @@ class CoreHTML{
 		$conf = self::mergeConf($conf);
 		self::out(
 			self::openTag('form', array(
-			'method' => $conf->method,
-			'action' => $conf->action,
-			'class' => $conf->class,
-			'id' => $conf->id
+				'method' => $conf->method,
+				'action' => $conf->action,
+				'class' => $conf->class,
+				'id' => $conf->id,
+				'enctype' => $conf->enctype
 			))
 		);
 	}
@@ -349,9 +373,93 @@ class CoreHTML{
 	 * renders a break tag
 	 */
 	public static function renderBr(){
+		self::out('');
+		echo self::openSingleTag('br');
+		echo self::closeSingleTag();
+		self::out('');
+	}
+
+	/**
+	 * renders a select open tag
+	 *
+	 * @param array $conf
+	 */
+	public static function renderSelectStart($conf = array()){
+		$conf = self::mergeConf($conf);
 		self::out(
-			self::openSingleTag('br'),
-			self::closeSingleTag()
+			self::openTag('select', array(
+				'name' => $conf->name,
+				'id' => $conf->id,
+				'class' => $conf->class
+			))
+		);
+	}
+
+	/**
+	 * renders a closing select tag
+	 */
+	public static function renderSelectClose(){
+		self::out(
+			self::closeTag('select')
+		);
+	}
+
+	/**
+	 * renders an option group start tag
+	 *
+	 * @param array $conf
+	 */
+	public static function renderOptionGroupStart($conf = array()){
+		$conf = self::mergeConf($conf);
+		self::out(
+			self::openTag('optgroup', array(
+				'name' => $conf->name,
+				'id' => $conf->id,
+				'label' => $conf->label
+			))
+		);
+	}
+
+	/**
+	 * renders a closing option group tag
+	 */
+	public static function renderOptionGroupClose(){
+		self::out(
+			self::closeTag('optgroup')
+		);
+	}
+
+	/**
+	 * renders an option element
+	 *
+	 * @param array $conf
+	 */
+	public static function renderOption($conf = array()){
+		$conf = self::mergeConf($conf);
+		self::out(
+			self::openTag('option', array(
+				'value' => $conf->value,
+				'id' => $conf->id,
+				'selected' => $conf->selected
+			)),
+			$conf->text,
+			self::closeTag('option')
+		);
+	}
+
+	/**
+	 * renders a button start tag
+	 *
+	 * @param array $conf
+	 */
+	public static function renderButton($conf = array()){
+		$conf = self::mergeConf($conf);
+		self::out(
+			self::openTag('button', array(
+				'id' => $conf->id,
+			)),
+			$conf->text,
+			self::closeTag('button')
 		);
 	}
 }

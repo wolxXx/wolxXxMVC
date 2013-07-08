@@ -17,6 +17,15 @@ class CoreConfigTest extends  PHPUnit_Framework_TestCase{
 	/**
 	 * @expectedException ApocalypseException
 	 */
+	public function testConfigMissingSomething(){
+		$config = new HostConfig();
+		Stack::getInstance()->unsetKey('db_pass');
+		$config->checkConfig();
+	}
+
+	/**
+	 * @expectedException ApocalypseException
+	 */
 	public function testNoAppConfigClassException(){
 		Stack::getInstance()->clear();
 		$foo = new FooConfig();

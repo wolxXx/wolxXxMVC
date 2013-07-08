@@ -16,17 +16,29 @@ class HTMLTest extends  PHPUnit_Framework_TestCase{
 	}
 
 	function testRenderSubmit(){
-		$this->expectOutputString('<input type="submit" id="pewpew" value="pewpew" />');
 		HTML::Factory('Submit')->setId('pewpew')->setValue('pewpew')->display();
+		$this->expectOutputRegex('/<input/');
+		$this->expectOutputRegex('/type="submit"/');
+		$this->expectOutputRegex('/id="pewpew"/');
+		$this->expectOutputRegex('/value="pewpew"/');
+		$this->expectOutputRegex('/\/>/');
 	}
 
 	function testRenderPassword(){
-		$this->expectOutputString('<input id="pewpew" name="password" type="password" />');
+		$this->expectOutputRegex('/<input/');
+		$this->expectOutputRegex('/id="pewpew"/');
+		$this->expectOutputRegex('/name="password"/');
+		$this->expectOutputRegex('/type="password"/');
+		$this->expectOutputRegex('/ \/>/');
 		HTML::Factory('Password')->setId('pewpew')->setName('password')->display();
 	}
 
 	function testFactoryInitWithArgs(){
-		$this->expectOutputString('<input type="text" id="pewpew" name="password" />');
+		$this->expectOutputRegex('/<input/');
+		$this->expectOutputRegex('/id="pewpew"/');
+		$this->expectOutputRegex('/name="password"/');
+		$this->expectOutputRegex('/type="text"/');
+		$this->expectOutputRegex('/ \/>/');
 		HTML::Factory('Input', array(
 			'id' => 'pewpew',
 			'name' => 'password'
@@ -34,12 +46,28 @@ class HTMLTest extends  PHPUnit_Framework_TestCase{
 	}
 
 	function testRenderInput(){
-		$this->expectOutputString('<input type="text" id="pewpew" name="password" />');
+		$this->expectOutputRegex('/<input/');
+		$this->expectOutputRegex('/id="pewpew"/');
+		$this->expectOutputRegex('/name="password"/');
+		$this->expectOutputRegex('/type="text"/');
+		$this->expectOutputRegex('/ \/>/');
 		HTML::Factory('Input')->setId('pewpew')->setName('password')->display();
 	}
 
 	public function testFormGeneration(){
-		$this->expectOutputString('<form method="post" action="/auth/login" id="myform"><label for="password">password</label><input id="password" name="password" type="password" /><label for="email">email</label><input type="text" id="email" name="email" /><input type="submit" id="submit" value="Submit" /></form>');
+		$this->expectOutputRegex('/<form/');
+		$this->expectOutputRegex('/method="post"/');
+		$this->expectOutputRegex('/action="\/auth\/login"/');
+		$this->expectOutputRegex('/id="myform"/');
+		$this->expectOutputRegex('/<label/');
+		$this->expectOutputRegex('/for="password"/');
+		$this->expectOutputRegex('/password/');
+		$this->expectOutputRegex('/<\/label>/');
+		$this->expectOutputRegex('/<input /');
+		$this->expectOutputRegex('/label for="email"/');
+		$this->expectOutputRegex('/name="email"/');
+		$this->expectOutputRegex('/value="Submit"/');
+		$this->expectOutputRegex('/<\/form>/');
 		HTML::Factory('Form')
 			->setAction('/auth/login')
 			->setNameAndId('myform')
@@ -76,7 +104,13 @@ class HTMLTest extends  PHPUnit_Framework_TestCase{
 	}
 
 	function testRenderTextarea(){
-		$this->expectOutputString('<textarea id="pewpew" name="password" rows="1000" cols="1000">test</textarea>');
+		$this->expectOutputRegex('/\<textarea/');
+		$this->expectOutputRegex('/id="pewpew"/');
+		$this->expectOutputRegex('/name="password"/');
+		$this->expectOutputRegex('/rows="1000"/');
+		$this->expectOutputRegex('/cols="1000"/');
+		$this->expectOutputRegex('/>test'.PHP_EOL.'</');
+		$this->expectOutputRegex('/<\/textarea>/');
 		HTML::Factory('Textarea')->setId('pewpew')->setName('password')->setText('test')->display();
 	}
 }

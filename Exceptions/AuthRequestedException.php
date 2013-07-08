@@ -3,7 +3,7 @@
  * exception for needed auth
  *
  * @author wolxXx
- * @version 1.1
+ * @version 1.2
  * @package wolxXxMVC
  * @subpackage Exceptions
  */
@@ -12,8 +12,7 @@ class AuthRequestedException extends AuthException{
 	 * overwrites default constructor
 	 */
 	public function __construct(){
-		$stack = Stack::getInstance();
-		$stack->set('redirect', $_SERVER['REQUEST_URI']);
+		Stack::getInstance()->set('redirect', Helper::getCurrentURI());
 		Helper::redirect('/auth/login');
 	}
 }
