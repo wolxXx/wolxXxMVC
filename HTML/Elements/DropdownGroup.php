@@ -14,7 +14,11 @@ class DropdownGroup extends ContainableDomElementAbstract{
 	 */
 	public static function getDefaultConf(){
 		return array(
+<<<<<<< HEAD
 			'label' => null
+=======
+			'label' => ''
+>>>>>>> ecb243115d7143c5c1e0ea71de4a147b66ae5e6d
 		);
 	}
 

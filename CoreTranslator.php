@@ -18,7 +18,10 @@ class CoreTranslator{
 	 * @param string $string
 	 * @param string $args
 	 * @return string
+<<<<<<< HEAD
 	 * @throws TranslatorException
+=======
+>>>>>>> ecb243115d7143c5c1e0ea71de4a147b66ae5e6d
 	 */
 	public static function translate($string, $args = null){
 		$return = false;
@@ -28,7 +31,11 @@ class CoreTranslator{
 			$return = false;
 		}
 		if(false === $return){
+<<<<<<< HEAD
 			throw new TranslatorException('Translator failed! args = '.implode(' | ', func_get_args()));
+=======
+			throw new Exception('Translator failed! args = '.implode(' | ', func_get_args()));
+>>>>>>> ecb243115d7143c5c1e0ea71de4a147b66ae5e6d
 		}
 		return $return;
 	}

@@ -25,8 +25,15 @@ abstract class ContainableDomElementAbstract extends DomElementAbstract implemen
 	}
 
 	/**
+<<<<<<< HEAD
 	 * (non-PHPdoc)
 	 * @see ContainableDomElementInterface::addChildren()
+=======
+	 * adds children to the children array
+	 *
+	 * @param array $children
+	 * @return ContainableDomElementAbstract
+>>>>>>> ecb243115d7143c5c1e0ea71de4a147b66ae5e6d
 	 */
 	public function addChildren($children = array()){
 		foreach($children as $current){
@@ -34,6 +41,7 @@ abstract class ContainableDomElementAbstract extends DomElementAbstract implemen
 		}
 		return $this;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * (non-PHPdoc)
@@ -42,4 +50,6 @@ abstract class ContainableDomElementAbstract extends DomElementAbstract implemen
 	public function getChildren(){
 		return $this->children;
 	}
+=======
+>>>>>>> ecb243115d7143c5c1e0ea71de4a147b66ae5e6d
 }
