@@ -63,40 +63,6 @@ abstract class CoreBootstrap{
 	}
 
 	/**
-	 * getter for dynamic classes
-	 * $var should be the class name
-	 *
-	 * @param string $var
-	 * @throws Exception
-	 */
-	public function __get($var){
-		if(true === isset($this->$var)){
-			return $this->$var;
-		}
-		if(true === AutoLoader::isLoadable($var)){
-			$this->$var = new $var;
-			return $this->$var;
-		}
-		throw new Exception($var.' is not class member of core controller!');
-	}
-
-	/**
-	 * error handling function
-	 *
-	 * @param integer $errno
-	 * @param string $errstr
-	 * @param string $errfile
-	 * @param integer $errline
-	 * @param string $errcontext
-	 * @throws ApocalypseException
-	 */
-	public function errorHandler($errno, $errstr, $errfile, $errline, $errcontext){
-		Load::getInstance()->clearBuffer();
-		Helper::dieDebug(func_get_args());
-		throw new ApocalypseException('wtf?!');
-	}
-
-	/**
 	 * catches the exception that is thrown in error handler
 	 */
 	public static function catchException(){
@@ -108,16 +74,70 @@ abstract class CoreBootstrap{
 	}
 
 	/**
+	 * grabs the version and mode of the application
+	 * it is grabbed from the apache directive
+	 * SetEnv APPLICATION_ENV "main-dev"
+	 * version 	€{main, mobile, ..}
+	 * mode 		€{production, dev, ..}
+	 *
+	 * @return CoreBootstrap
+	 */
+	protected function grabModeAndVersion(){
+		if(false === getenv('APPLICATION_ENV')){
+			putenv('APPLICATION_ENV=main-production');
+		}
+
+		$split = explode('-', getenv('APPLICATION_ENV'));
+		$version = $split[0];
+		$mode = $split[1];
+		$this->stack->set('version', $version);
+		$this->stack->set('mode', $mode);
+		return $this;
+	}
+
+	/**
+	 * grab the host name
+	 * if it was set before
+	 *
+	 * @return CoreBootstrap
+	 */
+	protected function grabHostName(){
+		$hostname = isset($hostname)? $hostname : php_uname("n");
+		$this->stack->set('hostname', $hostname);
+		return $this;
+	}
+
+	/**
+	 * get the config
+	 */
+	protected function config(){
+		if(false === AutoLoader::isLoadable('HostConfig')){
+			throw new ApocalypseException('you need to create a HostConfig object in /application/config');
+		}
+		$config = new HostConfig();
+		$config->configureApplication();
+		$config->configureHost();
+		$config->checkConfig();
+	}
+
+	/**
 	 * initing everything usefull
 	 */
 	private final function init(){
 		set_exception_handler(array('CoreBootstrap', 'catchException'));
 		set_error_handler(
-			function ($code, $message, $file, $line) {
+			function ($code, $message, $file, $line, $context) {
 				if(true === Helper::isDebugEnabled()){
-					Helper::dieDebug(func_get_args());
+					?>
+						<h1>Es ist ein Fehler aufgetreten</h1>
+						<h2><?= $message ?></h2>
+						Typ: <?= $code.' '.Helper::errorCodeToString($code) ?><br />
+						<?= $file ?> : <?= $line ?>
+					<?
+					var_dump($context);
+					die('');
 				}
-				throw new Exception();
+				throw new Exception($message);
 			}, -1
 		);
 		if(true === file_exists('application/config/defines.php')){
@@ -135,40 +155,11 @@ abstract class CoreBootstrap{
 		}
 
 		$this->stack = Stack::getInstance();
+		$this
+			->grabModeAndVersion()
+			->grabHostName()
+			->config();
 
-
-		/**
-		 * application_env is always pattern version-modus
-		 * 		version 	€{main, mobile, facebook}
-		 * 	 	mode 		€{production, dev}
-		*/
-		if(false === getenv('APPLICATION_ENV')){
-			putenv('APPLICATION_ENV=main-production');
-		}
-
-		$split = explode('-', getenv('APPLICATION_ENV'));
-		$version = $split[0];
-		$mode = $split[1];
-		$this->stack->set('version', $version);
-		$this->stack->set('mode', $mode);
-
-		/**
-		 *
-		 * grab the host name
-		*/
-		$hostname = isset($hostname)? $hostname : php_uname("n");
-		$this->stack->set('hostname', $hostname);
-
-		/**
-		 * now, get the config
-		*/
-		if(false === AutoLoader::isLoadable('HostConfig')){
-			throw new ApocalypseException('you need to create a HostConfig object in /application/config');
-		}
-		$config = new HostConfig();
-		$config->configureApplication();
-		$config->configureHost();
-		$config->checkConfig();
 		$this->model = new Model();
 		$this->load = Load::getInstance();
 	}
@@ -215,27 +206,26 @@ abstract class CoreBootstrap{
 		$this->stack->set('controller', strtolower(str_replace('Controller', '', $this->controller->__toString())));
 		call_user_func_array(array($this->controller, "setModels"), $this->path);
 		call_user_func_array(array($this->controller, "setActionAndView"), $this->path);
-		if(null !== $this->controller->getRegisteredRedirect()){
-			$this->controller->getRegisteredRedirect()->redirect();
-		}
+		$this->checkRegisteredRedirect();
 		call_user_func_array(array($this->controller, "setAccessRules"), $this->path);
 		call_user_func_array(array($this->controller, "checkAccess"), $this->path);
 		call_user_func_array(array($this->controller, "beforeRun"), $this->path);
 		if(true === $this->controller->getRequest()->isPost()){
 			$this->controller->postlog();
 		}
-		if(null !== $this->controller->getRegisteredRedirect()){
-			$this->controller->getRegisteredRedirect()->redirect();
-		}
+		$this->checkRegisteredRedirect();
 		call_user_func_array(array($this->controller, "run"), $this->path);
-		if(null !== $this->controller->getRegisteredRedirect()){
-			$this->controller->getRegisteredRedirect()->redirect();
-		}
+		$this->checkRegisteredRedirect();
 		call_user_func_array(array($this->controller, "afterRun"), $this->path);
+		$this->checkRegisteredRedirect();
+	}
+
+	protected function checkRegisteredRedirect(){
 		if(null !== $this->controller->getRegisteredRedirect()){
 			$this->controller->getRegisteredRedirect()->redirect();
 		}
 	}
+
 
 	/**
 	 * calls the loader's view function

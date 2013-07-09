@@ -71,12 +71,12 @@ class Stack{
 	 * @param string $key
 	 * @return mixed|null
 	 */
-	public function get($key){
+	public function get($key, $default = null){
 		if(true === array_key_exists($key, $this->stack)){
 			return $this->stack[$key];
 		}else{
-			$this->messages[] = "$key not found in stack";
-			return null;
+			$this->messages[] = "$key not found in stack. using default: $default";
+			return $default;
 		}
 	}
 

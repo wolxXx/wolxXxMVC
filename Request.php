@@ -4,17 +4,26 @@
  *
  * @author wolxXx
  * @package wolxXxMVC
- * @version 1.0
+ * @version 1.1
  */
 class Request{
 	/**
+	 * keys in the post data that is ignored in log method
+	 *
+	 * @var array
+	 */
+	protected $ignoredPostForLog = array('pass', 'password', 'passwort');
+
+	/**
 	 * flag if the request was made by an ajax call
+	 *
 	 * @var boolean
 	 */
 	protected $isAjax;
 
 	/**
 	 * flag if the request has post data
+	 *
 	 * @var boolean
 	 */
 	protected $isPost;
@@ -22,24 +31,28 @@ class Request{
 	/**
 	 * flag if the request was made by a mobile device
 	 * or the application environment is set to mobile
+	 *
 	 * @var boolean
 	 */
 	protected $isMobile;
 
 	/**
 	 * the url path
+	 *
 	 * @var string
 	 */
 	protected $path;
 
 	/**
 	 * an instance of a data object
+	 *
 	 * @var DataObject
 	 */
 	public $dataObject;
 
 	/**
 	 * an instance of the stack
+	 *
 	 * @var Stack
 	 */
 	protected $stack;
@@ -67,6 +80,7 @@ class Request{
 
 	/**
 	 * checks if the request was made via ajax
+	 *
 	 * @return Request
 	 */
 	protected function checkIfRequestIsAjax(){
@@ -76,6 +90,7 @@ class Request{
 
 	/**
 	 * checks if the request contains post data
+	 *
 	 * @return Request
 	 */
 	protected function checkIfRequestIsPost(){
@@ -87,6 +102,7 @@ class Request{
 	/**
 	 * checks if the request was made from a mobile device
 	 * or the application environment was set to mobile
+	 *
 	 * @return Request
 	 */
 	protected function checkIfRequestIsMobile(){
@@ -100,6 +116,7 @@ class Request{
 	}
 
 	/**
+	 * determines if the request is an ajax request
 	 *
 	 * @return boolean
 	 */
@@ -108,6 +125,7 @@ class Request{
 	}
 
 	/**
+	 * determines if the request is post request
 	 *
 	 * @return boolean
 	 */
@@ -116,6 +134,7 @@ class Request{
 	}
 
 	/**
+	 * determines if the request is mobile
 	 *
 	 * @return boolean
 	 */
@@ -126,6 +145,7 @@ class Request{
 	/**
 	 * logs the post data
 	 * fields named "pass", "password" or "passwort" are replaced with ****
+	 *
 	 * @param string $destination
 	 * @return Request
 	 */
@@ -133,21 +153,14 @@ class Request{
 		if(false === $this->isPost()){
 			return $this;
 		}
-		if(false === isset($_SERVER['REMOTE_ADDR'])){
-			$_SERVER['REMOTE_ADDR'] = 'localhost';
-		}
-
-		if(false === isset($_SERVER['REQUEST_URI'])){
-			$_SERVER['REQUEST_URI'] = 'localhost';
-		}
 		$delim = ' | ';
 		$txt = Helper::getDate().$delim;
-		$txt .= $_SERVER['REMOTE_ADDR'].$delim;
+		$txt .= Helper::getUserIP().$delim;
 		$txt .= true === Auth::isLoggedIn()? 'true ('.Auth::getUserNick().')'.$delim : 'false'.$delim;
-		$txt .= $_SERVER['REQUEST_URI'].$delim;
+		$txt .= Helper::getCurrentURI().$delim;
 		$txt .= "\nvalues:\n";
 		foreach($this->dataObject->getRawPOST() as $key => $value){
-			if(in_array($key, array('pass', 'password', 'passwort'))){
+			if(in_array($key, $this->ignoredPostForLog)){
 				$value = '****';
 			}
 			if(in_array($key, array('base64data'))){

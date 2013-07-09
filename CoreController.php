@@ -335,7 +335,6 @@ abstract class CoreController{
 	 * @return CoreController
 	 */
 	public function setActionAndView(){
-		$args = func_get_args();
 		if(func_num_args() < 2 || '' === func_get_arg(1)){
 			if(false === method_exists(get_called_class(), 'indexAction')){
 				throw new NoViewException('no index action in controller or requested method does not exist!');

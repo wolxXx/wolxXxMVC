@@ -52,6 +52,22 @@ class KeyValueStore{
 	}
 
 	/**
+	 * determines if there exist a key
+	 * in the data array
+	 *
+	 * @param string $key
+	 * @return boolean
+	 */
+	public function hasKey($key){
+		try{
+			$this->get($key);
+			return true;
+		}catch(Exception $x){
+			return false;
+		}
+	}
+
+	/**
 	 * overwrites the whole current data array
 	 *
 	 * @param array $data

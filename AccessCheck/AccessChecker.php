@@ -1,6 +1,7 @@
 <?
 /**
  * checks the right to access actions in the controller
+ *
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage AccessCheck
@@ -9,24 +10,28 @@
 class AccessChecker{
 	/**
 	 * is the current user loggedin?
+	 *
 	 * @var boolean
 	 */
 	protected $userIsLoggedIn;
 
 	/**
 	 * which level has the current user?
+	 *
 	 * @var integer
 	 */
 	protected $userLevel;
 
 	/**
 	 * set of AccessRules
+	 *
 	 * @var array
 	 */
 	protected $rules;
 
 	/**
 	 * constructor
+	 *
 	 * @param boolean $userIsLoggedIn
 	 * @param integer $userLevel
 	 */
@@ -38,6 +43,7 @@ class AccessChecker{
 
 	/**
 	 * setter for user is logged in
+	 *
 	 * @param boolean $userIsLoggedIn
 	 * @return AccessChecker
 	 */
@@ -47,7 +53,17 @@ class AccessChecker{
 	}
 
 	/**
+	 * checks if the user is logged in
+	 *
+	 * @return boolean
+	 */
+	public function isUserLoggedIn(){
+		return $this->userIsLoggedIn;
+	}
+
+	/**
 	 * setter for the user level
+	 *
 	 * @param integer $userLevel
 	 * @return AccessChecker
 	 */
@@ -57,7 +73,16 @@ class AccessChecker{
 	}
 
 	/**
+	 * getter for the user user
+	 * @return integer
+	 */
+	public function getUserLevel(){
+		return $this->userLevel;
+	}
+
+	/**
 	 * adds a rule to the ruleset
+	 *
 	 * @param AccessRule $rule
 	 * @return AccessChecker
 	 */
@@ -68,6 +93,7 @@ class AccessChecker{
 
 	/**
 	 * returns all set rules
+	 *
 	 * @return array
 	 */
 	public function getRules(){
@@ -76,6 +102,7 @@ class AccessChecker{
 
 	/**
 	 * removes a rule from the ruleset
+	 *
 	 * @param string $actionName
 	 * @return AccessChecker
 	 */
@@ -88,6 +115,7 @@ class AccessChecker{
 
 	/**
 	 * clears all set rules
+	 *
 	 * @return AccessChecker
 	 */
 	public function clearRules(){
@@ -99,6 +127,7 @@ class AccessChecker{
 	 * checks the possibility to access the requested action
 	 * if no rule was found it returns true
 	 * otherwise return the result of the checked rule
+	 *
 	 * @param string $actionName
 	 * @return boolean
 	 * @throws ApocalypseException
@@ -130,6 +159,7 @@ class AccessChecker{
 
 	/**
 	 * checks if a rule was added for an explicite action
+	 *
 	 * @param string $actionName
 	 * @return boolean
 	 */
@@ -139,26 +169,28 @@ class AccessChecker{
 
 	/**
 	 * checks if the requested action requires a logged in user
+	 *
 	 * @param string $actionName
 	 * @return boolean
 	 */
 	public function requiresAuth($actionName){
 		if(array_key_exists($actionName, $this->rules)){
-			return $this->rules[$actionName]->getAuthNeeded();
+			return $this->rules[$actionName]->isAuthNeeded();
 		}
 		if(array_key_exists('*', $this->rules)){
-			return $this->rules['*']->getAuthNeeded();
+			return $this->rules['*']->isAuthNeeded();
 		}
 		return false;
 	}
 
 	/**
 	 * checks if the current user is allowed to run the requested action
+	 *
 	 * @param AccessRule $rule
 	 * @return boolean
 	 */
 	protected function checkAccessRule(AccessRule $rule){
-		if(false === $rule->getAuthNeeded()){
+		if(false === $rule->isAuthNeeded()){
 			return true;
 		}
 		if(false === $this->userIsLoggedIn){

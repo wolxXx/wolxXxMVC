@@ -1,12 +1,11 @@
 <?
 /**
- * wrapper for form dom elements
+ * container for form elements
  *
- * @todo is upload form implementieren
  * @author wolxXx
+ * @version 0.3
  * @package wolxXxMVC
  * @subpackage HTML
- *
  */
 class Form extends ContainableDomElementAbstract{
 	/**
@@ -23,7 +22,8 @@ class Form extends ContainableDomElementAbstract{
 	public static function getDefaultConf(){
 		return array(
 			'action' => '',
-			'method' => 'post'
+			'method' => 'post',
+			'enctype' => null
 		);
 	}
 
@@ -51,12 +51,28 @@ class Form extends ContainableDomElementAbstract{
 	}
 
 	/**
+	 * setter for upload form flag
+	 *
+	 * @param boolean $isUploadForm
+	 * @return Form
+	 */
+	public function setIsUploadForm($isUploadForm = true){
+		$this->isUploadForm = $isUploadForm;
+		return $this;
+	}
+
+	/**
 	 * (non-PHPdoc)
 	 * @see DomElementInterface::display()
 	 */
 	public function display(){
 		$this->displayLabelBefore();
-		HTML::renderFormStart($this->data->getData());
+		$conf = $this->data->getData();
+		if(true === $this->isUploadForm){
+			$conf['enctype'] = 'multipart/form-data';
+			$conf['method'] = 'post';
+		}
+		HTML::renderFormStart($conf);
 		foreach($this->children as $current){
 			$current->display();
 		}

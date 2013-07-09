@@ -127,7 +127,15 @@ so every element has a unique id and name</span><pre>getUniqueIdAndName</pre>
         </a>
     </li>
 
-                                                                                                                                                                                                                        <li class="method public">
+                                                                                                        <li class="method public">
+        <a href="#method_mergeConf" title="mergeConf :: merges the default configuration arrays with the given
+returns a simple object for having object access">
+            <span class="description">merges the default configuration arrays with the given
+returns a simple object for having object access</span><pre>mergeConf</pre>
+        </a>
+    </li>
+
+                                                                                                                                                                <li class="method public">
         <a href="#method_openSingleTag" title="openSingleTag :: opens a single tag like &lt;img /&gt;">
             <span class="description">opens a single tag like &lt;img /&gt;</span><pre>openSingleTag</pre>
         </a>
@@ -170,6 +178,12 @@ conf array can contain id, name, value, class</span><pre>renderSubmit</pre>
                                                                                                         <li class="method public">
         <a href="#method_renderClear" title="renderClear :: renders a div class clear tag">
             <span class="description">renders a div class clear tag</span><pre>renderClear</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_renderCheckbox" title="renderCheckbox :: renders a checkbox">
+            <span class="description">renders a checkbox</span><pre>renderCheckbox</pre>
         </a>
     </li>
 
@@ -235,27 +249,56 @@ conf array can contain id, class, for</span><pre>renderLabel</pre>
         </a>
     </li>
 
+                                                                                                        <li class="method public">
+        <a href="#method_renderSelectStart" title="renderSelectStart :: renders a select open tag">
+            <span class="description">renders a select open tag</span><pre>renderSelectStart</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_renderSelectClose" title="renderSelectClose :: renders a closing select tag">
+            <span class="description">renders a closing select tag</span><pre>renderSelectClose</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_renderOptionGroupStart" title="renderOptionGroupStart :: renders an option group start tag">
+            <span class="description">renders an option group start tag</span><pre>renderOptionGroupStart</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_renderOptionGroupClose" title="renderOptionGroupClose :: renders a closing option group tag">
+            <span class="description">renders a closing option group tag</span><pre>renderOptionGroupClose</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_renderOption" title="renderOption :: renders an option element">
+            <span class="description">renders an option element</span><pre>renderOption</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_renderButton" title="renderButton :: renders a button start tag">
+            <span class="description">renders a button start tag</span><pre>renderButton</pre>
+        </a>
+    </li>
+
                                                 </ul>
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-                                                                                                                                    <li class="method protected">
-                            <a href="#method_mergeConf" title="mergeConf :: merges the default configuration arrays with the given
-returns a simple object for having object access">
-                                <span class="description">merges the default configuration arrays with the given
-returns a simple object for having object access</span><pre>mergeConf</pre>
-                            </a>
-                        </li>
-                                                                                <li class="method protected">
+                                                                                                                                                                        <li class="method protected">
                             <a href="#method_out" title="out :: echoes something and prints the new line">
                                 <span class="description">echoes something and prints the new line</span><pre>out</pre>
                             </a>
                         </li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
         </li>
         <li class="nav-header private">» Private
             <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
         </li>
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
@@ -397,10 +440,10 @@ so every element has a unique id and name</h2>
                             </div>
                         </div>
                                             <a id="method_mergeConf"></a>
-                        <div class="element clickable method protected method_mergeConf" data-toggle="collapse" data-target=".method_mergeConf .collapse">
+                        <div class="element clickable method public method_mergeConf" data-toggle="collapse" data-target=".method_mergeConf .collapse">
                             <h2>merges the default configuration arrays with the given
 returns a simple object for having object access</h2>
-                            <pre>mergeConf(array $conf) : \StdClass</pre>
+                            <pre>mergeConf(array $conf, array $default = null) : \StdClass</pre>
                             <div class="labels">
                                                                 <span class="label">static</span>                                                                                                                            </div>
                             <div class="row collapse">
@@ -421,6 +464,11 @@ returns a simple object for having object access</h2>
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$conf</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$default</h4>
                                                 <code>array</code><p>
 </p>
                                             </div>
@@ -710,6 +758,51 @@ conf array can contain id, name, value, class</h2>
                                                                             </table>
 
                                     
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_renderCheckbox"></a>
+                        <div class="element clickable method public method_renderCheckbox" data-toggle="collapse" data-target=".method_renderCheckbox .collapse">
+                            <h2>renders a checkbox</h2>
+                            <pre>renderCheckbox($conf = array()) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$conf</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
                                                                     </div>
                             </div>
                         </div>
@@ -1047,6 +1140,222 @@ conf array can contain id, class, for</h2>
                                                                     </div>
                             </div>
                         </div>
+                                            <a id="method_renderSelectStart"></a>
+                        <div class="element clickable method public method_renderSelectStart" data-toggle="collapse" data-target=".method_renderSelectStart .collapse">
+                            <h2>renders a select open tag</h2>
+                            <pre>renderSelectStart(array $conf = array()) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$conf</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_renderSelectClose"></a>
+                        <div class="element clickable method public method_renderSelectClose" data-toggle="collapse" data-target=".method_renderSelectClose .collapse">
+                            <h2>renders a closing select tag</h2>
+                            <pre>renderSelectClose() </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_renderOptionGroupStart"></a>
+                        <div class="element clickable method public method_renderOptionGroupStart" data-toggle="collapse" data-target=".method_renderOptionGroupStart .collapse">
+                            <h2>renders an option group start tag</h2>
+                            <pre>renderOptionGroupStart(array $conf = array()) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$conf</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_renderOptionGroupClose"></a>
+                        <div class="element clickable method public method_renderOptionGroupClose" data-toggle="collapse" data-target=".method_renderOptionGroupClose .collapse">
+                            <h2>renders a closing option group tag</h2>
+                            <pre>renderOptionGroupClose() </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_renderOption"></a>
+                        <div class="element clickable method public method_renderOption" data-toggle="collapse" data-target=".method_renderOption .collapse">
+                            <h2>renders an option element</h2>
+                            <pre>renderOption(array $conf = array()) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$conf</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_renderButton"></a>
+                        <div class="element clickable method public method_renderButton" data-toggle="collapse" data-target=".method_renderButton .collapse">
+                            <h2>renders a button start tag</h2>
+                            <pre>renderButton(array $conf = array()) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$conf</h4>
+                                                <code>array</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
                     
                     
                                                         </div>
@@ -1069,7 +1378,7 @@ conf array can contain id, class, for</h2>
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Sat, 29 Jun 2013 16:19:36 +0000.<br/>
+            generated on Tue, 09 Jul 2013 12:13:15 +0000.<br/>
     </footer>
     </body>
 </html>

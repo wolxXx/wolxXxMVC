@@ -6,7 +6,6 @@
 * @version 0.2
 * @package wolxXxMVC
 * @subpackage HTML
-*
 */
 class Input extends DomElementAbstract{
 	/**

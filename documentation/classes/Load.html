@@ -112,6 +112,30 @@
             <i class="icon-custom icon-method"></i> Methods
             <ul>
                                                                                                                                             <li class="method public">
+        <a href="#method_setViewPath" title="setViewPath :: setter for the view path">
+            <span class="description">setter for the view path</span><pre>setViewPath</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getViewPath" title="getViewPath :: getter for the view path">
+            <span class="description">getter for the view path</span><pre>getViewPath</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_setLayoutPath" title="setLayoutPath :: setter for the layout path">
+            <span class="description">setter for the layout path</span><pre>setLayoutPath</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getLayoutPath" title="getLayoutPath :: getter for the layout path">
+            <span class="description">getter for the layout path</span><pre>getLayoutPath</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
         <a href="#method_getInstance" title="getInstance :: singleton pattern instance getter">
             <span class="description">singleton pattern instance getter</span><pre>getInstance</pre>
         </a>
@@ -274,8 +298,8 @@ useful for loading dependencies</span><pre>addCssFile</pre>
     </li>
 
                                                                                                                                                                 <li class="method public">
-        <a href="#method_clearBuffer" title="clearBuffer :: ">
-            <span class="description"></span><pre>clearBuffer</pre>
+        <a href="#method_clearBuffer" title="clearBuffer :: clears the buffer and moves it to /dev/null">
+            <span class="description">clears the buffer and moves it to /dev/null</span><pre>clearBuffer</pre>
         </a>
     </li>
 
@@ -319,7 +343,7 @@ useful for loading dependencies</span><pre>addCssFile</pre>
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
         </li>
         <li class="nav-header private">» Private
             <ul>
@@ -328,7 +352,7 @@ useful for loading dependencies</span><pre>addCssFile</pre>
                                 <span class="description">constructor is private because of singleton access</span><pre>__construct</pre>
                             </a>
                         </li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li class="method private">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li class="method private">
                             <a href="#method_requireToBuffer" title="requireToBuffer :: requires all set js or css files into output buffer
 so no extra files will be loaded
 maybe saves a few bytes and some additional requests">
@@ -423,6 +447,130 @@ holds JavaScript, JavaScriptFiles, CSS and CSSFiles</p>
                                                                             </table>
 
                                     
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_setViewPath"></a>
+                        <div class="element clickable method public method_setViewPath" data-toggle="collapse" data-target=".method_setViewPath .collapse">
+                            <h2>setter for the view path</h2>
+                            <pre>setViewPath(string $path) : \Load</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$path</h4>
+                                                <code>string</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/Load.html">\Load</a></code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getViewPath"></a>
+                        <div class="element clickable method public method_getViewPath" data-toggle="collapse" data-target=".method_getViewPath .collapse">
+                            <h2>getter for the view path</h2>
+                            <pre>getViewPath() : string</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_setLayoutPath"></a>
+                        <div class="element clickable method public method_setLayoutPath" data-toggle="collapse" data-target=".method_setLayoutPath .collapse">
+                            <h2>setter for the layout path</h2>
+                            <pre>setLayoutPath(string $path) : \Load</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$path</h4>
+                                                <code>string</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/Load.html">\Load</a></code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getLayoutPath"></a>
+                        <div class="element clickable method public method_getLayoutPath" data-toggle="collapse" data-target=".method_getLayoutPath .collapse">
+                            <h2>getter for the layout path</h2>
+                            <pre>getLayoutPath() : string</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
@@ -1242,8 +1390,8 @@ maybe saves a few bytes and some additional requests</h2>
                         </div>
                                             <a id="method_clearBuffer"></a>
                         <div class="element clickable method public method_clearBuffer" data-toggle="collapse" data-target=".method_clearBuffer .collapse">
-                            <h2>clearBuffer</h2>
-                            <pre>clearBuffer() </pre>
+                            <h2>clears the buffer and moves it to /dev/null</h2>
+                            <pre>clearBuffer() : \Load</pre>
                             <div class="labels">
                                                                                                                                                                                             </div>
                             <div class="row collapse">
@@ -1259,16 +1407,12 @@ maybe saves a few bytes and some additional requests</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
                                                                             </table>
 
                                     
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/Load.html">\Load</a></code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
@@ -1735,6 +1879,70 @@ makes cleaner html output</h2>
                                     </div>
                                 </div>
                             </div>
+                                                    <a id="property_layoutPath"> </a>
+                            <div class="element clickable property protected property_layoutPath" data-toggle="collapse" data-target=".property_layoutPath .collapse">
+                                <h2>the path to the layouts</h2>
+                                <pre>layoutPath</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_viewPath"> </a>
+                            <div class="element clickable property protected property_viewPath" data-toggle="collapse" data-target=".property_viewPath .collapse">
+                                <h2>the path to the views</h2>
+                                <pre>viewPath</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
                                                             </div>
             </div>
             <a id="\Load"></a>
@@ -1755,7 +1963,7 @@ makes cleaner html output</h2>
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Sat, 29 Jun 2013 16:19:39 +0000.<br/>
+            generated on Tue, 09 Jul 2013 12:13:21 +0000.<br/>
     </footer>
     </body>
 </html>

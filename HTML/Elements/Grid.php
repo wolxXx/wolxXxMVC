@@ -6,7 +6,6 @@
  * @version 0.2
  * @package wolxXxMVC
  * @subpackage HTML
- *
  */
 class Grid extends ContainableDomElementAbstract{
 	/**
@@ -44,15 +43,15 @@ class Grid extends ContainableDomElementAbstract{
 	/**
 	 * (non-PHPdoc)
 	 * @see DomElementInterface::display()
+	 * @todo really?! need to do this vernünftich, junge!
 	 */
 	public function display(){
-		?>
-			<div class="grid_<?= $this->get('size') ?>">
-				<? foreach($this->children as $current){
-					$current->display();
-				} ?>
-			</div>
-		<?
+		$this->addClass('grid_'.$this->get('size'));
+		HTML::openTag('div', HTML::mergeConf($this->data->getData(), self::getDefaultConf()));
+		foreach($this->children as $current){
+			$current->display();
+		}
+		HTML::closeTag('div');
 		return $this;
 	}
 }

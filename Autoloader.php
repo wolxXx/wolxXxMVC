@@ -7,7 +7,6 @@
  * @package wolxXxMVC
  */
 class AutoLoader{
-
 	/**
 	 * the found paths in the application directory
 	 *
@@ -21,7 +20,7 @@ class AutoLoader{
 	 * @var array
 	 */
 	protected $defaultClasses = array(
-		'Helper', 'Bootstrap', 'Model', 'HTML'
+		'Helper', 'Bootstrap', 'Model', 'HTML', 'Translator'
 	);
 
 	/**
@@ -126,6 +125,7 @@ class AutoLoader{
 		foreach($this->defaultClasses as $class){
 			if($class === $className){
 				require_once __DIR__.DIRECTORY_SEPARATOR.'HiddenClasses'.DIRECTORY_SEPARATOR.$class.'HiddenClass.php';
+				return;
 			}
 		}
 	}

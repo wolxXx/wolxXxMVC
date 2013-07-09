@@ -13,11 +13,14 @@ abstract class Migration{
 	/**
 	 * continious number
 	 * make sure, the revision is really continious!!
+	 *
 	 * @var integer
 	 */
 	protected $revision;
+
 	/**
 	 * a direct connection to the database
+	 *
 	 * @var Connection
 	 */
 	protected $connection;
@@ -29,8 +32,10 @@ abstract class Migration{
 		$this->setRevision($revision);
 		$this->connection = DatabaseManager::getInstance()->getConnection();
 	}
+
 	/**
 	 * setter for the revision number
+	 *
 	 * @param integer $revision
 	 * @return Migration
 	 */
@@ -38,8 +43,10 @@ abstract class Migration{
 		$this->revision = $revision;
 		return $this;
 	}
+
 	/**
 	 * getter for the revision number
+	 *
 	 * @return integer
 	 */
 	public function getRevision(){
@@ -48,6 +55,7 @@ abstract class Migration{
 
 	/**
 	 * after run hook
+	 *
 	 * @return Migration
 	 */
 	public final function afterRun(){
@@ -57,6 +65,7 @@ abstract class Migration{
 
 	/**
 	 * inserts migration number on top into database table migrations
+	 *
 	 * @return Migration
 	 */
 	protected function insertMigrationToDB(){
@@ -74,6 +83,7 @@ abstract class Migration{
 
 	/**
 	 * returns a new instance of a migration
+	 *
 	 * @param integer $revision
 	 */
 	public static function getInstance($revision){

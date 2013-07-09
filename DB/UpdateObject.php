@@ -11,30 +11,35 @@
 class UpdateObject{
 	/**
 	 * instance of a database manager
+	 *
 	 * @var DatabaseManager
 	 */
 	private $databaseManager;
 
 	/**
 	 * the id of the to save object
+	 *
 	 * @var integer
 	 */
 	private $id;
 
 	/**
 	 * the table name
+	 *
 	 * @var string
 	 */
 	private $table;
 
 	/**
 	 * data set
+	 *
 	 * @var array
 	 */
 	private $data;
 
 	/**
 	 * constructor
+	 *
 	 * @param string $table
 	 * @return SaveObject
 	 */
@@ -47,6 +52,7 @@ class UpdateObject{
 
 	/**
 	 * setter for values
+	 *
 	 * @param string $key
 	 * @param mixed $value
 	 * @return SaveObject
@@ -58,6 +64,7 @@ class UpdateObject{
 
 	/**
 	 * getter for values
+	 *
 	 * @param string $key
 	 * @return null | mixed
 	 */
@@ -73,6 +80,7 @@ class UpdateObject{
 	 * setter for the data array
 	 * caution: overwrites data set before!
 	 * for merging use addData function!!
+	 *
 	 * @param array $data
 	 * @return UpdateObject
 	 */
@@ -84,6 +92,7 @@ class UpdateObject{
 	/**
 	 * merges data with data that was set before
 	 * values with the same key will be overwritten by the new data array
+	 *
 	 * @param array $data
 	 * @return UpdateObject
 	 */
@@ -94,6 +103,7 @@ class UpdateObject{
 
 	/**
 	 * resets the internal data array
+	 *
 	 * @return UpdateObject
 	 */
 	public function resetData(){
@@ -103,6 +113,7 @@ class UpdateObject{
 
 	/**
 	 * setter for table name
+	 *
 	 * @param string $table
 	 * @return UpdateObject
 	 */
@@ -113,6 +124,7 @@ class UpdateObject{
 
 	/**
 	 * setter for row id
+	 *
 	 * @param integer $id
 	 * @return UpdateObject
 	 */
@@ -123,6 +135,7 @@ class UpdateObject{
 
 	/**
 	 * updates the set data to the set table
+	 *
 	 * @return ResultObject
 	 */
 	public function update(){

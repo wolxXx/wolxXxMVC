@@ -201,13 +201,14 @@ class DataObject{
 	 * returns null if nothing was found
 	 *
 	 * @param string $key
+	 * @param mixed $default
 	 * @return mixed | NULL
 	 */
-	public function getSavely($key){
+	public function getSavely($key, $default = null){
 		try{
 			return $this->get($key);
 		}catch (KeyNotExistsInDataObject $x){
-			return null;
+			return $default;
 		}
 	}
 

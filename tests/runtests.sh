@@ -2,7 +2,8 @@
 
 clear;
 
-echo "wolxXxMVC: running unit tests...";
+echo "wolxXxMVC: running unit tests, generating documentation, adding new svn files";
+echo "";
 echo "";
 
 here=$(dirname $(readlink -f $0));
@@ -20,4 +21,4 @@ else
 	mkdir testsout;
 fi
 
-phpunit --verbose --process-isolation --bootstrap TestBootstrap.php --colors --coverage-html testsout  $TESTPATH
+phpunit --bootstrap TestBootstrap.php --debug --strict --no-globals-backup --verbose --process-isolation --coverage-html testsout  $TESTPATH;

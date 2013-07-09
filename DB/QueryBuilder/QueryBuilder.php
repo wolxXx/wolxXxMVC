@@ -1,8 +1,9 @@
 <?
 /**
- * first prototype of an abstract query builder
+ * abstract query builder
  * needs a connection. you can set it via dic or dis.
  * needs conditions as array. you can set it via dic or dis.
+ * provides functions for transforming a condition array to a query string
  *
  * @author wolxXx
  * @version 1.2
@@ -12,6 +13,7 @@
 abstract class QueryBuilder{
 	/**
 	 * connection to the database
+	 *
 	 * @var mysqli
 	 */
 	protected $connection;
@@ -25,6 +27,7 @@ abstract class QueryBuilder{
 	/**
 	 * constructor. you can use dependency injection via constructor (dic)
 	 * returns this in pattern of fluent interface
+	 *
 	 * @param array | null $conditions
 	 * @param mysqli | null $connection
 	 * @return QueryBuilder
@@ -40,6 +43,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * checks if the set conditions fulfill the needed minimal expectations
+	 *
 	 * @throws Exception
 	 * @throws QueryGeneratorException
 	 */
@@ -47,6 +51,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * generates the query from the set conditions
+	 *
 	 * @return string
 	 * @throws Exception
 	 * @throws QueryGeneratorException
@@ -55,6 +60,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * returns an instance of a QueryString
+	 *
 	 * @return QueryString
 	 */
 	abstract public function getQueryString();
@@ -62,6 +68,7 @@ abstract class QueryBuilder{
 	/**
 	 * setter for the connection
 	 * returns this in pattern of fluent interface
+	 *
 	 * @param mysqli $connection
 	 * @return QueryBuilder
 	 */
@@ -72,6 +79,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * getter for the connection
+	 *
 	 * @return mysqli
 	 */
 	public function getConnection(){
@@ -81,6 +89,7 @@ abstract class QueryBuilder{
 	/**
 	 * setter for conditions
 	 * returns this in pattern of fluent interface
+	 *
 	 * @param array $conditions
 	 * @return QueryBuilder
 	 */
@@ -93,6 +102,7 @@ abstract class QueryBuilder{
 	/**
 	 * merges the default conditions with the provided
 	 * it ensures that the minimal requirements are set
+	 *
 	 * @param array $conditions
 	 */
 	protected function mergeConditions($conditions){
@@ -112,6 +122,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * converts signs as < or > to string like LESS or MORE
+	 *
 	 * @param string $sign
 	 * @return string
 	 */
@@ -140,6 +151,7 @@ abstract class QueryBuilder{
 	/**
 	 * generates the limit string
 	 * you can provide null, an array or a string or an integer
+	 *
 	 * @return string
 	 */
 	protected function generateLimit(){
@@ -163,7 +175,9 @@ abstract class QueryBuilder{
 	}
 
 	/**
-	 * fields may be null, then select *, but fields may be a string, then select that, otherwise it should be an array, then implode to string
+	 * fields may be null, then select *, but fields may be a string,
+	 * then select that, otherwise it should be an array, then implode to string
+	 *
 	 * @return string
 	 */
 	protected function generateFields(){
@@ -181,6 +195,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * insert an order statement. comes as string from conditions, just concat
+	 *
 	 * @return string
 	 */
 	protected function generateOrder(){
@@ -193,6 +208,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * insert a group by statement. comes as string from conditions, just concat
+	 *
 	 * @return string
 	 */
 	protected function generateGroup(){
@@ -205,6 +221,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * if boolean field distinct is set to true, insert distinct statement
+	 *
 	 * @return string
 	 */
 	protected function generateDistinct(){
@@ -217,6 +234,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * param can be array or string
+	 *
 	 * @throws QueryGeneratorException
 	 * @return string
 	 */
@@ -236,6 +254,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for a simple comparison
+	 *
 	 * @param string $where
 	 * @param string $left
 	 * @param string | number $right
@@ -253,6 +272,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for the or query
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -277,6 +297,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for the or query where param is LIKEed
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -301,6 +322,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for a relational or comparison
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -325,6 +347,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for a > compparison
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -342,6 +365,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for a >= comparison
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -359,6 +383,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for a < comparison
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -376,6 +401,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for a <= comparison
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -393,6 +419,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for a like comparison
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -410,6 +437,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for null query
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -427,6 +455,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for a not null query
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -444,6 +473,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for a negotiated comparison
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -461,6 +491,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for in query
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -479,6 +510,7 @@ abstract class QueryBuilder{
 
 	/**
 	 * creates the query part for not in query
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -496,6 +528,7 @@ abstract class QueryBuilder{
 	}
 	/**
 	 * creates the query part for relational comparisons
+	 *
 	 * @param string $where
 	 * @param array $right
 	 * @return string
@@ -513,7 +546,8 @@ abstract class QueryBuilder{
 
 	/**
 	 * this is the most interesting section..
-	 * it runs through the where section of the search conditions an grabs the provided information
+	 * it runs through the where section of the search
+	 * conditions an grabs the provided information
 	 *
 	 * @throws QueryGeneratorException
 	 * @return string
@@ -535,6 +569,4 @@ abstract class QueryBuilder{
 		}
 		return trim($where);
 	}
-
-
 }

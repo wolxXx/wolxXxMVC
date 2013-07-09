@@ -10,30 +10,35 @@
 class UpdateQueryBuilder{
 	/**
 	 * the name of the table
+	 *
 	 * @var string
 	 */
 	protected $table;
 
 	/**
 	 * the data array
+	 *
 	 * @var array
 	 */
 	protected $data;
 
 	/**
 	 * the id of the element that should be updated
+	 *
 	 * @var integer
 	 */
 	protected $id;
 
 	/**
 	 * an instance of the databaseManager
+	 *
 	 * @var DatabaseManager
 	 */
 	protected $databaseManager;
 
 	/**
 	 * constructor
+	 *
 	 * @param string $table
 	 * @param array $data
 	 * @param integer $id
@@ -48,6 +53,7 @@ class UpdateQueryBuilder{
 
 	/**
 	 * checks the set conditions
+	 *
 	 * @throws QueryGeneratorException
 	 */
 	protected function checkConditions(){
@@ -74,6 +80,7 @@ class UpdateQueryBuilder{
 
 	/**
 	 * creates the query
+	 *
 	 * @return string
 	 */
 	public function getQuery(){
@@ -90,6 +97,7 @@ class UpdateQueryBuilder{
 
 	/**
 	 * creates an instance of a QueryString
+	 *
 	 * @return QueryString
 	 */
 	public function getQueryString(){
@@ -98,6 +106,7 @@ class UpdateQueryBuilder{
 
 	/**
 	 * setter for the table name
+	 *
 	 * @param string $table
 	 * @return UpdateQueryBuilder
 	 */
@@ -108,6 +117,7 @@ class UpdateQueryBuilder{
 
 	/**
 	 * setter for the data array
+	 *
 	 * @param array $data
 	 * @return UpdateQueryBuilder
 	 */
@@ -118,6 +128,7 @@ class UpdateQueryBuilder{
 
 	/**
 	 * setter for the item id
+	 *
 	 * @param integer $id
 	 * @return UpdateQueryBuilder
 	 */

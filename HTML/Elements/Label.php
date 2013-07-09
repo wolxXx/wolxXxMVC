@@ -6,7 +6,6 @@
 * @version 0.2
 * @package wolxXxMVC
 * @subpackage HTML
-*
 */
 class Label extends DomElementAbstract{
 	/**
@@ -34,7 +33,7 @@ class Label extends DomElementAbstract{
 	 * @param string $position
 	 * @return Label
 	 */
-	public function setPosition($position){
+	public function setPosition($position = null){
 		$this->position = 'before' === $position? 'before' : 'after';
 		return $this;
 	}

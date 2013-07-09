@@ -1,10 +1,17 @@
 <?
+/**
+ * displays a break element
+ *
+ * @author wolxXx
+ * @version 0.2
+ * @package wolxXxMVC
+ * @subpackage HTML
+ */
 class Br extends DomElementAbstract{
-	public static function getDefaultConf(){
-		return array(
-		);
-	}
-
+	/**
+	 * (non-PHPdoc)
+	 * @see DomElementInterface::display()
+	 */
 	public function display(){
 		HTML::renderBr();
 	}

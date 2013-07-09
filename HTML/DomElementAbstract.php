@@ -73,6 +73,10 @@ abstract class DomElementAbstract implements DomElementInterface{
 	 * @return DomElementAbstract
 	 */
 	public function addClass($class){
+		if(false === $this->data->hasKey('class')){
+			$this->data->set('class', $class);
+			return $this;
+		}
 		$this->data->set('class', $this->data->get('class').' '.$class);
 		return $this;
 	}
@@ -134,6 +138,26 @@ abstract class DomElementAbstract implements DomElementInterface{
 	}
 
 	/**
+	 * getter for the whole data
+	 *
+	 * @return array
+	 */
+	public function getData(){
+		return $this->data->getData();
+	}
+
+	/**
+	 * clears the data
+	 * handle with care!!
+	 *
+	 * @return DomElementAbstract
+	 */
+	public function clearData(){
+		$this->data->clear();
+		return $this;
+	}
+
+	/**
 	 * removes a key from the data object
 	 *
 	 * @param string $key
@@ -180,12 +204,19 @@ abstract class DomElementAbstract implements DomElementInterface{
 	}
 
 	/**
-	 * getter for the id of this element
-	 *
-	 * @return string
+	 * (non-PHPdoc)
+	 * @see DomElementInterface::getId()
 	 */
 	public function getId(){
 		return $this->data->get('id');
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see DomElementInterface::getName()
+	 */
+	public function getName(){
+		return $this->data->get('name');
 	}
 
 	/**

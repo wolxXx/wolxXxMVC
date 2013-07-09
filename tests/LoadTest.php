@@ -2,38 +2,63 @@
 /**
  * @codeCoverageIgnore
  */
-require_once __DIR__.'/../Stack.php';
-require_once __DIR__.'/../Load.php';
-require_once __DIR__.'/../CoreHelper.php';
-if(false === class_exists('Helper')){
-	class Helper extends CoreHelper{}
-}
-Stack::getInstance()->set('controller', 'cms');
-
-/**
- * @codeCoverageIgnore
- */
 class LoadTest extends  PHPUnit_Framework_TestCase{
+	public function setUp(){
+		Stack::getInstance()->set('controller', 'cms');
+		Load::getInstance()->setLayoutPath(__DIR__.DIRECTORY_SEPARATOR.'_src');
+		Load::getInstance()->setViewPath(__DIR__.DIRECTORY_SEPARATOR.'_src');
+	}
+
+	/**
+	 * @expectedException Exception
+	 */
+	public function testViewNotExists(){
+		Load::getInstance()->view();
+	}
+
+	public function testDebug(){
+		Load::getInstance()->set('isAjax', true);
+		Load::getInstance()->debug();
+	}
+
+	public function testAjaxRequest(){
+		$staticview = 'staticview';
+		$this->expectOutputString(file_get_contents(Load::getInstance()->getViewPath().$staticview.'.php'));
+		Load::getInstance()->set('isAjax', true);
+		Load::getInstance()->view($staticview);
+	}
+
+	public function testLayoutDoesNotExist(){
+		Load::getInstance()->setLayout('hamwadochehnich');
+		$this->assertSame(Load::getInstance()->getLayout(), 'hamwadochehnich');
+		$staticview = 'staticview';
+		$this->expectOutputString(file_get_contents(Load::getInstance()->getViewPath().$staticview.'.php'));
+		$this->expectOutputString('layout "hamwadochehnich" not found, displaying default layout.');
+		Load::getInstance()->view($staticview);
+	}
+
+	public function testSetLayoutPath(){
+		$path = __DIR__.DIRECTORY_SEPARATOR.'_src';
+		$this->assertSame($path.DIRECTORY_SEPARATOR, Load::getInstance()->getLayoutPath());
+	}
+
 	public function testPartialWithDirectVars(){
-		Load::getInstance()->setLayout('../Lib/wolxXxMVC/tests/_src/');
 		$this->expectOutputString('foo');
 		Load::getInstance()->partial('testview', array('testvar' => 'foo'));
 	}
 
 	public function testPartialWithIndirectVars(){
-		Load::getInstance()->setLayout('../Lib/wolxXxMVC/tests/_src/');
 		$this->expectOutputString('foo');
 		Load::getInstance()->partial('testview2', array('testvar' => 'foo'), true);
 	}
 
 	public function testPartialWithoutHavingView(){
-		Load::getInstance()->setLayout('../Lib/wolxXxMVC/tests/_src/');
-		$this->expectOutputString('partial testview2XYS nicht gefunden! uri = localhost');
+		$this->expectOutputString('partial "testview2XYS" not found!');
 		Load::getInstance()->partial('testview2XYS', array('testvar' => 'foo'), true);
 	}
 
 	public function testView(){
-		Load::getInstance()->setLayout('../Lib/wolxXxMVC/tests/_src/nix');
+		Load::getInstance()->setLayout('nix');
 		Load::getInstance()->set('testvar', 'foo');
 		Load::getInstance()->view('testview');
 	}
@@ -46,10 +71,16 @@ class LoadTest extends  PHPUnit_Framework_TestCase{
 		$this->assertEquals(Load::getInstance()->get('halloo'), null);
 	}
 
-	public function testLayout(){
+	public function testDefaultLayout(){
 		$this->assertEquals(Load::getInstance()->getLayout(), 'main');
+	}
+
+	public function testLayout2(){
 		Load::getInstance()->setLayout('nix');
 		$this->assertEquals(Load::getInstance()->getLayout(), 'nix');
+	}
+
+	public function testSetDefaultLayout(){
 		Load::getInstance()->setLayout();
 		$this->assertEquals(Load::getInstance()->getLayout(), 'main');
 	}
@@ -109,10 +140,4 @@ class LoadTest extends  PHPUnit_Framework_TestCase{
 		$this->assertSame(PHP_EOL.'a{display:block}'.PHP_EOL.PHP_EOL.'a{display: none;}', Load::getInstance()->getMergedCss());
 		$this->assertSame('a{display:block}'.PHP_EOL.PHP_EOL.'a{display: none;}', Load::getInstance()->getCss());
 	}
-
-	public function testForCoverage(){
-		Load::getInstance()->debug();
-	}
-
-
 }

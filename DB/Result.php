@@ -11,6 +11,7 @@
 class Result{
 	/**
 	 * global setter for object properties
+	 *
 	 * @param string $key
 	 * @param any $value
 	 */
@@ -20,6 +21,7 @@ class Result{
 
 	/**
 	 * global getter for object properties
+	 *
 	 * @param string $key
 	 * @return any
 	 */
@@ -48,6 +50,7 @@ class Result{
 
 	/**
 	 * needed for serialization
+	 *
 	 * @return array
 	 */
 	public function __sleep(){

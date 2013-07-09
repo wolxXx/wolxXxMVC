@@ -2,7 +2,7 @@
 /**
  * query builder for deleting a single item in the database
  * the item is identified via its primary key which should be "id"
- * 
+ *
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage QueryBuilder
@@ -10,26 +10,29 @@
  */
 class DeleteQueryBuilder extends QueryBuilder{
 	/**
-	 * the name of the table 
+	 * the name of the table
+	 *
 	 * @var string
 	 */
 	protected $table;
-	
+
 	/**
 	 * an instance of the database manager
+	 *
 	 * @var DatabaseManager
 	 */
 	protected $databaseManager;
-	
+
 	/**
 	 * the id of the item that should be deleted
+	 *
 	 * @var integer
 	 */
 	protected $id;
-	
+
 	/**
 	 * constructor
-	 * 
+	 *
 	 * @param string $table
 	 * @param integer $id
 	 * @param DatabaseManager $databaseManager
@@ -40,7 +43,7 @@ class DeleteQueryBuilder extends QueryBuilder{
 			->setDatabaseManager($databaseManager)
 			->setTable($table);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::checkConditions()
@@ -48,7 +51,7 @@ class DeleteQueryBuilder extends QueryBuilder{
 	protected function checkConditions(){
 		if(true === false){
 			throw new ApocalypseException('gehnwa bierchen trinken. bringt nix mehr.');
-		} 
+		}
 		if(null === $this->table){
 			throw new QueryGeneratorException('please specify table');
 		}
@@ -59,7 +62,7 @@ class DeleteQueryBuilder extends QueryBuilder{
 			throw new QueryGeneratorException('please specify id');
 		}
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::generateQuery()
@@ -69,7 +72,7 @@ class DeleteQueryBuilder extends QueryBuilder{
 		$query = "DELETE FROM `".$this->table."` WHERE `".$this->table."`.id = ".$this->id." LIMIT 1;";
 		return $query;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::getQueryString()
@@ -79,10 +82,10 @@ class DeleteQueryBuilder extends QueryBuilder{
 		$queryString = new QueryString($query);
 		return $queryString;
 	}
-	
+
 	/**
 	 * setter for the table name
-	 * 
+	 *
 	 * @param string $table
 	 * @return DeleteQueryBuilder
 	 */
@@ -90,10 +93,10 @@ class DeleteQueryBuilder extends QueryBuilder{
 		$this->table = $table;
 		return $this;
 	}
-	
+
 	/**
 	 * setter for the item id
-	 * 
+	 *
 	 * @param integer $id
 	 * @return DeleteQueryBuilder
 	 */
@@ -101,9 +104,10 @@ class DeleteQueryBuilder extends QueryBuilder{
 		$this->id = $id;
 		return $this;
 	}
-	
+
 	/**
 	 * setter for the databaseManager
+	 *
 	 * @param DatabaseManager $databaseManager
 	 * @return DeleteQueryBuilder
 	 */
@@ -111,5 +115,5 @@ class DeleteQueryBuilder extends QueryBuilder{
 		$this->databaseManager = $databaseManager;
 		return $this;
 	}
-	
+
 }

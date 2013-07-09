@@ -6,7 +6,6 @@
  * @version 0.2
  * @package wolxXxMVC
  * @subpackage HTML
- *
  */
 interface DomElementInterface{
 	/**
@@ -22,4 +21,16 @@ interface DomElementInterface{
 	 * @return array
 	 */
 	public static function getDefaultConf();
+
+	/**
+	 * returns the ID of the element
+	 * @return string
+	 */
+	public function getId();
+
+	/**
+	 * returns the name of the element
+	 * @return string
+	 */
+	public function getName();
 }

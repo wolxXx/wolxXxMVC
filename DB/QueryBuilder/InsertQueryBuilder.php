@@ -1,29 +1,30 @@
 <?
 /**
  * creates an insert into $table query string
- * 
- * 
+ *
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage QueryBuilder
  * @version 1.2
  */
 class InsertQueryBuilder extends QueryBuilder{
-	
 	/**
 	 * the name of the table
+	 *
 	 * @var string
 	 */
 	protected $table;
-	
+
 	/**
 	 * the data to be saved
+	 *
 	 * @var array
 	 */
 	protected $data;
-	
+
 	/**
-	 * 
+	 * constructor
+	 *
 	 * @param string $table
 	 * @param array $data
 	 */
@@ -31,7 +32,7 @@ class InsertQueryBuilder extends QueryBuilder{
 		$this->table = $table;
 		$this->data = $data;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::checkConditions()
@@ -40,17 +41,19 @@ class InsertQueryBuilder extends QueryBuilder{
 		if(false === is_array($this->data)){
 			throw new QueryGeneratorException('could not create model if data is not an array');
 		}
-		
+
 		if(true === empty($this->data)){
 			throw new QueryGeneratorException('recieved no data');
 		}
 	}
-	
+
 	/**
-	 * runs through the data array and takes the keys for the keys section and the values for the value section.
+	 * runs through the data array and takes the keys for the keys
+	 * section and the values for the value section.
 	 * this might be a clause for cptn. obvious
-	 * 
-	 * as long as we have no multitype returns as in 5.5 it returns an array 
+	 *
+	 * as long as we have no multitype returns as in 5.5 it returns an array
+	 *
 	 * @return array
 	 */
 	private function generateStringFromArray(){
@@ -64,7 +67,7 @@ class InsertQueryBuilder extends QueryBuilder{
 		$values = rtrim($values, ',');
 		return array('keys' => $keys, 'values' => $values);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::generateQuery()
@@ -77,7 +80,7 @@ class InsertQueryBuilder extends QueryBuilder{
 		$query = "INSERT INTO `".$this->table."` ($keys) VALUES ($values);";
 		return $query;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see QueryBuilder::getQueryString()
@@ -87,5 +90,4 @@ class InsertQueryBuilder extends QueryBuilder{
 		$queyString->setQueryString($this->generateQuery());
 		return $queyString;
 	}
-	
 }

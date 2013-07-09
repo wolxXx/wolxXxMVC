@@ -11,24 +11,28 @@
 class DatabaseManager{
 	/**
 	 * instance of itself -> singleton pattern
+	 *
 	 * @var DatabaseManager
 	 */
 	private static $instance;
 
 	/**
 	 * instance of a Connection
+	 *
 	 * @var Connection
 	 */
 	protected $connection;
 
 	/**
 	 * if the current query shall be logged
+	 *
 	 * @var boolean
 	 */
 	protected $forceLogging = false;
 
 	/**
 	 * singleton accessor
+	 *
 	 * @return DatabaseManager
 	 */
 	public static function getInstance(){
@@ -40,6 +44,7 @@ class DatabaseManager{
 
 	/**
 	 * constructor
+	 *
 	 * sets up a new Connection instance
 	 */
 	private function __construct(){
@@ -54,6 +59,7 @@ class DatabaseManager{
 
 	/**
 	 * enables or disables forced logging
+	 *
 	 * @param boolean $force
 	 * @return DatabaseManager
 	 */
@@ -64,6 +70,9 @@ class DatabaseManager{
 
 	/**
 	 * queries a query. sounds good, eh
+	 * takes the execution time
+	 * calls the logger
+	 *
 	 * @param QueryStringInterface $queryStringObject
 	 * @return QueryResultObject
 	 */
@@ -80,6 +89,7 @@ class DatabaseManager{
 	 * logs a query
 	 * as default, it only logs if there was an error while querying or the execution of the query took more than one second
 	 * to enable forced logging, set DatabaseManager->setForceLogging(true)
+	 *
 	 * @param QueryResultObject $queryResultObject
 	 * @param float $start
 	 * @param float $end
@@ -96,23 +106,28 @@ class DatabaseManager{
 		$success = true === $queryResultObject->queryWasSuccessfull()? 'successfull' : 'failed';
 		if(false === is_bool($result)){
 			$resultsValue = $result->num_rows;
-			$resultsText = "Results:\t\t";
+			$resultsText = "Results:\t";
 		}else{
 			$resultsValue = $this->connection->getAffectedRows();
 			$resultsText = "Affected rows:\t";
 		}
-		$trace = debug_backtrace(0);
-		$trace = $trace[3];
+		$originalTrace = debug_backtrace(0);
+		$start = 5;
+		$trace = $originalTrace[$start];
+		while(false === isset($trace['file'])){
+			$trace = $originalTrace[--$start];
+		}
 		$file = str_replace(Helper::getDocRoot(), '', $trace['file']);
+
 		$class = isset($trace['class'])? $trace['class'].' at ' : '';
 		$occurenced = $class.$file.' at line '.$trace['line'];
 		$date = Helper::getDate();
-		$userIP = isset($_SERVER['REMOTE_ADDR'])? $_SERVER['REMOTE_ADDR'] : 'unknown';
+		$userIP = Helper::getUserIP();
 		$userName = Auth::isLoggedIn()? Auth::getUserNick() : 'arno nym';
 		$url = Helper::getCurrentURL();
 
-		$logtext = PHP_EOL.PHP_EOL.'____________________________________________'.PHP_EOL;
-		$logtext .= "Query string:\t$query".PHP_EOL;
+		$logtext = PHP_EOL.'____________________________________________'.PHP_EOL;
+		$logtext .= "Query string:\n\t$query".PHP_EOL;
 		$logtext .= "Execution time:\t$execution s".PHP_EOL;
 		$logtext .= "Error string:\t$errorString".PHP_EOL;
 		$logtext .= "Error number:\t$errorNumber".PHP_EOL;
@@ -123,19 +138,19 @@ class DatabaseManager{
 		$logtext .= "User IP:\t$userIP".PHP_EOL;
 		$logtext .= "User name:\t$userName".PHP_EOL;
 		$logtext .= "current URL:\t$url".PHP_EOL;
-		$logtext .= '____________________________________________'.PHP_EOL.PHP_EOL;
+		$logtext .= '____________________________________________'.PHP_EOL;
 
 		if(false === $queryResultObject->queryWasSuccessfull()){
 			Helper::logToFile($logtext, 'dberror');
 		}
-
-		if(true === $this->forceLogging || (int)$execution > 1){
+		if('1' !== Stack::getInstance()->get('disable_db_log') || true === $this->forceLogging || (int)$execution > 1){
 			Helper::logToFile($logtext, 'dblog');
 		}
 	}
 
 	/**
 	 * saves a new item in the database
+	 *
 	 * @param QueryStringInterface $queryStringObject
 	 * @return QueryResultObject
 	 */
@@ -147,6 +162,7 @@ class DatabaseManager{
 
 	/**
 	 * updates an item in the database
+	 *
 	 * @param QueryStringInterface $queryStringObject
 	 * @return QueryResultObject
 	 */
@@ -156,6 +172,7 @@ class DatabaseManager{
 
 	/**
 	 * deletes items in the database
+	 *
 	 * @param QueryStringInterface $queryStringObject
 	 * @return QueryResultObject
 	 */
@@ -165,18 +182,20 @@ class DatabaseManager{
 
 	/**
 	 * finds items in the database
+	 *
 	 * @param QueryStringInterface $queryStringObject
 	 * @return QueryResultObject
 	 */
 	public function find(QueryStringInterface $queryStringObject){
 		return $this->query($queryStringObject);
 	}
+
 	/**
 	 * getter for the connection
+	 *
 	 * @return Connection
 	 */
 	public function getConnection(){
 		return $this->connection;
 	}
-
 }

@@ -95,7 +95,7 @@ class CoreControllerTest extends  PHPUnit_Framework_TestCase{
 		$rules = $controller->getAccessChecker()->getRules();
 		$rule = reset($rules);
 		$this->assertSame(1, sizeof($rules));
-		$this->assertFalse($rule->getAuthNeeded());
+		$this->assertFalse($rule->isAuthNeeded());
 		$this->assertSame('*', $rule->getActionName());
 	}
 
@@ -111,7 +111,7 @@ class CoreControllerTest extends  PHPUnit_Framework_TestCase{
 		$rules = $controller->getAccessChecker()->getRules();
 		$rule = reset($rules);
 		$this->assertSame(1, sizeof($rules));
-		$this->assertFalse($rule->getAuthNeeded());
+		$this->assertFalse($rule->isAuthNeeded());
 		$this->assertSame('*', $rule->getActionName());
 	}
 

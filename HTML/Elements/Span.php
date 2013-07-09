@@ -6,7 +6,6 @@
  * @version 0.2
  * @package wolxXxMVC
  * @subpackage HTML
- *
  */
 class Span extends DomElementAbstract{
 	/**
@@ -17,6 +16,17 @@ class Span extends DomElementAbstract{
 		return array(
 			'class' => null
 		);
+	}
+
+	/**
+	 * setter for the text
+	 *
+	 * @param string $text
+	 * @return Span
+	 */
+	public function setText($text){
+		$this->data->set('text', $text);
+		return $this;
 	}
 
 	/**
