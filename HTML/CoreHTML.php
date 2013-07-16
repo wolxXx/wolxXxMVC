@@ -37,10 +37,10 @@ class CoreHTML{
 	 * @return array
 	 */
 	public static function getUniqueIdAndName(){
-		$id = uniqid();
+		$uniqueId = uniqid();
 		return array(
-			'id' => 'dom_elem_id_'.$id,
-			'name' => 'dom_elem_name_'.$id
+			'id' => 'dom_elem_id_'.$uniqueId,
+			'name' => 'dom_elem_name_'.$uniqueId
 		);
 	}
 
@@ -49,58 +49,58 @@ class CoreHTML{
 	 * returns a simple object for having object access
 	 *
 	 * @param array $conf
+	 * @param array $default
 	 * @return StdClass
 	 */
-	protected static function mergeConf($conf){
+	public static function mergeConf($conf, $default = null){
 		$trace = debug_backtrace();
 		$function = $trace[1]['function'];
-		$default = DomElementAbstract::getDefaultConf();
-		switch($function){
-			case 'renderBr':{
-				$default = array_merge($default, Br::getDefaultConf());
-			}break;
-			case 'renderCheckbox':{
-				$default = array_merge($default, Checkbox::getDefaultConf());
-			}break;
-			case 'renderClear':{
-				$default = array_merge($default, Clear::getDefaultConf());
-			}break;
-			case 'renderOption':{
-				$default = array_merge($default, DropdownElement::getDefaultConf());
-			}break;
-			case 'renderFormStart':{
-				$default = array_merge($default, Form::getDefaultConf());
-			}break;
-			case 'renderGrid':{
-				$default = array_merge($default, Grid::getDefaultConf());
-			}break;
-			case 'renderHeadline':{
-				$default = array_merge($default, Headline::getDefaultConf());
-			}break;
-			case 'renderInput':{
-				$default = array_merge($default, Input::getDefaultConf());
-			}break;
-			case 'renderLabel':{
-				$default = array_merge($default, Label::getDefaultConf());
-			}break;
-			case 'renderPassword':{
-				$default = array_merge($default, Password::getDefaultConf());
-			}break;
-			case 'renderRadio':{
-				$default = array_merge($default, Radio::getDefaultConf());
-			}break;
-			case 'renderRadioOption':{
-				$default = array_merge($default, RadioOption::getDefaultConf());
-			}break;
-			case 'renderSpan':{
-				$default = array_merge($default, Span::getDefaultConf());
-			}break;
-			case 'renderSubmit':{
-				$default = array_merge($default, Submit::getDefaultConf());
-			}break;
-			case 'renderTextarea':{
-				$default = array_merge($default, Textarea::getDefaultConf());
-			}break;
+		if(null === $default){
+			$default = DomElementAbstract::getDefaultConf();
+			switch($function){
+				case 'renderButton':{
+					$default = array_merge($default, Button::getDefaultConf());
+				}break;
+				case 'renderCheckbox':{
+					$default = array_merge($default, Checkbox::getDefaultConf());
+				}break;
+				case 'renderOption':{
+					$default = array_merge($default, DropdownElement::getDefaultConf());
+				}break;
+				case 'renderFormStart':{
+					$default = array_merge($default, Form::getDefaultConf());
+				}break;
+				case 'renderHeadline':{
+					$default = array_merge($default, Headline::getDefaultConf());
+				}break;
+				case 'renderInput':{
+					$default = array_merge($default, Input::getDefaultConf());
+				}break;
+				case 'renderLabel':{
+					$default = array_merge($default, Label::getDefaultConf());
+				}break;
+				case 'renderOptionGroupStart':{
+					$default = array_merge($default, DropdownGroup::getDefaultConf());
+				}break;
+				case 'renderPassword':{
+					$default = array_merge($default, Password::getDefaultConf());
+				}break;
+				case 'renderRadioOption':{
+					$default = array_merge($default, RadioOption::getDefaultConf());
+				}break;
+				case 'renderSelectStart':{
+					$default = array_merge($default, Dropdown::getDefaultConf());
+				}break;
+				case 'renderSpan':{
+					$default = array_merge($default, Span::getDefaultConf());
+				}break;
+				case 'renderSubmit':{
+					$default = array_merge($default, Submit::getDefaultConf());
+				}break;
+				case 'renderTextarea':{
+					$default = array_merge($default, Textarea::getDefaultConf());
+				}break;
+			}
 		}
 		return (object) array_merge($default, $conf);
 	}
@@ -110,7 +110,7 @@ class CoreHTML{
 	 *
 	 * @param string $text
 	 */
-	protected static function out(){
+	public static function out(){
 		foreach(func_get_args() as $current){
 			echo $current.PHP_EOL;
 		}
@@ -227,6 +227,7 @@ class CoreHTML{
 				'checked' => $conf->checked,
 				'class' => $conf->class,
 				'name' => $conf->name,
+				'value' => $conf->value,
 				'id' => $conf->id,
 				'type' => 'checkbox'
 			)),
@@ -265,7 +266,8 @@ class CoreHTML{
 				'id' => $conf->id,
 				'name' => $conf->name,
 				'value' => $conf->value,
-				'autocomplete' => $conf->autocomplete
+				'autocomplete' => $conf->autocomplete,
+				'readonly' => true === $conf->readonly? 'readonly' : $conf->readonly
 			)),
 			self::closeSingleTag()
 		);

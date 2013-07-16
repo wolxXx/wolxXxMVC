@@ -21,4 +21,16 @@ interface DomElementInterface{
 	 * @return array
 	 */
 	public static function getDefaultConf();
+
+	/**
+	 * returns the ID of the element
+	 * @return string
+	 */
+	public function getId();
+
+	/**
+	 * returns the name of the element
+	 * @return string
+	 */
+	public function getName();
 }

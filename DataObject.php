@@ -141,7 +141,7 @@ class DataObject{
 	/**
 	 * returns all FileUploadObjects
 	 *
-	 * @return array
+	 * @return FileUploadObject[]
 	 */
 	public function getFiles(){
 		return $this->fileObjects;
@@ -202,7 +202,7 @@ class DataObject{
 	 *
 	 * @param string $key
 	 * @param mixed $default
-	 * @return mixed | NULL
+	 * @return mixed | null
 	 */
 	public function getSavely($key, $default = null){
 		try{

@@ -13,11 +13,11 @@ class CoreTranslator{
 	/**
 	 * translates the given string. accepts sprintf args
 	 * like %s for replacing arguments
-	 * all translations are logged in the log/translations-file
 	 *
 	 * @param string $string
 	 * @param string $args
 	 * @return string
+	 * @throws TranslatorException
 	 */
 	public static function translate($string, $args = null){
 		$return = false;
@@ -27,7 +27,7 @@ class CoreTranslator{
 			$return = false;
 		}
 		if(false === $return){
-			throw new Exception('Translator failed! args = '.implode(' | ', func_get_args()));
+			throw new TranslatorException('Translator failed! args = '.implode(' | ', func_get_args()));
 		}
 		return $return;
 	}

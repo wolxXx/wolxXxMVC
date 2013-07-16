@@ -4,35 +4,40 @@
  *
  * @author wolxXx
  * @package wolxXxMVC
- * @version 1.0
+ * @version 1.1
  */
 class PaginatorInformation{
 	/**
 	 * if the paginator should really be disabled
+	 *
 	 * @var boolean
 	 */
 	protected $hidePaginator;
 
 	/**
 	 * the current page number
+	 *
 	 * @var integer
 	 */
 	protected $pageNumber;
 
 	/**
 	 * the amount of pages available
+	 *
 	 * @var integer
 	 */
 	protected $pages;
 
 	/**
 	 * the prefix for urls
+	 *
 	 * @var string
 	 */
 	protected $urlPrefix;
 
 	/**
 	 * constructor for the paginator information value object
+	 *
 	 * @param boolean $hidePaginator
 	 * @param integer $pageNumber
 	 * @param integer $pages
@@ -49,14 +54,16 @@ class PaginatorInformation{
 	/**
 	 * getter for hiding pagination
 	 * returning false if manually set to false or if only one page is available
+	 *
 	 * @return boolean
 	 */
-	public function getHidePaginator(){
+	public function isHidePaginator(){
 		return $this->hidePaginator;
 	}
 
 	/**
 	 * getter for the current page number
+	 *
 	 * @return integer
 	 */
 	public function getPageNumber(){
@@ -65,6 +72,7 @@ class PaginatorInformation{
 
 	/**
 	 * getter for the number of pages
+	 *
 	 * @return integer
 	 */
 	public function getPages(){
@@ -73,6 +81,7 @@ class PaginatorInformation{
 
 	/**
 	 * getter for the url prefix
+	 *
 	 * @return string
 	 */
 	public function getUrlPrefix(){
@@ -81,6 +90,7 @@ class PaginatorInformation{
 
 	/**
 	 * setter for hiding paginator manually
+	 *
 	 * @param boolean $hidePaginator
 	 * @return PaginatorInformation
 	 */
@@ -91,6 +101,7 @@ class PaginatorInformation{
 
 	/**
 	 * setter for amount of available pages
+	 *
 	 * @param integer $pages
 	 * @return PaginatorInformation
 	 */
@@ -101,6 +112,7 @@ class PaginatorInformation{
 
 	/**
 	 * setter for the current page number
+	 *
 	 * @param integer $pageNumber
 	 * @return PaginatorInformation
 	 */
@@ -111,6 +123,7 @@ class PaginatorInformation{
 
 	/**
 	 * setter for the url prefix
+	 *
 	 * @param string $urlPrefix
 	 * @return PaginatorInformation
 	 */

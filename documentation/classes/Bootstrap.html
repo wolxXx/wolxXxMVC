@@ -111,9 +111,13 @@
         <li class="nav-header">
             <i class="icon-custom icon-method"></i> Methods
             <ul>
-                                                                                    <li class="method public">
-        <a href="#method_beforeRun" title="beforeRun :: ">
-            <span class="description"></span><pre>beforeRun</pre>
+                                                                                    <li class="method public inherited">
+        <a href="#method_beforeRun" title="beforeRun :: called by mvc before the main run function
+can be overwriten by user&#039;s wanted own bootstrap class
+default behaviour: do the wolxXx style. do nothing :)">
+            <span class="description">called by mvc before the main run function
+can be overwriten by user&#039;s wanted own bootstrap class
+default behaviour: do the wolxXx style. do nothing :)</span><pre>beforeRun</pre>
         </a>
     </li>
 
@@ -125,13 +129,7 @@ gets all needed singleton instances</span><pre>__construct</pre>
         </a>
     </li>
 
-                                                                                                        <li class="method public inherited">
-        <a href="#method_catchException" title="catchException :: catches the exception that is thrown in error handler">
-            <span class="description">catches the exception that is thrown in error handler</span><pre>catchException</pre>
-        </a>
-    </li>
-
-                                                                                                                                                                                                                                                                                                                                        <li class="method public inherited">
+                                                                                                                                                                                                                        <li class="method public inherited">
         <a href="#method_afterRun" title="afterRun :: called by mvc after the main run function
 can be overwriten by user&#039;s wanted own bootstrap class
 default behaviour: do the wolxXx style. do nothing :)">
@@ -203,39 +201,21 @@ if no match is found, the cms controller is returned</span><pre>getController</p
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-                                                                                                                                                                        <li class="method protected inherited">
-                            <a href="#method_grabModeAndVersion" title="grabModeAndVersion :: grabs the version and mode of the application
-it is grabbed from the apache directive
-SetEnv APPLICATION_ENV &quot;main-dev&quot;
-version 	€{main, mobile, .">
-                                <span class="description">grabs the version and mode of the application
-it is grabbed from the apache directive
-SetEnv APPLICATION_ENV &quot;main-dev&quot;
-version 	€{main, mobile, .</span><pre>grabModeAndVersion</pre>
-                            </a>
-                        </li>
-                                                                                <li class="method protected inherited">
-                            <a href="#method_grabHostName" title="grabHostName :: grab the host name
-if it was set before">
-                                <span class="description">grab the host name
-if it was set before</span><pre>grabHostName</pre>
-                            </a>
-                        </li>
-                                                                                <li class="method protected inherited">
+                                                                                                                                    <li class="method protected inherited">
                             <a href="#method_config" title="config :: get the config">
                                 <span class="description">get the config</span><pre>config</pre>
                             </a>
                         </li>
                                                                                                                                                                                                                                                                     <li class="method protected inherited">
-                            <a href="#method_checkRegisteredRedirect" title="checkRegisteredRedirect :: ">
-                                <span class="description"></span><pre>checkRegisteredRedirect</pre>
+                            <a href="#method_checkRegisteredRedirect" title="checkRegisteredRedirect :: checks if the controller registered a redirect">
+                                <span class="description">checks if the controller registered a redirect</span><pre>checkRegisteredRedirect</pre>
                             </a>
                         </li>
                                                                                                                                                             </ul>
         </li>
         <li class="nav-header private">» Private
             <ul>
-                                                                                                                                                                                                                                                                                    <li class="method private inherited">
+                                                                                                                                                                        <li class="method private inherited">
                             <a href="#method_init" title="init :: initing everything usefull">
                                 <span class="description">initing everything usefull</span><pre>init</pre>
                             </a>
@@ -306,17 +286,26 @@ use the hooks {(before, after)x(run, view}) e.g. beforeRun, afterView, etc.</p>
 
                     <h3><i class="icon-custom icon-method"></i> Methods</h3>
                                                                 <a id="method_beforeRun"></a>
-                        <div class="element clickable method public method_beforeRun" data-toggle="collapse" data-target=".method_beforeRun .collapse">
-                            <h2>beforeRun</h2>
+                        <div class="element clickable method public method_beforeRun inherited" data-toggle="collapse" data-target=".method_beforeRun .collapse">
+                            <h2>called by mvc before the main run function
+can be overwriten by user&#039;s wanted own bootstrap class
+default behaviour: do the wolxXx style. do nothing :)</h2>
                             <pre>beforeRun() </pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description">
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -364,31 +353,6 @@ gets all needed singleton instances</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
-                                                                            </table>
-
-                                    
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_catchException"></a>
-                        <div class="element clickable method public method_catchException inherited" data-toggle="collapse" data-target=".method_catchException .collapse">
-                            <h2>catches the exception that is thrown in error handler</h2>
-                            <pre>catchException() </pre>
-                            <div class="labels">
-                                <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
-
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -399,67 +363,6 @@ gets all needed singleton instances</h2>
                                                                             </table>
 
                                     
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_grabModeAndVersion"></a>
-                        <div class="element clickable method protected method_grabModeAndVersion inherited" data-toggle="collapse" data-target=".method_grabModeAndVersion .collapse">
-                            <h2>grabs the version and mode of the application
-it is grabbed from the apache directive
-SetEnv APPLICATION_ENV &quot;main-dev&quot;
-version 	€{main, mobile, .</h2>
-                            <pre>grabModeAndVersion() : \CoreBootstrap</pre>
-                            <div class="labels">
-                                <span class="label">inherited</span>                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description"><p>.}
-mode        €{production, dev, ..}</p>
-</div>
-
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
-
-                                    
-                                                                            <h3>Response</h3>
-                                        <code><a href="../classes/CoreBootstrap.html">\CoreBootstrap</a></code><p>
-</p>
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_grabHostName"></a>
-                        <div class="element clickable method protected method_grabHostName inherited" data-toggle="collapse" data-target=".method_grabHostName .collapse">
-                            <h2>grab the host name
-if it was set before</h2>
-                            <pre>grabHostName() : \CoreBootstrap</pre>
-                            <div class="labels">
-                                <span class="label">inherited</span>                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
-
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
-
-                                    
-                                                                            <h3>Response</h3>
-                                        <code><a href="../classes/CoreBootstrap.html">\CoreBootstrap</a></code><p>
-</p>
                                                                     </div>
                             </div>
                         </div>
@@ -475,6 +378,13 @@ if it was set before</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -507,6 +417,13 @@ if it was set before</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -555,6 +472,13 @@ default behaviour: do the wolxXx style. do nothing :)</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -589,6 +513,13 @@ default behaviour: do the wolxXx style. do nothing :)</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -609,6 +540,13 @@ default behaviour: do the wolxXx style. do nothing :)</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -659,6 +597,13 @@ calls controller&#039;s after run action</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -667,7 +612,7 @@ calls controller&#039;s after run action</h2>
                         </div>
                                             <a id="method_checkRegisteredRedirect"></a>
                         <div class="element clickable method protected method_checkRegisteredRedirect inherited" data-toggle="collapse" data-target=".method_checkRegisteredRedirect .collapse">
-                            <h2>checkRegisteredRedirect</h2>
+                            <h2>checks if the controller registered a redirect</h2>
                             <pre>checkRegisteredRedirect() </pre>
                             <div class="labels">
                                 <span class="label">inherited</span>                                                                                                                                                            </div>
@@ -677,6 +622,13 @@ calls controller&#039;s after run action</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -709,6 +661,13 @@ calls controller&#039;s after run action</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -757,6 +716,13 @@ trims all tailing slashes</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -776,6 +742,13 @@ if no match is found, the cms controller is returned</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -823,6 +796,13 @@ if no match is found, the cms controller is returned</h2>
                                                     <td>
                                                                                                             </td>
                                                 </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
                                                                                     </table>
                                     </div>
                                 </div>
@@ -846,6 +826,13 @@ if no match is found, the cms controller is returned</h2>
                                                     <td>
                                                                                                                     
 
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
                                                                                                             </td>
                                                 </tr>
                                                                                             <tr>
@@ -887,6 +874,13 @@ if no match is found, the cms controller is returned</h2>
                                                     <td>
                                                                                                             </td>
                                                 </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
                                                                                     </table>
                                     </div>
                                 </div>
@@ -910,6 +904,13 @@ if no match is found, the cms controller is returned</h2>
                                                     <td>
                                                                                                                     
 
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
                                                                                                             </td>
                                                 </tr>
                                                                                             <tr>
@@ -951,6 +952,13 @@ if no match is found, the cms controller is returned</h2>
                                                     <td>
                                                                                                             </td>
                                                 </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
                                                                                     </table>
                                     </div>
                                 </div>
@@ -974,6 +982,13 @@ if no match is found, the cms controller is returned</h2>
                                                     <td>
                                                                                                                     
 
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
                                                                                                             </td>
                                                 </tr>
                                                                                             <tr>
@@ -1007,7 +1022,7 @@ if no match is found, the cms controller is returned</h2>
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 08 Jul 2013 14:06:26 +0000.<br/>
+            generated on Tue, 16 Jul 2013 08:27:23 +0000.<br/>
     </footer>
     </body>
 </html>

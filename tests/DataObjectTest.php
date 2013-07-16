@@ -3,6 +3,23 @@
  * @codeCoverageIgnore
  */
 class DataObjectTest extends  PHPUnit_Framework_TestCase{
+	public function testDebug(){
+		$dataObject = new DataObject();
+		$dataObject->debug();
+	}
+	public function testRemoveKey(){
+		$_GET['foo'] = 'bar';
+		$dataObject = new DataObject();
+		$this->assertSame('bar', $dataObject->get('foo'));
+		$dataObject->removeKey('foo');
+		$this->assertSame('', $dataObject->getSavely('foo', ''));
+	}
+
+	public function testGetSavely(){
+		$dataObject = new DataObject();
+		$this->assertSame('', $dataObject->getSavely('foobar', ''));
+	}
+
 	public function testPostData(){
 		$dataObject = new DataObject();
 		$this->assertSame(array(), $dataObject->getRawPOST());

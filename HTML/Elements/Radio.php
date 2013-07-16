@@ -9,15 +9,6 @@
  */
 class Radio extends ContainableDomElementAbstract{
 	/**
-	 * (non-PHPdoc)
-	 * @see DomElementInterface::getDefaultConf()
-	 */
-	public static function getDefaultConf(){
-		return array(
-		);
-	}
-
-	/**
 	 * overwrites the abstract method
 	 * only radio options are allowed as children
 	 *

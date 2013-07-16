@@ -3,6 +3,24 @@
  * @codeCoverageIgnore
  */
 class AccessCheckerTest extends  PHPUnit_Framework_TestCase{
+	public function testClearRules(){
+		$accessChecker = new AccessChecker();
+		$accessChecker->clearRules();
+		$this->assertEmpty($accessChecker->getRules());
+	}
+
+	public function testSetUserLevel(){
+		$accessChecker = new AccessChecker();
+		$accessChecker->setUserLevel(2);
+		$this->assertSame(2, $accessChecker->getUserLevel());
+	}
+
+	public function testSetIsLoggedIn(){
+		$accessChecker = new AccessChecker();
+		$accessChecker->setUserIsLoggedIn(true);
+		$this->assertTrue($accessChecker->isUserLoggedIn());
+	}
+
 	public function testGeneral(){
 		$accessChecker = new AccessChecker();
 		$accessChecker->addRule(new AccessRule('*'));

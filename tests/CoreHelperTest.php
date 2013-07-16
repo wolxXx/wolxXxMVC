@@ -309,7 +309,8 @@ class CoreHelperTest extends  PHPUnit_Framework_TestCase{
 		$files = CoreHelper::scanDirectory(__DIR__.'/_src/ScanDirTestDir', true);
 		$files[0] = CoreHelper::getFileName($files[0]);
 		$files[1] = CoreHelper::getFileName($files[1]);
-		$this->assertSame(array('pewpew.txt', 'luuuke.php'), $files);
+		$this->assertContains('pewpew.txt', $files);
+		$this->assertContains('luuuke.php', $files);
 	}
 
 	public function testAddSplash(){

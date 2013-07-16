@@ -57,7 +57,12 @@ class HttpInformation{
 		$headers = get_headers($this->url, 1);
 		$status = explode(' ', $headers[0]);
 		$this->statusCode = (int)$status[1];
-		$this->statusText = $status[2];
+		if(404 === $this->statusCode){
+			$this->statusText = 'Not found';
+			$this->contenttype = null;
+			$this->size = 0;
+			return;
+		}
 		$this->statusText = $status[2];
 		$this->contenttype = $headers['Content-Type'];
 		$this->size = (int)($headers['Content-Length'] / 1024);

@@ -53,6 +53,15 @@ class AccessChecker{
 	}
 
 	/**
+	 * checks if the user is logged in
+	 *
+	 * @return boolean
+	 */
+	public function isUserLoggedIn(){
+		return $this->userIsLoggedIn;
+	}
+
+	/**
 	 * setter for the user level
 	 *
 	 * @param integer $userLevel
@@ -61,6 +70,14 @@ class AccessChecker{
 	public function setUserLevel($userLevel){
 		$this->userLevel = $userLevel;
 		return $this;
+	}
+
+	/**
+	 * getter for the user user
+	 * @return integer
+	 */
+	public function getUserLevel(){
+		return $this->userLevel;
 	}
 
 	/**

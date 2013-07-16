@@ -14,7 +14,7 @@ class DropdownGroup extends ContainableDomElementAbstract{
 	 */
 	public static function getDefaultConf(){
 		return array(
-			'label' => ''
+			'label' => null
 		);
 	}
 

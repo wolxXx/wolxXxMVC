@@ -6,7 +6,7 @@
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage Database
- * @version 1.2
+ * @version 1.3
  */
 class UpdateObject{
 	/**
@@ -21,7 +21,7 @@ class UpdateObject{
 	 *
 	 * @var integer
 	 */
-	private $id;
+	private $rowId;
 
 	/**
 	 * the table name
@@ -41,13 +41,14 @@ class UpdateObject{
 	 * constructor
 	 *
 	 * @param string $table
-	 * @return SaveObject
 	 */
-	public function __construct($table = null, $id = null){
+	public function __construct($table = null, $rowId= null){
+		$this
+			->setData(array())
+			->setTable($table)
+			->setId($rowId)
+		;
 		$this->databaseManager = DatabaseManager::getInstance();
-		$this->table = $table;
-		$this->id = $id;
-		return $this;
 	}
 
 	/**
@@ -128,8 +129,8 @@ class UpdateObject{
 	 * @param integer $id
 	 * @return UpdateObject
 	 */
-	public function setId($id){
-		$this->id = $id;
+	public function setId($rowId){
+		$this->rowId = $rowId;
 		return $this;
 	}
 
@@ -139,7 +140,7 @@ class UpdateObject{
 	 * @return ResultObject
 	 */
 	public function update(){
-		$queryBuilder = new UpdateQueryBuilder($this->table, $this->data, $this->id);
+		$queryBuilder = new UpdateQueryBuilder($this->table, $this->data, $this->rowId);
 		return $this->databaseManager->update($queryBuilder->getQueryString());
 	}
 }

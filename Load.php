@@ -304,7 +304,7 @@ class Load{
 		$this->params['content'] = ob_get_clean();
 		extract($this->params);
 		if(true === $this->get('isAjax')){
-			echo $content;
+			echo $this->params['content'];
 			return $this;
 		}
 		if(false === file_exists($this->layoutPath.$this->layout.'.php')){

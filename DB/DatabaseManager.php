@@ -64,7 +64,7 @@ class DatabaseManager{
 	 * @return DatabaseManager
 	 */
 	public function setForceLogging($force = true){
-		$this->forceLogging = true;
+		$this->forceLogging = $force;
 		return $this;
 	}
 

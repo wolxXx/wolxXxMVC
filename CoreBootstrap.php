@@ -63,51 +63,6 @@ abstract class CoreBootstrap{
 	}
 
 	/**
-	 * catches the exception that is thrown in error handler
-	 */
-	public static function catchException(){
-		Load::getInstance()->clearBuffer();
-		if(true === Helper::isDebugEnabled()){
-			Helper::dieDebug(func_get_args());
-		}
-		throw new Exception('oO');
-	}
-
-	/**
-	 * grabs the version and mode of the application
-	 * it is grabbed from the apache directive
-	 * SetEnv APPLICATION_ENV "main-dev"
-	 * version 	€{main, mobile, ..}
-	 * mode 		€{production, dev, ..}
-	 *
-	 * @return CoreBootstrap
-	 */
-	protected function grabModeAndVersion(){
-		if(false === getenv('APPLICATION_ENV')){
-			putenv('APPLICATION_ENV=main-production');
-		}
-
-		$split = explode('-', getenv('APPLICATION_ENV'));
-		$version = $split[0];
-		$mode = $split[1];
-		$this->stack->set('version', $version);
-		$this->stack->set('mode', $mode);
-		return $this;
-	}
-
-	/**
-	 * grab the host name
-	 * if it was set before
-	 *
-	 * @return CoreBootstrap
-	 */
-	protected function grabHostName(){
-		$hostname = isset($hostname)? $hostname : php_uname("n");
-		$this->stack->set('hostname', $hostname);
-		return $this;
-	}
-
-	/**
 	 * get the config
 	 */
 	protected function config(){
@@ -124,22 +79,14 @@ abstract class CoreBootstrap{
 	 * initing everything usefull
 	 */
 	private final function init(){
-		set_exception_handler(array('CoreBootstrap', 'catchException'));
-		set_error_handler(
-			function ($code, $message, $file, $line, $context) {
-				if(true === Helper::isDebugEnabled()){
-					?>
-						<h1>Es ist ein Fehler aufgetreten</h1>
-						<h2><?= $message ?></h2>
-						Typ: <?= $code.' '.Helper::errorCodeToString($code) ?><br />
-						<?= $file ?> : <?= $line ?>
-					<?
-					var_dump($context);
-					die('');
-				}
-				throw new Exception($message);
-			}, -1
-		);
+		set_exception_handler(function(){
+			Helper::dieDebug(func_get_args());
+		});
+		set_error_handler(function(){
+			call_user_func_array(array('wolxXxMVC', 'errorHandler'), func_get_args());
+			#wolxXxMVC::errorHandler($code, $message, $file, $line)
+			#Helper::dieDebug(func_get_args());
+		}, -1);
 		if(true === file_exists('application/config/defines.php')){
 			require_once 'application/config/defines.php';
 		}
@@ -154,11 +101,11 @@ abstract class CoreBootstrap{
 			session_start();
 		}
 
+		Helper::grabModeAndVersion();
+		Helper::grabHostName();
+
 		$this->stack = Stack::getInstance();
-		$this
-			->grabModeAndVersion()
-			->grabHostName()
-			->config();
+		$this->config();
 
 		$this->model = new Model();
 		$this->load = Load::getInstance();
@@ -220,6 +167,9 @@ abstract class CoreBootstrap{
 		$this->checkRegisteredRedirect();
 	}
 
+	/**
+	 * checks if the controller registered a redirect
+	 */
 	protected function checkRegisteredRedirect(){
 		if(null !== $this->controller->getRegisteredRedirect()){
 			$this->controller->getRegisteredRedirect()->redirect();

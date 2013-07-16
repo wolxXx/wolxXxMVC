@@ -16,7 +16,9 @@ class Input extends DomElementAbstract{
 		return array(
 			'type' => 'text',
 			'value' => null,
-			'autocomplete' => null
+			'autocomplete' => null,
+			'readonly' => null
+
 		);
 	}
 

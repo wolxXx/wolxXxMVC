@@ -6,7 +6,7 @@
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage Database
- * @version 1.2
+ * @version 1.3
  */
 class QueryResultObject{
 	/**
@@ -46,10 +46,12 @@ class QueryResultObject{
 	 * @param integer | null $lastInsertId
 	 */
 	public function __construct($result, $query, $error, $lastInsertId = null){
-		$this->result = $result;
-		$this->query = $query;
-		$this->error = $error;
-		$this->lastInsertId = $lastInsertId;
+		$this
+			->setResult($result)
+			->setQuery($query)
+			->setError($error)
+			->setLastInsertId($lastInsertId)
+		;
 	}
 
 	/**
@@ -84,11 +86,11 @@ class QueryResultObject{
 	/**
 	 * setter for the last insert id
 	 *
-	 * @param integer | null $id
+	 * @param integer | null $lastInsertId
 	 * @return ResultObject
 	 */
-	public function setLastInsertId($id){
-		$this->lastInsertId = $id;
+	public function setLastInsertId($lastInsertId){
+		$this->lastInsertId = $lastInsertId;
 		return $this;
 	}
 

@@ -4,11 +4,61 @@
  * https://www.youtube.com/watch?v=rtBq9QKJTq8
  *
  * @author wolxXx
- * @version 1.4
+ * @version 1.5
  * @package wolxXxMVC
  *
  */
 class CoreHelper{
+	/**
+	 * grabs the version and mode of the application
+	 * it is grabbed from the apache directive
+	 * SetEnv APPLICATION_ENV "main-dev"
+	 * version 	€{main, mobile, ..}
+	 * mode 		€{production, dev, ..}
+	 * saves it in the default stack
+	 */
+	public static function grabModeAndVersion(){
+		if(false === getenv('APPLICATION_ENV')){
+			putenv('APPLICATION_ENV=main-production');
+		}
+		$split = explode('-', getenv('APPLICATION_ENV'));
+		$version = $split[0];
+		$mode = $split[1];
+		Stack::getInstance()->set('version', $version);
+		Stack::getInstance()->set('mode', $mode);
+	}
+
+	/**
+	 * grab the host name
+	 * if it was set before
+	 * saves it in the default stack
+	 */
+	public static function grabHostName(){
+		Stack::getInstance()->set('hostname', php_uname("n"));
+	}
+
+	/**
+
+
+	/**
+	 * searches for images on google
+	 *
+	 * @param string $search
+	 * @return array
+	 */
+	public static function grabGoogleImageSearch($search){
+		$search = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='.urlencode($search);
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)');
+		curl_setopt($curl, CURLOPT_URL, $search);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
+		$result = curl_exec($curl);
+		curl_close($curl);
+		$result = json_decode($result);
+		return $result->responseData->results;
+	}
+
 	/**
 	 * removes all html tags from a given string
 	 * @param string $str
@@ -173,6 +223,16 @@ class CoreHelper{
 	 */
 	public static function getRequestProtocol(){
 		return 'http'.(true === self::requestIsHTTPS()? 's' : '');
+	}
+
+	/**
+	 * returns https if set in the config, else http
+	 * as postfix ://
+	 *
+	 * @return string
+	 */
+	public static function getRequestedProtocol(){
+		return 'http'.(true === Stack::getInstance()->get('use_https', false)? 's' : '').'://';
 	}
 
 	/**
@@ -746,39 +806,55 @@ class CoreHelper{
 	 * @return string
 	 */
 	public static function errorCodeToString($code){
+		$return = '';
 		switch($code){
-			case E_ERROR: // 1 //
-				return 'E_ERROR';
-			case E_WARNING: // 2 //
-				return 'E_WARNING';
-			case E_PARSE: // 4 //
-				return 'E_PARSE';
-			case E_NOTICE: // 8 //
-				return 'E_NOTICE';
-			case E_CORE_ERROR: // 16 //
-				return 'E_CORE_ERROR';
-			case E_CORE_WARNING: // 32 //
-				return 'E_CORE_WARNING';
-			case E_CORE_ERROR: // 64 //
-				return 'E_COMPILE_ERROR';
-			case E_CORE_WARNING: // 128 //
-				return 'E_COMPILE_WARNING';
-			case E_USER_ERROR: // 256 //
-				return 'E_USER_ERROR';
-			case E_USER_WARNING: // 512 //
-				return 'E_USER_WARNING';
-			case E_USER_NOTICE: // 1024 //
-				return 'E_USER_NOTICE';
-			case E_STRICT: // 2048 //
-				return 'E_STRICT';
-			case E_RECOVERABLE_ERROR: // 4096 //
-				return 'E_RECOVERABLE_ERROR';
-			case E_DEPRECATED: // 8192 //
-				return 'E_DEPRECATED';
-			case E_USER_DEPRECATED: // 16384 //
-				return 'E_USER_DEPRECATED';
+			case E_ERROR:{
+				$return = 'E_ERROR'; // 1
+			}break;
+			case E_WARNING:{
+				$return = 'E_WARNING'; // 2
+			}break;
+			case E_PARSE:{
+				$return = 'E_PARSE'; // 4
+			}break;
+			case E_NOTICE:{
+				$return = 'E_NOTICE'; // 8
+			}break;
+			case E_CORE_ERROR:{
+				$return = 'E_CORE_ERROR'; // 16
+			}break;
+			case E_CORE_WARNING:{
+				$return = 'E_CORE_WARNING'; // 32
+			}break;
+			case E_CORE_ERROR:{
+				$return = 'E_COMPILE_ERROR'; // 64
+			}break;
+			case E_CORE_WARNING:{
+				$return = 'E_COMPILE_WARNING'; // 128
+			}break;
+			case E_USER_ERROR:{
+				$return = 'E_USER_ERROR'; // 256
+			}break;
+			case E_USER_WARNING:{
+				$return = 'E_USER_WARNING'; // 512
+			}break;
+			case E_USER_NOTICE:{
+				$return = 'E_USER_NOTICE'; // 1024
+			}break;
+			case E_STRICT:{
+				$return = 'E_STRICT'; // 2048
+			}break;
+			case E_RECOVERABLE_ERROR:{
+				$return = 'E_RECOVERABLE_ERROR'; // 4096
+			}break;
+			case E_DEPRECATED:{
+				$return = 'E_DEPRECATED'; // 8192
+			}break;
+			case E_USER_DEPRECATED:{
+				$return = 'E_USER_DEPRECATED'; // 16384
+			}break;
 		}
-		return '';
+		return $return;
 	}
 
 	/**
@@ -872,11 +948,11 @@ class CoreHelper{
 	public static function getYoutubeVideoInformation($ytid){
 		$return = new stdClass();
 		$url = 'http://gdata.youtube.com/feeds/api/videos?q='.$ytid;
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$feed = curl_exec($ch);
-		curl_close($ch);
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $url);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		$feed = curl_exec($curl);
+		curl_close($curl);
 		$xml = simplexml_load_string($feed);
 		if(true === in_array($xml, array(null, false), true)){
 			throw new Exception('could not parse youtube information for ytid = '.$ytid);
@@ -904,21 +980,21 @@ class CoreHelper{
 	public static function fetch_google($terms = 'sample search', $numpages = 1, $user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0'){
 		$searched="";
 		for($i = 0; $i <= $numpages; $i++){
-			$ch = curl_init();
+			$curl = curl_init();
 			$url="http://www.google.com/searchbyimage?hl=en&image_url=".urlencode($terms);
-			curl_setopt ($ch, CURLOPT_URL, $url);
-			curl_setopt ($ch, CURLOPT_USERAGENT, $user_agent);
-			curl_setopt ($ch, CURLOPT_HEADER, 0);
-			curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 1);
-			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt ($ch, CURLOPT_REFERER, 'http://www.google.com/');
-			curl_setopt ($ch,CURLOPT_CONNECTTIMEOUT,120);
-			curl_setopt ($ch,CURLOPT_TIMEOUT,120);
-			curl_setopt ($ch,CURLOPT_MAXREDIRS,10);
-			curl_setopt ($ch,CURLOPT_COOKIEFILE,"cookie.txt");
-			curl_setopt ($ch,CURLOPT_COOKIEJAR,"cookie.txt");
-			$searched=$searched.curl_exec ($ch);
-			curl_close ($ch);
+			curl_setopt ($curl, CURLOPT_URL, $url);
+			curl_setopt ($curl, CURLOPT_USERAGENT, $user_agent);
+			curl_setopt ($curl, CURLOPT_HEADER, 0);
+			curl_setopt ($curl, CURLOPT_FOLLOWLOCATION, 1);
+			curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt ($curl, CURLOPT_REFERER, 'http://www.google.com/');
+			curl_setopt ($curl,CURLOPT_CONNECTTIMEOUT,120);
+			curl_setopt ($curl,CURLOPT_TIMEOUT,120);
+			curl_setopt ($curl,CURLOPT_MAXREDIRS,10);
+			curl_setopt ($curl,CURLOPT_COOKIEFILE,"cookie.txt");
+			curl_setopt ($curl,CURLOPT_COOKIEJAR,"cookie.txt");
+			$searched=$searched.curl_exec ($curl);
+			curl_close ($curl);
 		}
 
 		$matches = array();

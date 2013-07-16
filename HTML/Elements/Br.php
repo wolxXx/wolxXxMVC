@@ -10,15 +10,6 @@
 class Br extends DomElementAbstract{
 	/**
 	 * (non-PHPdoc)
-	 * @see DomElementInterface::getDefaultConf()
-	 */
-	public static function getDefaultConf(){
-		return array(
-		);
-	}
-
-	/**
-	 * (non-PHPdoc)
 	 * @see DomElementInterface::display()
 	 */
 	public function display(){

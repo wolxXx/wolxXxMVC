@@ -112,6 +112,34 @@
             <i class="icon-custom icon-method"></i> Methods
             <ul>
                                                                                     <li class="method public">
+        <a href="#method_grabModeAndVersion" title="grabModeAndVersion :: grabs the version and mode of the application
+it is grabbed from the apache directive
+SetEnv APPLICATION_ENV &quot;main-dev&quot;
+version 	€{main, mobile, .">
+            <span class="description">grabs the version and mode of the application
+it is grabbed from the apache directive
+SetEnv APPLICATION_ENV &quot;main-dev&quot;
+version 	€{main, mobile, .</span><pre>grabModeAndVersion</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_grabHostName" title="grabHostName :: grab the host name
+if it was set before
+saves it in the default stack">
+            <span class="description">grab the host name
+if it was set before
+saves it in the default stack</span><pre>grabHostName</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_grabGoogleImageSearch" title="grabGoogleImageSearch :: searches for images on google">
+            <span class="description">searches for images on google</span><pre>grabGoogleImageSearch</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
         <a href="#method_removeTagsFromText" title="removeTagsFromText :: removes all html tags from a given string">
             <span class="description">removes all html tags from a given string</span><pre>removeTagsFromText</pre>
         </a>
@@ -196,6 +224,14 @@ the $redirect param is a fallback</span><pre>historyBack</pre>
                                                                                                         <li class="method public">
         <a href="#method_getRequestProtocol" title="getRequestProtocol :: returns https if the current request is a https request, http otherwise">
             <span class="description">returns https if the current request is a https request, http otherwise</span><pre>getRequestProtocol</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getRequestedProtocol" title="getRequestedProtocol :: returns https if set in the config, else http
+as postfix ://">
+            <span class="description">returns https if set in the config, else http
+as postfix ://</span><pre>getRequestedProtocol</pre>
         </a>
     </li>
 
@@ -501,11 +537,11 @@ the object that is returned contains the title and the duration in seconds</span
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
         </li>
         <li class="nav-header private">» Private
             <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
         </li>
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
@@ -560,7 +596,133 @@ https://www.youtube.com/watch?v=rtBq9QKJTq8</p>
                                                                                                                                                                                                                                                                                         </table>
 
                     <h3><i class="icon-custom icon-method"></i> Methods</h3>
-                                                                <a id="method_removeTagsFromText"></a>
+                                                                <a id="method_grabModeAndVersion"></a>
+                        <div class="element clickable method public method_grabModeAndVersion" data-toggle="collapse" data-target=".method_grabModeAndVersion .collapse">
+                            <h2>grabs the version and mode of the application
+it is grabbed from the apache directive
+SetEnv APPLICATION_ENV &quot;main-dev&quot;
+version 	€{main, mobile, .</h2>
+                            <pre>grabModeAndVersion() </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>.}
+mode        €{production, dev, ..}
+saves it in the default stack</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_grabHostName"></a>
+                        <div class="element clickable method public method_grabHostName" data-toggle="collapse" data-target=".method_grabHostName .collapse">
+                            <h2>grab the host name
+if it was set before
+saves it in the default stack</h2>
+                            <pre>grabHostName() </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_grabGoogleImageSearch"></a>
+                        <div class="element clickable method public method_grabGoogleImageSearch" data-toggle="collapse" data-target=".method_grabGoogleImageSearch .collapse">
+                            <h2>searches for images on google</h2>
+                            <pre>grabGoogleImageSearch(string $search) : array</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$search</h4>
+                                                <code>string</code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_removeTagsFromText"></a>
                         <div class="element clickable method public method_removeTagsFromText" data-toggle="collapse" data-target=".method_removeTagsFromText .collapse">
                             <h2>removes all html tags from a given string</h2>
                             <pre>removeTagsFromText($text) : string</pre>
@@ -572,6 +734,13 @@ https://www.youtube.com/watch?v=rtBq9QKJTq8</p>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -606,6 +775,13 @@ https://www.youtube.com/watch?v=rtBq9QKJTq8</p>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -660,6 +836,13 @@ leave param for having function and class as default!</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -684,6 +867,13 @@ leave param for having function and class as default!</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -723,6 +913,13 @@ leave param for having function and class as default!</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -744,6 +941,13 @@ leave param for having function and class as default!</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -790,6 +994,13 @@ leave param for having function and class as default!</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -808,6 +1019,13 @@ leave param for having function and class as default!</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -846,6 +1064,13 @@ leave param for having function and class as default!</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -899,6 +1124,13 @@ the $redirect param is a fallback</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -923,6 +1155,13 @@ the $redirect param is a fallback</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -958,6 +1197,13 @@ the $redirect param is a fallback</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -979,6 +1225,13 @@ the $redirect param is a fallback</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1014,6 +1267,49 @@ the $redirect param is a fallback</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getRequestedProtocol"></a>
+                        <div class="element clickable method public method_getRequestedProtocol" data-toggle="collapse" data-target=".method_getRequestedProtocol .collapse">
+                            <h2>returns https if set in the config, else http
+as postfix ://</h2>
+                            <pre>getRequestedProtocol() : string</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -1035,6 +1331,13 @@ the $redirect param is a fallback</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1066,6 +1369,13 @@ if the directory does not exist, it creates the directory recursivly</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1121,6 +1431,13 @@ if the directory does not exist, it creates the directory recursivly</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1148,6 +1465,13 @@ if the directory does not exist, it creates the directory recursivly</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1189,6 +1513,13 @@ if the directory does not exist, it creates the directory recursivly</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1216,6 +1547,13 @@ if the directory does not exist, it creates the directory recursivly</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1257,6 +1595,13 @@ if the directory does not exist, it creates the directory recursivly</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1285,6 +1630,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1348,6 +1700,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1372,6 +1731,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1420,6 +1786,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -1438,6 +1811,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1490,6 +1870,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1514,6 +1901,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1571,6 +1965,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1607,6 +2008,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1634,6 +2042,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1686,6 +2101,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1710,6 +2132,13 @@ if forceHardCut is not set to true, it takes the next letters until end of senct
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1751,6 +2180,13 @@ every character is only one time in the password</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1802,6 +2238,13 @@ $slots indicates how many arrays should be returned back</p>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1831,6 +2274,13 @@ $slots indicates how many arrays should be returned back</p>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1886,6 +2336,13 @@ $slots indicates how many arrays should be returned back</p>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1918,6 +2375,13 @@ $slots indicates how many arrays should be returned back</p>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -1971,6 +2435,13 @@ $filename should be the fullpath</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -1995,6 +2466,13 @@ $filename should be the fullpath</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2048,6 +2526,13 @@ $filename requires a fullpath</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -2072,6 +2557,13 @@ $filename requires a fullpath</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2115,6 +2607,13 @@ $filename requires a fullpath</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2178,6 +2677,13 @@ $filename requires a fullpath</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -2207,6 +2713,13 @@ $filename requires a fullpath</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2252,6 +2765,13 @@ $filename requires a fullpath</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -2279,6 +2799,13 @@ $filename requires a fullpath</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2331,6 +2858,13 @@ $filename requires a fullpath</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -2349,6 +2883,13 @@ $filename requires a fullpath</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2396,6 +2937,13 @@ caution! can not be undone!</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                     
@@ -2414,6 +2962,13 @@ caution! can not be undone!</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2448,6 +3003,13 @@ caution! can not be undone!</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2490,6 +3052,13 @@ caution! if the file is smaller, it will be forced to grow!!</h2>
                                                 <td>
                                                                                                                                                                     <p>use resizeImage instead!</p>
 
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -2555,6 +3124,13 @@ caution! if the file is smaller, it will be forced to grow!!</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -2591,6 +3167,13 @@ it will be stretched down or up!</h2>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2650,6 +3233,13 @@ the object that is returned contains the title and the duration in seconds</h2>
                                                 <td>
                                                                                                     </td>
                                             </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                             </table>
 
                                                                             <h3>Arguments</h3>
@@ -2684,6 +3274,13 @@ the object that is returned contains the title and the duration in seconds</h2>
                                                 <td>
                                                                                                                                                                     <p>guggn, obs geht</p>
 
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -2732,6 +3329,13 @@ the files array wants to have strings for the full file path</p>
 </div>
 
                                     <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -2810,6 +3414,13 @@ the files array wants to have strings for the full file path</p>
                                                     <td>
                                                                                                             </td>
                                                 </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
                                                                                     </table>
                                     </div>
                                 </div>
@@ -2834,7 +3445,7 @@ the files array wants to have strings for the full file path</p>
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 08 Jul 2013 14:06:27 +0000.<br/>
+            generated on Tue, 16 Jul 2013 08:27:24 +0000.<br/>
     </footer>
     </body>
 </html>

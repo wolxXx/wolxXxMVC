@@ -20,13 +20,6 @@ class AuthTest extends  PHPUnit_Framework_TestCase{
 		Auth::logout();
 		$_POST[Stack::getInstance()->get(CREDENTIALUSERID)] = 'god@linux.org';
 		$_POST[Stack::getInstance()->get(CREDENTIALUSERACCESS)] = 'linux';
-		Auth::login();
-	}
-
-	public function testBla(){
-		Auth::logout();
-		$_POST[Stack::getInstance()->get(CREDENTIALUSERID)] = 'god@linux.org';
-		$_POST[Stack::getInstance()->get(CREDENTIALUSERACCESS)] = 'linux';
 		Auth::login(new MockUser());
 	}
 

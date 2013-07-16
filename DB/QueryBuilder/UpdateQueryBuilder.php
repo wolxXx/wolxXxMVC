@@ -27,7 +27,7 @@ class UpdateQueryBuilder{
 	 *
 	 * @var integer
 	 */
-	protected $id;
+	protected $rowId;
 
 	/**
 	 * an instance of the databaseManager
@@ -43,11 +43,11 @@ class UpdateQueryBuilder{
 	 * @param array $data
 	 * @param integer $id
 	 */
-	public function __construct($table = null, $data = null, $id = null){
+	public function __construct($table = null, $data = null, $rowId = null){
 		$this
 			->setTable($table)
 			->setData($data)
-			->setId($id);
+			->setId($rowId);
 		$this->databaseManager = DatabaseManager::getInstance();
 	}
 
@@ -65,7 +65,7 @@ class UpdateQueryBuilder{
 			throw new QueryGeneratorException('please specify table');
 		}
 
-		if(null === $this->id){
+		if(null === $this->rowId){
 			throw new QueryGeneratorException('please specify id');
 		}
 
@@ -91,7 +91,7 @@ class UpdateQueryBuilder{
 			$settext.= "`$key` = '".$this->databaseManager->getConnection()->escape($value)."', ";
 		}
 		$settext = rtrim($settext, ' ,');
-		$query = "\nUPDATE\n\t`".$this->table."`\nSET\n\t$settext\nWHERE\n\t`".$this->table."`.id = $this->id\n;";
+		$query = "\nUPDATE\n\t`".$this->table."`\nSET\n\t$settext\nWHERE\n\t`".$this->table."`.id = $this->rowId\n;";
 		return $query;
 	}
 
@@ -132,8 +132,8 @@ class UpdateQueryBuilder{
 	 * @param integer $id
 	 * @return UpdateQueryBuilder
 	 */
-	public function setId($id){
-		$this->id = $id;
+	public function setId($rowId){
+		$this->rowId = $rowId;
 		return $this;
 	}
 }

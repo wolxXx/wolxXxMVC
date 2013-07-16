@@ -28,7 +28,7 @@ class DeleteQueryBuilder extends QueryBuilder{
 	 *
 	 * @var integer
 	 */
-	protected $id;
+	protected $rowId;
 
 	/**
 	 * constructor
@@ -37,9 +37,9 @@ class DeleteQueryBuilder extends QueryBuilder{
 	 * @param integer $id
 	 * @param DatabaseManager $databaseManager
 	 */
-	public function __construct($table = null, $id = null, $databaseManager = null){
+	public function __construct($table = null, $rowId = null, $databaseManager = null){
 		$this
-			->setId($id)
+			->setId($rowId)
 			->setDatabaseManager($databaseManager)
 			->setTable($table);
 	}
@@ -58,7 +58,7 @@ class DeleteQueryBuilder extends QueryBuilder{
 		if(null === $this->databaseManager){
 			throw new QueryGeneratorException('please specify databaseManager');
 		}
-		if(null === $this->id){
+		if(null === $this->rowId){
 			throw new QueryGeneratorException('please specify id');
 		}
 	}
@@ -69,7 +69,7 @@ class DeleteQueryBuilder extends QueryBuilder{
 	 */
 	public function generateQuery(){
 		$this->checkConditions();
-		$query = "DELETE FROM `".$this->table."` WHERE `".$this->table."`.id = ".$this->id." LIMIT 1;";
+		$query = "DELETE FROM `".$this->table."` WHERE `".$this->table."`.id = ".$this->rowId." LIMIT 1;";
 		return $query;
 	}
 
@@ -100,8 +100,8 @@ class DeleteQueryBuilder extends QueryBuilder{
 	 * @param integer $id
 	 * @return DeleteQueryBuilder
 	 */
-	public function setId($id){
-		$this->id = $id;
+	public function setId($rowId){
+		$this->rowId = $rowId;
 		return $this;
 	}
 

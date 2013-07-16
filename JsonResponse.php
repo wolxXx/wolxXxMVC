@@ -3,65 +3,69 @@
  * default and standard json response
  *
  * @author wolxXx
- * @version 1.0
+ * @version 1.1
  * @package wolxXxMVC
  */
 class JsonResponse{
 	/**
-	 * status code
+	 * status code: success
+	 *
 	 * @var integer
 	 */
-	public static $ok = 200;
+	public static $success = 200;
 
 	/**
-	 * status code
-	 * @var integer
-	 */
-
-	/**
-	 * status code
+	 * status code: bad request
+	 *
 	 * @var integer
 	 */
 	public static $badRequest = 503;
 
 	/**
-	 * status code
+	 * status code: forbidden
+	 *
 	 * @var integer
 	 */
 	public static $forbidden = 403;
 
 	/**
-	 * status code
+	 * status code: not found
+	 *
 	 * @var integer
 	 */
 	public static $notFound = 404;
 
 	/**
 	 * http like status code
+	 *
 	 * @var integer
 	 */
 	public $status = 200;
 
 	/**
 	 * if there was an error
+	 *
 	 * @var boolean
 	 */
 	public $error = false;
 
 	/**
 	 * the transport data
+	 *
 	 * @var array
 	 */
 	public $data = array();
 
 	/**
 	 * optional message
+	 *
 	 * @var string
 	 */
 	public $message = '';
 
 	/**
 	 * converts the class to a json object
+	 *
 	 * @return string
 	 */
 	public function toJSON(){
@@ -70,6 +74,7 @@ class JsonResponse{
 
 	/**
 	 * adds data to the data array
+	 *
 	 * @param string $key
 	 * @param something $value
 	 * @return JsonResponse
@@ -81,6 +86,7 @@ class JsonResponse{
 
 	/**
 	 * setter for the error status
+	 *
 	 * @param boolean $value
 	 * @return JsonResponse
 	 */
@@ -91,6 +97,7 @@ class JsonResponse{
 
 	/**
 	 * setter for the status code
+	 *
 	 * @param integer $value
 	 * @return JsonResponse
 	 */
@@ -101,6 +108,7 @@ class JsonResponse{
 
 	/**
 	 * clears all set data
+	 *
 	 * @return JsonResponse
 	 */
 	public function clearData(){
@@ -110,6 +118,7 @@ class JsonResponse{
 
 	/**
 	 * setter for the message field
+	 *
 	 * @param string $value
 	 * @return JsonResponse
 	 */
@@ -120,6 +129,7 @@ class JsonResponse{
 
 	/**
 	 * clears the message
+	 *
 	 * @return JsonResponse
 	 */
 	public function clearMessage(){

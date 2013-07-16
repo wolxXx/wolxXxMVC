@@ -15,10 +15,9 @@ class TranslatorTest extends  PHPUnit_Framework_TestCase{
 		$this->assertSame('foo bar 42', Translator::translate('foo %s %s', 'bar', 42));
 	}
 	 /**
-	 * @expectedException Exception
+	 * @expectedException TranslatorException
 	 */
 	public function testMissingParams(){
-
 		$this->assertSame('foo bar 42', Translator::translate('foo %s %s', 'bar'));
 	}
 }

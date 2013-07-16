@@ -15,10 +15,10 @@ new AutoLoader($autoLoaderPath);
  */
 class Helper extends CoreHelper{
 	public static function refresh(){
-		die('');
+		#die('wtf');
 	}
 	public static function redirect($url = null){
-		die('');
+		#die('wtf');
 	}
 
 	public static function logerror($msg){

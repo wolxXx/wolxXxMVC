@@ -52,6 +52,19 @@ class DropdownElement extends DomElementAbstract{
 	}
 
 	/**
+	 * sets value and text
+	 *
+	 * @param string $value
+	 * @return DropdownElement
+	 */
+	public function setValueAndText($value){
+		return $this
+			->setText($value)
+			->setValue($value)
+		;
+	}
+
+	/**
 	 * (non-PHPdoc)
 	 * @see DomElementInterface::display()
 	 */

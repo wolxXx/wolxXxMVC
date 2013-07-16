@@ -111,27 +111,23 @@
         <li class="nav-header">
             <i class="icon-custom icon-method"></i> Methods
             <ul>
-                                                                                    <li class="method public">
-        <a href="#method___construct" title="__construct :: constructor">
-            <span class="description">constructor</span><pre>__construct</pre>
+                                                                                    <li class="method public inherited">
+        <a href="#method___construct" title="__construct :: constructor. you can use dependency injection via constructor (dic)
+returns this in pattern of fluent interface">
+            <span class="description">constructor. you can use dependency injection via constructor (dic)
+returns this in pattern of fluent interface</span><pre>__construct</pre>
         </a>
     </li>
 
-                                                                                                        <li class="method public">
-        <a href="#method_checkConditions" title="checkConditions :: (non-PHPdoc)">
-            <span class="description">(non-PHPdoc)</span><pre>checkConditions</pre>
+                                                                                                                                                                <li class="method public inherited">
+        <a href="#method_generateQuery" title="generateQuery :: generates the query from the set conditions">
+            <span class="description">generates the query from the set conditions</span><pre>generateQuery</pre>
         </a>
     </li>
 
-                                                                                                        <li class="method public">
-        <a href="#method_generateQuery" title="generateQuery :: (non-PHPdoc)">
-            <span class="description">(non-PHPdoc)</span><pre>generateQuery</pre>
-        </a>
-    </li>
-
-                                                                                                        <li class="method public">
-        <a href="#method_getQueryString" title="getQueryString :: (non-PHPdoc)">
-            <span class="description">(non-PHPdoc)</span><pre>getQueryString</pre>
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getQueryString" title="getQueryString :: returns an instance of a QueryString">
+            <span class="description">returns an instance of a QueryString</span><pre>getQueryString</pre>
         </a>
     </li>
 
@@ -141,9 +137,11 @@
         </a>
     </li>
 
-                                                                                                        <li class="method public">
-        <a href="#method_setConditions" title="setConditions :: (non-PHPdoc)">
-            <span class="description">(non-PHPdoc)</span><pre>setConditions</pre>
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setConditions" title="setConditions :: setter for conditions
+returns this in pattern of fluent interface">
+            <span class="description">setter for conditions
+returns this in pattern of fluent interface</span><pre>setConditions</pre>
         </a>
     </li>
 
@@ -171,7 +169,12 @@ returns this in pattern of fluent interface</span><pre>setConnection</pre>
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-                                                                                                                                                                                                                                                                                                                                                            <li class="method protected inherited">
+                                                                                                <li class="method protected inherited">
+                            <a href="#method_checkConditions" title="checkConditions :: checks if the set conditions fulfill the needed minimal expectations">
+                                <span class="description">checks if the set conditions fulfill the needed minimal expectations</span><pre>checkConditions</pre>
+                            </a>
+                        </li>
+                                                                                                                                                                                                                                                                                                        <li class="method protected inherited">
                             <a href="#method_mergeConditions" title="mergeConditions :: merges the default conditions with the provided
 it ensures that the minimal requirements are set">
                                 <span class="description">merges the default conditions with the provided
@@ -362,24 +365,18 @@ provides functions for transforming a condition array to a query string</p>
 
                     <h3><i class="icon-custom icon-method"></i> Methods</h3>
                                                                 <a id="method___construct"></a>
-                        <div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-                            <h2>constructor</h2>
-                            <pre>__construct(string $table = null, array $conditions = null) </pre>
+                        <div class="element clickable method public method___construct inherited" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>constructor. you can use dependency injection via constructor (dic)
+returns this in pattern of fluent interface</h2>
+                            <pre>__construct($conditions = null, $connection = null) : \QueryBuilder</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description">
 </div>
 
                                     <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -391,25 +388,28 @@ provides functions for transforming a condition array to a query string</p>
 
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
-                                                <h4>$table</h4>
-                                                <code>string</code><p>
+                                                <h4>$conditions</h4>
+                                                <code></code><p>
 </p>
                                             </div>
                                                                                     <div class="subelement argument">
-                                                <h4>$conditions</h4>
-                                                <code>array</code><p>
+                                                <h4>$connection</h4>
+                                                <code></code><p>
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/QueryBuilder.html">\QueryBuilder</a></code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_checkConditions"></a>
-                        <div class="element clickable method public method_checkConditions" data-toggle="collapse" data-target=".method_checkConditions .collapse">
-                            <h2>(non-PHPdoc)</h2>
+                        <div class="element clickable method protected method_checkConditions inherited" data-toggle="collapse" data-target=".method_checkConditions .collapse">
+                            <h2>checks if the set conditions fulfill the needed minimal expectations</h2>
                             <pre>checkConditions() </pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                <span class="label">abstract</span>                                                            </div>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description">
@@ -418,9 +418,11 @@ provides functions for transforming a condition array to a query string</p>
                                     <table class="table">
                                                                                     <tr>
                                                 <th>
-                                                    see
+                                                    throws
                                                 </th>
                                                 <td>
+                                                                                                                                                                    
+
                                                                                                                                                                     
 
                                                                                                     </td>
@@ -446,11 +448,11 @@ provides functions for transforming a condition array to a query string</p>
                             </div>
                         </div>
                                             <a id="method_generateQuery"></a>
-                        <div class="element clickable method public method_generateQuery" data-toggle="collapse" data-target=".method_generateQuery .collapse">
-                            <h2>(non-PHPdoc)</h2>
-                            <pre>generateQuery() </pre>
+                        <div class="element clickable method public method_generateQuery inherited" data-toggle="collapse" data-target=".method_generateQuery .collapse">
+                            <h2>generates the query from the set conditions</h2>
+                            <pre>generateQuery() : string</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                <span class="label">abstract</span>                                                            </div>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description">
@@ -459,18 +461,13 @@ provides functions for transforming a condition array to a query string</p>
                                     <table class="table">
                                                                                     <tr>
                                                 <th>
-                                                    see
+                                                    throws
                                                 </th>
                                                 <td>
                                                                                                                                                                     
 
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
+                                                                                                                                                                    
+
                                                                                                     </td>
                                             </tr>
                                                                                     <tr>
@@ -483,37 +480,24 @@ provides functions for transforming a condition array to a query string</p>
                                                                             </table>
 
                                     
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
                                             <a id="method_getQueryString"></a>
-                        <div class="element clickable method public method_getQueryString" data-toggle="collapse" data-target=".method_getQueryString .collapse">
-                            <h2>(non-PHPdoc)</h2>
-                            <pre>getQueryString() </pre>
+                        <div class="element clickable method public method_getQueryString inherited" data-toggle="collapse" data-target=".method_getQueryString .collapse">
+                            <h2>returns an instance of a QueryString</h2>
+                            <pre>getQueryString() : \QueryString</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                <span class="label">abstract</span>                                                            </div>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description">
 </div>
 
                                     <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    see
-                                                </th>
-                                                <td>
-                                                                                                                                                                    
-
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -524,6 +508,9 @@ provides functions for transforming a condition array to a query string</p>
                                                                             </table>
 
                                     
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/QueryString.html">\QueryString</a></code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
@@ -562,40 +549,18 @@ provides functions for transforming a condition array to a query string</p>
                             </div>
                         </div>
                                             <a id="method_setConditions"></a>
-                        <div class="element clickable method public method_setConditions" data-toggle="collapse" data-target=".method_setConditions .collapse">
-                            <h2>(non-PHPdoc)</h2>
-                            <pre>setConditions($conditions) </pre>
+                        <div class="element clickable method public method_setConditions inherited" data-toggle="collapse" data-target=".method_setConditions .collapse">
+                            <h2>setter for conditions
+returns this in pattern of fluent interface</h2>
+                            <pre>setConditions(array $conditions) : \QueryBuilder</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
                             <div class="row collapse">
                                 <div class="detail-description">
                                     <div class="long_description">
 </div>
 
                                     <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    see
-                                                </th>
-                                                <td>
-                                                                                                                                                                    
-
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
                                                                                     <tr>
                                                 <th>
                                                     
@@ -608,10 +573,13 @@ provides functions for transforming a condition array to a query string</p>
                                                                             <h3>Arguments</h3>
                                                                                     <div class="subelement argument">
                                                 <h4>$conditions</h4>
-                                                <code></code><p>
+                                                <code>array</code><p>
 </p>
                                             </div>
                                                                             
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/QueryBuilder.html">\QueryBuilder</a></code><p>
+</p>
                                                                     </div>
                             </div>
                         </div>
@@ -1627,11 +1595,11 @@ conditions an grabs the provided information</p>
                                 </div>
                             </div>
                                                     <a id="property_conditions"> </a>
-                            <div class="element clickable property protected property_conditions" data-toggle="collapse" data-target=".property_conditions .collapse">
-                                <h2>the conditions array</h2>
+                            <div class="element clickable property protected property_conditions inherited" data-toggle="collapse" data-target=".property_conditions .collapse">
+                                <h2>array of conditions</h2>
                                 <pre>conditions</pre>
                                 <div class="labels">
-                                                                                                        </div>
+                                    <span class="label">inherited</span>                                                                    </div>
                                 <div class="row collapse">
                                     <div class="detail-description">
                                         <div class="long_description">
@@ -1710,7 +1678,7 @@ conditions an grabs the provided information</p>
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Mon, 08 Jul 2013 14:06:26 +0000.<br/>
+            generated on Tue, 16 Jul 2013 08:27:22 +0000.<br/>
     </footer>
     </body>
 </html>

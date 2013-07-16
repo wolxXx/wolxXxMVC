@@ -9,15 +9,6 @@
 */
 class Plaintext extends DomElementAbstract{
 	/**
-	 * (non-PHPdoc)
-	 * @see DomElementInterface::getDefaultConf()
-	 */
-	public static function getDefaultConf(){
-		return array(
-		);
-	}
-
-	/**
 	 * adds text to the given text
 	 * or creates one if nothing was set before
 	 *
