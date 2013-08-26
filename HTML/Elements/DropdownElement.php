@@ -52,10 +52,6 @@ class DropdownElement extends DomElementAbstract{
 	}
 
 	/**
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 633ea8bdaa55f434ab9af3f9a8ebce01551998cc
 	 * sets value and text
 	 *
 	 * @param string $value
@@ -69,11 +65,6 @@ class DropdownElement extends DomElementAbstract{
 	}
 
 	/**
-<<<<<<< HEAD
-=======
-=======
->>>>>>> ecb243115d7143c5c1e0ea71de4a147b66ae5e6d
->>>>>>> 633ea8bdaa55f434ab9af3f9a8ebce01551998cc
 	 * (non-PHPdoc)
 	 * @see DomElementInterface::display()
 	 */

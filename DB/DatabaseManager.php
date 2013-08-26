@@ -81,7 +81,10 @@ class DatabaseManager{
 		$result = $this->connection->query($queryStringObject->getQueryString());
 		$end = microtime(true);
 		$resultObject = new QueryResultObject($result, $queryStringObject->getQueryString(), $this->connection->getError());
-		$this->log($resultObject, $start, $end);
+		try{
+			$this->log($resultObject, $start, $end);
+		}catch (Exception $exception){
+		}
 		return $resultObject;
 	}
 
@@ -95,6 +98,7 @@ class DatabaseManager{
 	 * @param float $end
 	 */
 	protected function log($queryResultObject, $start, $end){
+		return;
 		$result = $queryResultObject->getResult();
 		$query = $queryResultObject->getQuery();
 		$execution = $end - $start;

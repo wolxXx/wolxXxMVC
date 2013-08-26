@@ -7,7 +7,7 @@
  * the data is saved in the stack, so it is available after page refresh
  *
  * @author wolxXx
- * @version 1.0
+ * @version 1.1
  * @package wolxXxMVC
  */
 abstract class Auth{
@@ -17,6 +17,37 @@ abstract class Auth{
 	 * @var Result
 	 */
 	public static $User;
+
+	/**
+	 * checks if the provided passwod matches the saved one
+	 *
+	 * @param string $password
+	 * @param Result $user
+	 * @return boolean
+	 */
+	public static function isUserPasswordOk($password, $user){
+		return $user->get(Stack::getInstance()->get(CREDENTIALUSERACCESS)) === self::hashPassword($password);
+	}
+
+	/**
+	 * hashes the password
+	 *
+	 * @param string $password
+	 * @return string
+	 */
+	public static function hashPassword($password){
+		return md5(self::saltPassword($password));
+	}
+
+	/**
+	 * salts the password
+	 *
+	 * @param string $password
+	 * @return string
+	 */
+	public static function saltPassword($password){
+		return $password;
+	}
 
 	/**
 	 * getter for the stack

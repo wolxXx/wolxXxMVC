@@ -6,7 +6,7 @@
  * provides functions for transforming a condition array to a query string
  *
  * @author wolxXx
- * @version 1.2
+ * @version 1.3
  * @package wolxXxMVC
  * @subpackage QueryBuilder
  */
@@ -155,8 +155,8 @@ abstract class QueryBuilder{
 	 * @return string
 	 */
 	protected function generateLimit(){
+		$limit = '';
 		if(null === $this->conditions['limit']){
-			$limit = '';
 			if('one' === $this->conditions['method']){
 				$limit = 'LIMIT 1';
 			}
@@ -167,7 +167,7 @@ abstract class QueryBuilder{
 			}else{
 				$limit .= $this->conditions['limit'][0];
 				if(true === isset($this->conditions['limit'][1])){
-					$limit .= ', '.$this->conditions['limit'][1];
+					$limit .= sprintf(', %s', $this->conditions['limit'][1]);
 				}
 			}
 		}
@@ -181,13 +181,11 @@ abstract class QueryBuilder{
 	 * @return string
 	 */
 	protected function generateFields(){
-		if(null === $this->conditions['fields'] || empty($this->conditions['fields'])){
-			$fields = '*';
-		}else{
+		$fields = '*';
+		if(null !== $this->conditions['fields'] && false === empty($this->conditions['fields'])){
+			$fields = $this->conditions['fields'];
 			if(true === is_array($this->conditions['fields'])){
 				$fields = implode(', ', $this->conditions['fields']);
-			}else{
-				$fields = $this->conditions['fields'];
 			}
 		}
 		return $fields;
@@ -201,7 +199,7 @@ abstract class QueryBuilder{
 	protected function generateOrder(){
 		$order = '';
 		if(null !== $this->conditions['order']){
-			$order = 'ORDER BY '.$this->conditions['order'];
+			$order = sprintf('ORDER BY %s', $this->conditions['order']);
 		}
 		return $order;
 	}
@@ -214,7 +212,7 @@ abstract class QueryBuilder{
 	protected function generateGroup(){
 		$group = '';
 		if(null !== $this->conditions['group']){
-			$group = 'GROUP BY '.$this->conditions['group'];
+			$group = sprintf('GROUP BY %s', $this->conditions['group']);
 		}
 		return $group;
 	}
@@ -239,7 +237,15 @@ abstract class QueryBuilder{
 	 * @return string
 	 */
 	protected function generateFrom(){
-		if(null === $this->conditions['from']){
+		if(
+			null === $this->conditions['from'] ||
+			(
+				false === is_string($this->conditions['from']) &&
+				false === is_array($this->conditions['from'])
+			)
+			||
+			'' === $this->conditions['from']
+		){
 			throw new QueryGeneratorException('no from selected');
 		}
 		$from = $this->conditions['from'];
@@ -261,12 +267,11 @@ abstract class QueryBuilder{
 	 * @return string
 	 */
 	protected function generateWhereSimple($where, $left, $right){
-		if('' === $where){
-			$and = '';
-		}else{
+		$and = '';
+		if('' !== $where){
 			$and = ' AND ';
 		}
-		$where .= "$and$left = '$right'";
+		$where .= sprintf('%s%s = \'%s\'', $and, $left, $right);
 		return trim($where);
 	}
 

@@ -95,12 +95,24 @@ class DataObject{
 		return $this;
 	}
 
+	protected function set($key, $value){
+		$this->data[$key] = $value;
+		return $this;
+	}
+
+	protected function setFromArray($array){
+		foreach($array as $key => $value){
+			$this->set($key, $value);
+		}
+		return $this;
+	}
+
 	/**
 	 * scans the post array and saves the data
 	 *
 	 * @return DataObject
 	 */
-	private function scanPostData(){
+	protected function scanPostData(){
 		foreach($this->rawPOST as $key => $value){
 			$this->data[$key] = $value;
 		}
@@ -112,7 +124,7 @@ class DataObject{
 	 *
 	 * @return DataObject
 	 */
-	private function scanGetData(){
+	protected function scanGetData(){
 		foreach($this->rawGET as $key => $value){
 			$this->data[$key] = $value;
 		}

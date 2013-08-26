@@ -10,6 +10,17 @@
  */
 class CoreHelper{
 	/**
+	 * calculates the difference from to times in seconds
+	 *
+	 * @param string $time1
+	 * @param string $time2
+	 * @return number
+	 */
+	public static function getRemainingSecondsFromDates($time1, $time2){
+		return abs(Helper::dateToTimestamp($time1) - Helper::dateToTimestamp($time2));
+	}
+
+	/**
 	 * grabs the version and mode of the application
 	 * it is grabbed from the apache directive
 	 * SetEnv APPLICATION_ENV "main-dev"
@@ -107,7 +118,7 @@ class CoreHelper{
 		foreach(func_get_args() as $arg){
 			Helper::debug($arg);
 		}
-		die('die in die debug');
+		die();
 	}
 
 	/**
@@ -124,7 +135,7 @@ class CoreHelper{
 	public static function debug(){
 		$stack = Stack::getInstance();
 		if(false === in_array($stack->get('debug'), array('1', true, 'true'))){
-			return;
+			#return;
 		}
 		$backtrace = debug_backtrace(true);
 		$trace = $backtrace[0];
@@ -1023,7 +1034,7 @@ class CoreHelper{
 		}
 
 		if(null === $sender){
-			$sender = ADMIN_EMAIL;
+			$sender = Stack::getInstance()->get('admin_email');
 		}
 
 		$text = PHP_EOL.PHP_EOL.'___________________________'.PHP_EOL;

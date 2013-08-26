@@ -6,7 +6,7 @@
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage Database
- * @version 1.2
+ * @version 1.3
  */
 class SaveObject{
 	/**
@@ -44,6 +44,18 @@ class SaveObject{
 	}
 
 	/**
+	 * setter for keys and values
+	 *
+	 * @param string $key
+	 * @param mixed $value
+	 * @return SaveObject
+	 */
+	public function set($key, $value){
+		$this->data[$key] = $value;
+		return $this;
+	}
+
+	/**
 	 * setter for values
 	 *
 	 * @param string $key
@@ -51,8 +63,21 @@ class SaveObject{
 	 * @return SaveObject
 	 */
 	public function __set($key, $value){
-		$this->data[$key] = $value;
-		return $this;
+		return $this->set($key, $value);
+	}
+
+	/**
+	 * getter for key
+	 *
+	 * @param string $key
+	 * @return mixed
+	 */
+	public function get($key){
+		if(!isset($this->data[$key])){
+			Helper::logerror('warning: property "'.$key.'" not set in saveobject!');
+			return null;
+		}
+		return $this->data[$key];
 	}
 
 	/**
@@ -62,11 +87,7 @@ class SaveObject{
 	 * @return null | mixed
 	 */
 	public function __get($key){
-		if(!isset($this->data[$key])){
-			Helper::logerror('warning: property "'.$key.'" not set in saveobject!');
-			return null;
-		}
-		return $this->data[$key];
+		return $this->get($key);
 	}
 
 	/**

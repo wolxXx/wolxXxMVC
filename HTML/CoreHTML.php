@@ -55,10 +55,6 @@ class CoreHTML{
 	public static function mergeConf($conf, $default = null){
 		$trace = debug_backtrace();
 		$function = $trace[1]['function'];
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 633ea8bdaa55f434ab9af3f9a8ebce01551998cc
 		if(null === $default){
 			$default = DomElementAbstract::getDefaultConf();
 			switch($function){
@@ -105,58 +101,6 @@ class CoreHTML{
 					$default = array_merge($default, Textarea::getDefaultConf());
 				}break;
 			}
-<<<<<<< HEAD
-=======
-=======
-		$default = DomElementAbstract::getDefaultConf();
-		switch($function){
-			case 'renderBr':{
-				$default = array_merge($default, Br::getDefaultConf());
-			}break;
-			case 'renderCheckbox':{
-				$default = array_merge($default, Checkbox::getDefaultConf());
-			}break;
-			case 'renderClear':{
-				$default = array_merge($default, Clear::getDefaultConf());
-			}break;
-			case 'renderOption':{
-				$default = array_merge($default, DropdownElement::getDefaultConf());
-			}break;
-			case 'renderFormStart':{
-				$default = array_merge($default, Form::getDefaultConf());
-			}break;
-			case 'renderGrid':{
-				$default = array_merge($default, Grid::getDefaultConf());
-			}break;
-			case 'renderHeadline':{
-				$default = array_merge($default, Headline::getDefaultConf());
-			}break;
-			case 'renderInput':{
-				$default = array_merge($default, Input::getDefaultConf());
-			}break;
-			case 'renderLabel':{
-				$default = array_merge($default, Label::getDefaultConf());
-			}break;
-			case 'renderPassword':{
-				$default = array_merge($default, Password::getDefaultConf());
-			}break;
-			case 'renderRadio':{
-				$default = array_merge($default, Radio::getDefaultConf());
-			}break;
-			case 'renderRadioOption':{
-				$default = array_merge($default, RadioOption::getDefaultConf());
-			}break;
-			case 'renderSpan':{
-				$default = array_merge($default, Span::getDefaultConf());
-			}break;
-			case 'renderSubmit':{
-				$default = array_merge($default, Submit::getDefaultConf());
-			}break;
-			case 'renderTextarea':{
-				$default = array_merge($default, Textarea::getDefaultConf());
-			}break;
->>>>>>> ecb243115d7143c5c1e0ea71de4a147b66ae5e6d
->>>>>>> 633ea8bdaa55f434ab9af3f9a8ebce01551998cc
 		}
 		return (object) array_merge($default, $conf);
 	}

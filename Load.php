@@ -160,7 +160,9 @@ class Load{
 	 * @return Load
 	 */
 	public static function clearInstance(){
-		ob_clean();
+		if(0 !== ob_get_level()){
+			ob_clean();
+		}
 		self::$instance = new Load();
 		return self::getInstance();
 	}

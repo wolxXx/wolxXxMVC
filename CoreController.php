@@ -386,8 +386,18 @@ abstract class CoreController{
 
 	/**
 	 * sets all needed models
+	 * just set the protected property in your class
+	 * of course you can overwrite this method!!
 	 */
-	function setModels(){}
+	function setModels(){
+		$reflection = new ReflectionClass($this);
+		foreach($reflection->getProperties() as $current){
+			$current = $current->name;
+			if('Model' === substr($current, strlen($current)-5)){
+				$this->$current = new $current();
+			}
+		}
+	}
 
 	/**
 	 * this method should be implemented by all extending classes if own routing is needed

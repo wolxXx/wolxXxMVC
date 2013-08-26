@@ -6,9 +6,16 @@
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage Database
- * @version 2.0
+ * @version 2.1
  */
 abstract class CoreModel{
+	/**
+	 * an instance of the stack
+	 *
+	 * @var Stack
+	 */
+	protected $stack;
+
 	/**
 	 * an instance of the databaseManager
 	 *
@@ -50,6 +57,7 @@ abstract class CoreModel{
 			$manager = DatabaseManager::getInstance();
 		}
 		$this->databaseManager = $manager;
+		$this->stack = Stack::getInstance();
 
 		$calledClass = get_called_class();
 		$allowedClasses = array('Model', 'CoreModel');

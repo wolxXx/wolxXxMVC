@@ -15,6 +15,9 @@
 error_reporting(-1);
 ini_set('display_errors', '1');
 
+if('' !== session_id()){
+	session_destroy();
+}
 function secho($elem){
 	echo "$elem\n";
 }

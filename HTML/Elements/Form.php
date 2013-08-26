@@ -3,15 +3,7 @@
  * container for form elements
  *
  * @author wolxXx
-<<<<<<< HEAD
  * @version 0.3
-=======
-<<<<<<< HEAD
- * @version 0.3
-=======
- * @version 0.2
->>>>>>> ecb243115d7143c5c1e0ea71de4a147b66ae5e6d
->>>>>>> 633ea8bdaa55f434ab9af3f9a8ebce01551998cc
  * @package wolxXxMVC
  * @subpackage HTML
  */
@@ -70,17 +62,6 @@ class Form extends ContainableDomElementAbstract{
 	}
 
 	/**
-	 * setter for upload form flag
-	 *
-	 * @param boolean $isUploadForm
-	 * @return Form
-	 */
-	public function setIsUploadForm($isUploadForm = true){
-		$this->isUploadForm = $isUploadForm;
-		return $this;
-	}
-
-	/**
 	 * (non-PHPdoc)
 	 * @see DomElementInterface::display()
 	 */
@@ -89,14 +70,7 @@ class Form extends ContainableDomElementAbstract{
 		$conf = $this->data->getData();
 		if(true === $this->isUploadForm){
 			$conf['enctype'] = 'multipart/form-data';
-<<<<<<< HEAD
 			$conf['method'] = 'post';
-=======
-<<<<<<< HEAD
-			$conf['method'] = 'post';
-=======
->>>>>>> ecb243115d7143c5c1e0ea71de4a147b66ae5e6d
->>>>>>> 633ea8bdaa55f434ab9af3f9a8ebce01551998cc
 		}
 		HTML::renderFormStart($conf);
 		foreach($this->children as $current){

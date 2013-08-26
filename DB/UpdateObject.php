@@ -56,11 +56,10 @@ class UpdateObject{
 	 *
 	 * @param string $key
 	 * @param mixed $value
-	 * @return SaveObject
+	 * @return UpdateObject
 	 */
 	public function __set($key, $value){
-		$this->data[$key] = $value;
-		return $this;
+		return $this->set($key, $value);
 	}
 
 	/**
@@ -75,6 +74,18 @@ class UpdateObject{
 			return null;
 		}
 		return $this->data[$key];
+	}
+
+	/**
+	 * setter for values
+	 *
+	 * @param string $key
+	 * @param mixed $value
+	 * @return UpdateObject
+	 */
+	public function set($key, $value){
+		$this->data[$key] = $value;
+		return $this;
 	}
 
 	/**

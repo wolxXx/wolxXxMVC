@@ -56,6 +56,15 @@ abstract class DomElementAbstract implements DomElementInterface{
 	}
 
 	/**
+	 * getter for the label
+	 *
+	 * @return Label
+	 */
+	public function getLabel(){
+		return $this->label;
+	}
+
+	/**
 	 * setter for the class
 	 *
 	 * @param string $class

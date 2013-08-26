@@ -26,6 +26,7 @@ class Stack{
 	 * instance for only having one access point
 	 * @var Stack
 	 */
+
 	private static $instance = null;
 
 	/**
@@ -34,7 +35,7 @@ class Stack{
 	 * only callable from here
 	 */
 	private function __construct(){
-		if('' === session_id()){
+		if(false === defined('STDIN') && '' === session_id()){
 			session_start();
 		}
 		$this->stack =& $_SESSION['wolxXxMVC'];

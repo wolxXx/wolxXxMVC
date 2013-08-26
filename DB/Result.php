@@ -6,7 +6,7 @@
  * @author wolxXx
  * @package wolxXxMVC
  * @subpackage Database
- * @version 1.2
+ * @version 1.3
  */
 class Result{
 	/**
@@ -17,6 +17,16 @@ class Result{
 	 */
 	public function __set($key, $value){
 		$this->$key = $value;
+	}
+
+	/**
+	 * getter for a key
+	 *
+	 * @param string $key
+	 * @return any
+	 */
+	public function get($key){
+		return $this->$key;
 	}
 
 	/**

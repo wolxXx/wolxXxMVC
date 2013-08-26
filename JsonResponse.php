@@ -3,65 +3,61 @@
  * default and standard json response
  *
  * @author wolxXx
- * @version 1.1
+ * @version 1.4
  * @package wolxXxMVC
  */
 class JsonResponse{
-	/**
-	 * status code: success
-	 *
-	 * @var integer
-	 */
-	public static $success = 200;
-
-	/**
-	 * status code: bad request
-	 *
-	 * @var integer
-	 */
-	public static $badRequest = 503;
-
-	/**
-	 * status code: forbidden
-	 *
-	 * @var integer
-	 */
-	public static $forbidden = 403;
-
-	/**
-	 * status code: not found
-	 *
-	 * @var integer
-	 */
-	public static $notFound = 404;
-
 	/**
 	 * http like status code
 	 *
 	 * @var integer
 	 */
-	public $status = 200;
+	 protected $status;
 
 	/**
 	 * if there was an error
 	 *
 	 * @var boolean
 	 */
-	public $error = false;
+	protected $error;
 
 	/**
 	 * the transport data
 	 *
 	 * @var array
 	 */
-	public $data = array();
+	protected $data;
 
 	/**
 	 * optional message
 	 *
 	 * @var string
 	 */
-	public $message = '';
+	protected $message;
+
+	/**
+	 * constructor
+	 * sets default values:
+	 * 	error = false
+	 * 	status = ok
+	 * 	message = apiStatusText for ok
+	 * 	data = empty array
+	 */
+	public function __construct(){
+		$this
+			->setError(false)
+			->setMessage(ApiStatus::getStatusTextForCode(ApiStatus::$success))
+			->setStatus(ApiStatus::$success)
+			->clearData()
+		;
+	}
+
+	/**
+	 * echoes the the generated json
+	 */
+	public function outputJSON(){
+		echo $this->toJSON();
+	}
 
 	/**
 	 * converts the class to a json object
@@ -69,7 +65,37 @@ class JsonResponse{
 	 * @return string
 	 */
 	public function toJSON(){
-		return json_encode($this);
+		$json = new stdClass();
+		foreach(array(
+			'message',
+			'status',
+			'error',
+			'data'
+		) as $foo){
+			$json->$foo = $this->$foo;
+		}
+		return json_encode($json);
+	}
+
+	/**
+	 * sets the whole data array
+	 *
+	 * @param array $data
+	 * @return JsonResponse
+	 */
+	public function setData($data = array()){
+		$this->data = $data;
+		return $this;
+	}
+
+	/**
+	 * clears all data
+	 *
+	 * @return JsonResponse
+	 */
+	public function clearData(){
+		$this->setData();
+		return $this;
 	}
 
 	/**
@@ -91,8 +117,33 @@ class JsonResponse{
 	 * @return JsonResponse
 	 */
 	public function setError($value){
-		$this->error = true === $value;
+		$this->error = true === $value? "true" : "false";
 		return $this;
+	}
+
+	/**
+	 * setter for the status code
+	 * automatically sets the message with the status code string
+	 *
+	 * @param integer $status
+	 * @return JsonResponse
+	 */
+	public function setStatusAndBelongingMessage($status){
+		$this->setStatus($status);
+		$this->setMessage(ApiStatus::getStatusTextForCode($status));
+		return $this;
+	}
+
+	/**
+	 * sets the error flag to true
+	 * sets the status and its message
+	 *
+	 * @param integer $status
+	 * @return JsonResponse
+	 */
+	public function setStatusAndBelongingMessageForError($status){
+		$this->setError(true);
+		return $this->setStatusAndBelongingMessage($status);
 	}
 
 	/**
@@ -102,17 +153,7 @@ class JsonResponse{
 	 * @return JsonResponse
 	 */
 	public function setStatus($value){
-		$this->status = intval($value);
-		return $this;
-	}
-
-	/**
-	 * clears all set data
-	 *
-	 * @return JsonResponse
-	 */
-	public function clearData(){
-		$this->data = array();
+		$this->status = intval($value)."";
 		return $this;
 	}
 
@@ -134,5 +175,41 @@ class JsonResponse{
 	 */
 	public function clearMessage(){
 		return $this->setMessage('');
+	}
+
+	/**
+	 * getter for the error flag
+	 *
+	 * @return boolean
+	 */
+	public function getError(){
+		return $this->error;
+	}
+
+	/**
+	 * getter for the message string
+	 *
+	 * @return string
+	 */
+	public function getMessage(){
+		return $this->message;
+	}
+
+	/**
+	 * getter for the status code
+	 *
+	 * @return integer
+	 */
+	public function getStatus(){
+		return $this->status;
+	}
+
+	/**
+	 * getter for the data
+	 *
+	 * @return array | stdClass
+	 */
+	public function getData(){
+		return $this->data;
 	}
 }

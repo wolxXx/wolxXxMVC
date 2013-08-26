@@ -58,14 +58,14 @@ abstract class CoreBootstrap{
 	 * constructor
 	 * gets all needed singleton instances
 	 */
-	public function __construct(){
+	public final function __construct(){
 		$this->init();
 	}
 
 	/**
 	 * get the config
 	 */
-	protected function config(){
+	protected final function config(){
 		if(false === AutoLoader::isLoadable('HostConfig')){
 			throw new ApocalypseException('you need to create a HostConfig object in /application/config');
 		}
@@ -80,12 +80,12 @@ abstract class CoreBootstrap{
 	 */
 	private final function init(){
 		set_exception_handler(function(){
+			var_dump(func_get_args());
+			die('oOo');
 			Helper::dieDebug(func_get_args());
 		});
 		set_error_handler(function(){
 			call_user_func_array(array('wolxXxMVC', 'errorHandler'), func_get_args());
-			#wolxXxMVC::errorHandler($code, $message, $file, $line)
-			#Helper::dieDebug(func_get_args());
 		}, -1);
 		if(true === file_exists('application/config/defines.php')){
 			require_once 'application/config/defines.php';
@@ -96,11 +96,9 @@ abstract class CoreBootstrap{
 			$logPath = LOGPATH;
 		}
 		ini_set('error_log', $logPath);
-
-		if('' === session_id()){
+		if(false === defined('STDIN') && '' === session_id()){
 			session_start();
 		}
-
 		Helper::grabModeAndVersion();
 		Helper::grabHostName();
 
@@ -190,7 +188,7 @@ abstract class CoreBootstrap{
 	 * trims all tailing slashes
 	 */
 	public function analyzeRequest(){
-		$this->request = $_SERVER['REQUEST_URI'];
+		$this->request = Helper::getCurrentURI();
 		$this->path = explode('?', $this->request, 2);
 		$this->request = trim($this->path[0], '/');
 		$this->path = explode('/', $this->request);
