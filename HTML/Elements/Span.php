@@ -34,7 +34,7 @@ class Span extends DomElementAbstract{
 	 * @see DomElementInterface::display()
 	 */
 	public function display(){
-		HTML::renderSpan($this->data->getData());
+		HTML::renderSpan($this->getData());
 		return $this;
 	}
 }

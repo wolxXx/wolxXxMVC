@@ -15,7 +15,8 @@ class Submit extends DomElementAbstract{
 	public static function getDefaultConf(){
 		return array(
 			'name' => null,
-			'value' => Translator::translate('abschicken')
+			'value' => Translator::translate('abschicken'),
+			'type' => 'submit'
 		);
 	}
 

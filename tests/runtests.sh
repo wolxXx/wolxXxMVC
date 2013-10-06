@@ -15,10 +15,17 @@ else
 	TESTPATH=$1
 fi
 
-if [ -d testsout ]; then
-	echo ""
+if [ "$#" -lt 2 ]; then  
+	COVERAGEDIR='testsout';
 else
-	mkdir testsout;
+	COVERAGEDIR=$2
 fi
 
-phpunit --bootstrap TestBootstrap.php --no-globals-backup --process-isolation --coverage-html testsout  $TESTPATH;
+if [ -d $COVERAGEDIR ]; then
+	echo ""
+else
+	mkdir -p $COVERAGEDIR;
+fi
+
+#phpunit --bootstrap TestBootstrap.php --no-globals-backup --process-isolation --coverage-html $COVERAGEDIR $TESTPATH;
+phpunit --colors --bootstrap TestBootstrap.php  --coverage-html $COVERAGEDIR $TESTPATH;

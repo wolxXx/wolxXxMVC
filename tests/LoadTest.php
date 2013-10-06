@@ -7,6 +7,7 @@ class LoadTest extends  PHPUnit_Framework_TestCase{
 		Stack::getInstance()->set('controller', 'cms');
 		Load::getInstance()->setLayoutPath(__DIR__.DIRECTORY_SEPARATOR.'_src');
 		Load::getInstance()->setViewPath(__DIR__.DIRECTORY_SEPARATOR.'_src');
+		Load::getInstance()->clearAllJavascript()->clearAllCss();
 	}
 
 	/**
@@ -28,13 +29,11 @@ class LoadTest extends  PHPUnit_Framework_TestCase{
 		Load::getInstance()->view($staticview);
 	}
 
+	/**
+	 * @expectedException Exception
+	 */
 	public function testLayoutDoesNotExist(){
 		Load::getInstance()->setLayout('hamwadochehnich');
-		$this->assertSame(Load::getInstance()->getLayout(), 'hamwadochehnich');
-		$staticview = 'staticview';
-		$this->expectOutputString(file_get_contents(Load::getInstance()->getViewPath().$staticview.'.php'));
-		$this->expectOutputString('layout "hamwadochehnich" not found, displaying default layout.');
-		Load::getInstance()->view($staticview);
 	}
 
 	public function testSetLayoutPath(){
@@ -57,14 +56,8 @@ class LoadTest extends  PHPUnit_Framework_TestCase{
 		Load::getInstance()->partial('testview2XYS', array('testvar' => 'foo'), true);
 	}
 
-	public function testView(){
-		Load::getInstance()->setLayout('nix');
-		Load::getInstance()->set('testvar', 'foo');
-		Load::getInstance()->view('testview');
-	}
-
 	public function testSetterAndGetter(){
-		Load::getInstance()->clearBuffer();
+		#Load::getInstance()->clearBuffer();
 		Load::clearInstance();
 		Load::getInstance()->set('hallo', 'ja?');
 		$this->assertEquals(Load::getInstance()->get('hallo'), 'ja?');
@@ -86,23 +79,24 @@ class LoadTest extends  PHPUnit_Framework_TestCase{
 	}
 
 	public function testViewExists(){
-		$this->assertEquals(Load::getInstance()->viewExists('soeinenviewhabenwirgarantiertnichdigga'), false);
-		Load::getInstance()->setLayout('muhahaha');
-		$this->assertEquals(Load::getInstance()->viewExists('soeinenviewhabenwirgarantiertnichdigga'), false);
+		$this->assertFalse(Load::getInstance()->viewExists('soeinenviewhabenwirgarantiertnichdigga'));
 	}
 
 	public function testAddJavascriptFile(){
+		Load::getInstance()->clearAllJavascript()->clearAllCss();
 		Load::getInstance()->addJavascriptFile('foo');
 		$this->assertSame(array('foo.js'), Load::getInstance()->getJavascriptFiles());
 	}
 
 	public function testAddJavascriptFileAtTop(){
+		Load::getInstance()->clearAllJavascript();
 		Load::getInstance()->addJavascriptFile('foo');
 		Load::getInstance()->addJavascriptFile('bar', true);
 		$this->assertSame(array('bar.js', 'foo.js'), Load::getInstance()->getJavascriptFiles());
 	}
 
 	public function testAddJavascriptFiles(){
+		Load::getInstance()->clearAllJavascript()->clearAllCss();
 		Load::getInstance()->addJavascriptFiles(array('foo', 'bar.js'));
 		$this->assertSame(array('foo.js', 'bar.js'), Load::getInstance()->getJavascriptFiles());
 	}
@@ -114,6 +108,7 @@ class LoadTest extends  PHPUnit_Framework_TestCase{
 	}
 
 	public function testGetMergedJavascript(){
+		Load::clearInstance();
 		Load::getInstance()->addJavascript('alert("fooo!")');
 		Load::getInstance()->addJavascript('alert("baaaar!")', true);
 		$this->assertSame(PHP_EOL.'alert("baaaar!")'.PHP_EOL.PHP_EOL.'alert("fooo!")', Load::getInstance()->getMergedJavascript());

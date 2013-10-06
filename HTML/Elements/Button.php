@@ -33,7 +33,7 @@ class Button extends DomElementAbstract{
 	 * @see DomElementInterface::display()
 	 */
 	public function display(){
-		HTML::renderButton($this->data->getData());
+		HTML::renderButton($this->getData());
 		return $this;
 	}
 }

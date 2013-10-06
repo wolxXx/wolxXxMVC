@@ -45,7 +45,19 @@ class SelectQueryBuilder extends QueryBuilder{
 		$group = $this->generateGroup();
 		$order = $this->generateOrder();
 		$limit = $this->generateLimit();
-		$query = "SELECT $distinct\n\t\t$fields\n\tFROM\n\t\t$from\n\tWHERE\n\t\t$where\n\t$group\n\t$order\n\t$limit;";
+		$query =
+<<<SQL
+	SELECT {$distinct}
+		{$fields}
+	FROM
+		{$from}
+	WHERE
+		{$where}
+	{$group}
+	{$order}
+	{$limit}
+SQL;
+		#$query = "SELECT $distinct\n\t\t$fields\n\tFROM\n\t\t$from\n\tWHERE\n\t\t$where\n\t$group\n\t$order\n\t$limit;";
 		return $query;
 	}
 

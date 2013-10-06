@@ -34,7 +34,29 @@ abstract class DomElementAbstract implements DomElementInterface{
 		$default['title'] = null;
 		$default['style'] = null;
 		$default['placeholder'] = null;
+		$default['required'] = false;
 		return $default;
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see DomElementInterface::setIsRequired()
+	 */
+	public function setIsRequired($required = true){
+		$this->set('required', true === $required);
+		if(null !== $this->label){
+			$this->label->addClass('required');
+		}
+		return $this;
+	}
+
+	/**
+	 * getter for the required flag
+	 *
+	 * @return boolean
+	 */
+	public function getIsRequired(){
+		return $this->get('required');
 	}
 
 	/**

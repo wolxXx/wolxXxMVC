@@ -10,6 +10,21 @@
  */
 class CoreHelper{
 	/**
+	 * retrieves the property from the array
+	 *
+	 * @param string $propertyName
+	 * @param array $results
+	 * @return array
+	 */
+	public static function getPropertyFromResultArray($propertyName, $results){
+		$return = array();
+		foreach($results as $current){
+			$return[] = $current->$propertyName;
+		}
+		return $return;
+	}
+
+	/**
 	 * calculates the difference from to times in seconds
 	 *
 	 * @param string $time1
@@ -135,7 +150,7 @@ class CoreHelper{
 	public static function debug(){
 		$stack = Stack::getInstance();
 		if(false === in_array($stack->get('debug'), array('1', true, 'true'))){
-			#return;
+			return;
 		}
 		$backtrace = debug_backtrace(true);
 		$trace = $backtrace[0];
@@ -637,6 +652,9 @@ class CoreHelper{
 	 * @param string $filename
 	 */
 	public static function getFileType($filename){
+		if(false === is_file($filename)){
+			return null;
+		}
 		return mime_content_type($filename);
 	}
 
@@ -699,7 +717,6 @@ class CoreHelper{
 			$mode = true === $filesOnly? RecursiveIteratorIterator::LEAVES_ONLY : RecursiveIteratorIterator::SELF_FIRST;
 			$files =  new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::LEAVES_ONLY);
 			foreach(array_keys(iterator_to_array($files,true)) as $current){
-				Helper::debug(basename($current), $current);
 				if(true === in_array(basename($current), $exclude)){
 					continue;
 				}

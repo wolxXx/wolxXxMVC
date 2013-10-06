@@ -7,8 +7,11 @@ class JsonResponseTest extends  PHPUnit_Framework_TestCase{
 		$response = new JsonResponse();
 		$response->setError(true);
 		$response->setMessage('pew pew army');
-		$json = $response->toJSON();
-		$this->assertSame('{"status":200,"error":true,"data":[],"message":"pew pew army"}', $json);
+		echo $response->toJSON();
+		$this->expectOutputRegex('/"status":"0"/');
+		$this->expectOutputRegex('/"error":"true"/');
+		$this->expectOutputRegex('/"data":\[\]/');
+		$this->expectOutputRegex('/"message":"pew pew army"/');
 	}
 
 	public function testRebuildFromJson(){
@@ -17,13 +20,16 @@ class JsonResponseTest extends  PHPUnit_Framework_TestCase{
 		$response->setMessage('pew pew army');
 		$json = $response->toJSON();
 		$rebuild = json_decode($json);
+		$rebuild->error = 'true' === $rebuild->error;
 		$this->assertTrue($rebuild->error);
+		$this->assertSame($rebuild->message, 'pew pew army');
 	}
 
 	public function testDefaultJsonObject(){
 		$response = new JsonResponse();
 		$json = $response->toJSON();
 		$rebuild = json_decode($json);
+		$rebuild->error = 'true' === $rebuild->error;
 		$this->assertFalse($rebuild->error);
 	}
 
@@ -31,29 +37,36 @@ class JsonResponseTest extends  PHPUnit_Framework_TestCase{
 		$response = new JsonResponse();
 		$response->addData('foo', 'baar');
 		$json = $response->toJSON();
-		$this->assertSame('{"status":200,"error":false,"data":{"foo":"baar"},"message":""}', $json);
+		echo $response->toJSON();
+		$this->expectOutputRegex('/"status":"0"/');
+		$this->expectOutputRegex('/"data":{"foo":"baar"}/');
 	}
 
 	public function testAddAndClearData(){
 		$response = new JsonResponse();
 		$response->addData('foo', 'baar');
 		$response->clearData();
-		$json = $response->toJSON();
-		$this->assertSame('{"status":200,"error":false,"data":[],"message":""}', $json);
+		echo $response->toJSON();
+		$this->expectOutputRegex('/"status":"0"/');
+		$this->expectOutputRegex('/"data":\[\]/');
 	}
 
 	public function testSetAndClearMessage(){
 		$response = new JsonResponse();
 		$response->setMessage('huhu');
 		$response->clearMessage();
-		$json = $response->toJSON();
-		$this->assertSame('{"status":200,"error":false,"data":[],"message":""}', $json);
+		echo $response->toJSON();
+		$this->expectOutputRegex('/"message":""/');
+		$this->expectOutputRegex('/"status":"0"/');
+		$this->expectOutputRegex('/"data":\[\]/');
 	}
 
 	public function testSetStatusCode(){
 		$response = new JsonResponse();
 		$response->setStatus(403);
-		$json = $response->toJSON();
-		$this->assertSame('{"status":403,"error":false,"data":[],"message":""}', $json);
+		echo $response->toJSON();
+		$this->expectOutputRegex('/"message":""/');
+		$this->expectOutputRegex('/"status":"403"/');
+		$this->expectOutputRegex('/"data":\[\]/');
 	}
 }

@@ -29,6 +29,7 @@ class CoreTranslator{
 		if(false === $return){
 			throw new TranslatorException('Translator failed! args = '.implode(' | ', func_get_args()));
 		}
+		$return = nl2br($return);
 		return $return;
 	}
 }

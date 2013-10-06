@@ -3,6 +3,25 @@
  * @codeCoverageIgnore
  */
 class HTMLTest extends  PHPUnit_Framework_TestCase{
+	/**
+	 * @expectedException Exception
+	 */
+	public function testFactoryFails(){
+		$form = HTML::Factory('ghkvghjkjvghkjvjk');
+	}
+
+	public function testDate(){
+		$this->expectOutputRegex('/value="1234"/');
+		HTML::Factory('Date')->setValue('1234')->display();
+	}
+
+	public function testGetLabel(){
+		$element = HTML::Factory('Input');
+		$this->assertNull($element->getLabel());
+		$element->addLabel('foo');
+		$this->assertSame('foo', $element->getLabel()->get('text'));
+	}
+
 	public function testBreak(){
 		$this->expectOutputString(PHP_EOL.'<br />'.PHP_EOL);
 		HTML::Factory('Br')->display();
@@ -26,6 +45,17 @@ class HTMLTest extends  PHPUnit_Framework_TestCase{
 			->setNameAndId('foo')
 			->setValue('miau')
 			->display()
+		;
+	}
+
+	public function testCheckbox2(){
+		$this->expectOutputRegex('/value="miau"/');
+		$this->expectOutputRegex('/checked="checked"/');
+		HTML::Factory('Checkbox')
+		->setChecked(true)
+		->setNameAndId('foo')
+		->setValue('miau')
+		->display()
 		;
 	}
 

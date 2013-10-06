@@ -41,7 +41,11 @@ if('' === $_SERVER['DOCUMENT_ROOT']){
 require_once __DIR__.'/../Autoloader.php';
 new AutoLoader();
 
+
+
 $bootstrap = new Bootstrap();
+
+
 
 ini_set('error_log', 'log/deploymenterror.log');
 ini_set('display_errors', 1);
@@ -53,16 +57,20 @@ if(false === isset($_SERVER['argv'][1])){
 	die('unable to migrate. please check '.ini_get('error_log').PHP_EOL);
 }
 
+
 putenv('APPLICATION_ENV=main-'.$_SERVER['argv'][1]);
 if(false === getenv('APPLICATION_ENV')){
 	putenv('APPLICATION_ENV=main-production');
 }
+
 
 $stack = Stack::getInstance();
 $stack->set('debug', '1');
 $stack->set('disable_db_log', '0');
 
 $model = new Model();
+
+
 
 $obj = $model->find(array(
 	'from' => 'migrations',
@@ -85,10 +93,15 @@ closedir($dir);
 asort($entries);
 end($entries);
 
+
+
+
 if(key($entries) == $obj->number){
 	secho('Latest migration reached ('.$obj->number.') nothing to do here');
 	auRevoir();
 }
+
+
 reset($entries);
 $entries = array_slice($entries, $obj->number, sizeof($entries) +1 );
 foreach($entries as $key => $value){

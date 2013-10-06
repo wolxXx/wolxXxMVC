@@ -9,7 +9,7 @@
  * @version 1.1
  * @package wolxXxMVC
  */
-abstract class CoreController{
+abstract class CoreController implements CoreControllerInterface{
 
 	/**
 	 * name of the action that is running
@@ -135,11 +135,15 @@ abstract class CoreController{
 		$this->load = Load::getInstance();
 		$this->model = new Model();
 		$this->stack = Stack::getInstance();
-		$this->dataObject = new DataObject();
+		$this->dataObject = DataObject::getInstance();
 		$this->request = new Request();
 		$this->initAccessChecker();
 		$this->version = $this->stack->get('version');
-		$this->load->setLayout($this->stack->get('version'));
+		try{
+			$this->load->setLayout($this->stack->get('version'));
+		}catch(Exception $x){
+			$this->load->setLayout();
+		}
 		$this->load->set('isAjax', $this->request->isAjax());
 		$this->load->set('disable_sidebar', false);
 		$this->setPostLogFile();
@@ -354,6 +358,20 @@ abstract class CoreController{
 		}
 		$this->action = 'noop';
 		return $this;
+	}
+
+	/**
+	 * checks if the given args are found in the request and are not empty
+	 * @param $arg_
+	 * @return boolean
+	 */
+	protected function isRequestOk(){
+		foreach(func_get_args() as $current){
+			if('' === $this->dataObject->getSavely($current, '')){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**

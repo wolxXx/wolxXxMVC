@@ -14,7 +14,8 @@ class Password extends DomElementAbstract{
 	 */
 	public static function getDefaultConf(){
 		return array(
-			'name' => 'password'
+			'name' => 'password',
+			'type' => 'password'
 		);
 	}
 

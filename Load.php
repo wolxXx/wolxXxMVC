@@ -98,8 +98,8 @@ class Load{
 	private final function __construct(){
 		$this->params = array();
 		$this->stack = Stack::getInstance();
-		$this->setLayout($this->layout);
 		$this->setLayoutPath($this->stack->get('layoutPath', Helper::getDocRoot().'views'.DIRECTORY_SEPARATOR.'layout'.DIRECTORY_SEPARATOR.'layouts'));
+		$this->setLayout($this->layout);
 		$this->setViewPath($this->stack->get('viewPath', Helper::getDocRoot().'views'.DIRECTORY_SEPARATOR));
 	}
 
@@ -160,10 +160,8 @@ class Load{
 	 * @return Load
 	 */
 	public static function clearInstance(){
-		if(0 !== ob_get_level()){
-			ob_clean();
-		}
-		self::$instance = new Load();
+		self::getInstance()->clearBuffer();
+		self::$instance = null;
 		return self::getInstance();
 	}
 
@@ -228,6 +226,9 @@ class Load{
 	 */
 	function setLayout($name = 'main'){
 		$this->layout = $name;
+		if(false === file_exists($this->layoutPath.$this->layout.'.php')){
+			throw new Exception('layout "'.$name.'" not found!');
+		}
 		return $this;
 	}
 
@@ -302,7 +303,6 @@ class Load{
 		extract($this->params);
 		ob_start();
 		require_once $file;
-		ob_end_flush();
 		$this->params['content'] = ob_get_clean();
 		extract($this->params);
 		if(true === $this->get('isAjax')){
@@ -522,8 +522,9 @@ class Load{
 	 * @return Load
 	 */
 	public function clearBuffer(){
-		ob_clean();
-		ob_end_clean();
+		while(ob_get_level() > 1){
+			ob_get_clean();
+		}
 		return $this;
 	}
 

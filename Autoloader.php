@@ -20,7 +20,7 @@ class AutoLoader{
 	 * @var array
 	 */
 	protected $defaultClasses = array(
-		'Helper', 'Bootstrap', 'Model', 'HTML', 'Translator'
+		'Helper', 'Bootstrap', 'Model', 'HTML', 'Translator', 'ApiStatus'
 	);
 
 	/**

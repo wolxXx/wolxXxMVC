@@ -11,7 +11,7 @@ interface DomElementInterface{
 	/**
 	 * calls the html element generator
 	 *
-	 * @return FormElementInterface
+	 * @return DomElementInterface
 	 */
 	public function display();
 
@@ -24,13 +24,23 @@ interface DomElementInterface{
 
 	/**
 	 * returns the ID of the element
+	 *
 	 * @return string
 	 */
 	public function getId();
 
 	/**
 	 * returns the name of the element
+	 *
 	 * @return string
 	 */
 	public function getName();
+
+	/**
+	 * setter for required flag
+	 *
+	 * @param boolean $required
+	 * @return DomElementInterface
+	 */
+	public function setIsRequired($required = true);
 }

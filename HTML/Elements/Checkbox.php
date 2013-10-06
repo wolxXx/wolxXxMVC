@@ -14,7 +14,10 @@ class Checkbox extends DomElementAbstract{
 	 */
 	public static function getDefaultConf(){
 		return array(
-			'checked' => null
+			'checked' => null,
+			'value' => null,
+			'type' => 'checkbox',
+			'style' => null
 		);
 	}
 
@@ -27,6 +30,16 @@ class Checkbox extends DomElementAbstract{
 	public function setIsChecked($isChecked = true){
 		$this->set('checked', true === $isChecked? 'checked' : null);
 		return $this;
+	}
+
+	/**
+	 * shortcut for setIsChecked
+	 *
+	 * @param boolean $isChecked
+	 * @return Checkbox
+	 */
+	public function setChecked($isChecked = true){
+		return $this->setIsChecked();
 	}
 
 	/**

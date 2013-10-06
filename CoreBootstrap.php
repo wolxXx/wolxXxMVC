@@ -55,6 +55,13 @@ abstract class CoreBootstrap{
 	public $controller;
 
 	/**
+	 * instance of the router
+	 *
+	 * @var Router
+	 */
+	public $router;
+
+	/**
 	 * constructor
 	 * gets all needed singleton instances
 	 */
@@ -79,14 +86,14 @@ abstract class CoreBootstrap{
 	 * initing everything usefull
 	 */
 	private final function init(){
-		set_exception_handler(function(){
-			var_dump(func_get_args());
-			die('oOo');
-			Helper::dieDebug(func_get_args());
-		});
-		set_error_handler(function(){
-			call_user_func_array(array('wolxXxMVC', 'errorHandler'), func_get_args());
-		}, -1);
+		if(false === isset($_SERVER['argv'])){
+			set_exception_handler(function(){
+				Helper::dieDebug(func_get_args());
+			});
+			set_error_handler(function(){
+				call_user_func_array(array('wolxXxMVC', 'errorHandler'), func_get_args());
+			}, -1);
+		}
 		if(true === file_exists('application/config/defines.php')){
 			require_once 'application/config/defines.php';
 		}
@@ -99,6 +106,8 @@ abstract class CoreBootstrap{
 		if(false === defined('STDIN') && '' === session_id()){
 			session_start();
 		}
+
+		$this->router = new Router();
 		Helper::grabModeAndVersion();
 		Helper::grabHostName();
 

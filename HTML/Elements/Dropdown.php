@@ -39,7 +39,7 @@ class Dropdown extends ContainableDomElementAbstract{
 	 */
 	public function display(){
 		$this->displayLabelBefore();
-		HTML::renderSelectStart($this->data->getData());
+		HTML::renderSelectStart($this->getData());
 		foreach($this->children as $current){
 			$current->display();
 		}

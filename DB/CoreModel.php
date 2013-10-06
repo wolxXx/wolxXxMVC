@@ -79,6 +79,9 @@ abstract class CoreModel{
 	 */
 	protected function query($queryStringObject){
 		$result = $this->databaseManager->find($queryStringObject);
+		if('' !== $result->getError()){
+			Helper::logToFile(sprintf('query: %s | message: %s', $queryStringObject->getQueryString(true), $result->getError()), 'databaseerror');
+		}
 		return new QueryResultObject($result, $queryStringObject->getQueryString(), $result->getError());
 	}
 

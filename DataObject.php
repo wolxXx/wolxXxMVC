@@ -95,7 +95,7 @@ class DataObject{
 		return $this;
 	}
 
-	protected function set($key, $value){
+	public function set($key, $value){
 		$this->data[$key] = $value;
 		return $this;
 	}
@@ -141,10 +141,15 @@ class DataObject{
 			$this->files[$key] = $value;
 			if(is_array($value['name'])){
 				foreach(array_keys($value['name']) as $index){
+					if('' === $value['name'][$index]){
+						continue;
+					}
 					$this->fileObjects[] = new FileUploadObject($value['name'][$index], $value['type'][$index], $value['tmp_name'][$index], $value['error'][$index], $value['size'][$index], $key);
 				}
 			}else{
-				$this->fileObjects[] = new FileUploadObject($value['name'], $value['type'], $value['tmp_name'], $value['error'], $value['size'], $key);
+				if('' !== $value['name']){
+					$this->fileObjects[] = new FileUploadObject($value['name'], $value['type'], $value['tmp_name'], $value['error'], $value['size'], $key);
+				}
 			}
 		}
 		return $this;
@@ -205,6 +210,11 @@ class DataObject{
 		}catch (KeyNotExistsInDataObject $x){
 
 		}
+
+		if(true === isset($this->data[$key])){
+			return $this->data[$key];
+		}
+
 		throw new KeyNotExistsInDataObject($key.' not found in DataObject!');
 	}
 

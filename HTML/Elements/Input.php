@@ -18,7 +18,6 @@ class Input extends DomElementAbstract{
 			'value' => null,
 			'autocomplete' => null,
 			'readonly' => null
-
 		);
 	}
 
@@ -50,7 +49,7 @@ class Input extends DomElementAbstract{
 	 */
 	public function display(){
 		$this->displayLabelBefore();
-		HTML::renderInput($this->data->getData());
+		HTML::renderInput($this->getData());
 		$this->displayLabelAfter();
 		return $this;
 	}

@@ -47,7 +47,7 @@ class Grid extends ContainableDomElementAbstract{
 	 */
 	public function display(){
 		$this->addClass('grid_'.$this->get('size'));
-		HTML::out(HTML::openTag('div', HTML::mergeConf($this->data->getData(), self::getDefaultConf())));
+		HTML::out(HTML::openTag('div', (array) HTML::mergeConf($this->data->getData(), self::getDefaultConf())));
 		foreach($this->children as $current){
 			$current->display();
 		}

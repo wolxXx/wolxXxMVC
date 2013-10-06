@@ -41,11 +41,9 @@ final class wolxXxMVC{
 			Helper::logerror('got no database connection: '.$x->getMessage());
 			require_once 'tot.html';
 		}catch(QueryGeneratorException $x){
-			Helper::logerror('the query generator failed!! '.$x->getMessage());
-			Helper::debug($x);
+			Helper::logToFile('the query generator failed!! '.$x->getMessage(), 'dberror');
 			require_once 'tot.html';
 		}catch(NoViewException $x){
-			Helper::logerror('no view or cms found');
 			$this->catchError('/error/noView');
 			die('');
 		}catch(ApocalypseException $x){
@@ -109,7 +107,7 @@ final class wolxXxMVC{
 			self::displayError($exception->getCode(), $exception->getMessage(), $exception->getFile(), $exception->getLine(), $exception->getTrace());
 		}
 		Helper::logerror($exception->getMessage());
-		die('Schlimmer Fehler.');
+
 		die();
 	}
 

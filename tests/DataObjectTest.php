@@ -4,8 +4,12 @@
  */
 class DataObjectTest extends  PHPUnit_Framework_TestCase{
 	public function testDebug(){
+		$this->expectOutputRegex('/GET/');
+		$this->expectOutputRegex('/POST/');
+		$this->expectOutputRegex('/FILES/');
 		$dataObject = new DataObject();
 		$dataObject->debug();
+
 	}
 	public function testRemoveKey(){
 		$_GET['foo'] = 'bar';

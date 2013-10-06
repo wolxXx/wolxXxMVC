@@ -10,6 +10,11 @@ if(false === class_exists('Helper')){
  * @codeCoverageIgnore
  */
 class StackTest extends  PHPUnit_Framework_TestCase{
+	public function testClearStack(){
+		session_id('foobar!');
+		Stack::getClearInstance()->set('foo', 'bar');
+	}
+
 	public function testUsual(){
 		Stack::getInstance()->set('a', 'b');
 		$this->assertEquals(Stack::getInstance()->get('a'), 'b');

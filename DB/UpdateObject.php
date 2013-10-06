@@ -124,6 +124,15 @@ class UpdateObject{
 	}
 
 	/**
+	 * getter for the data array
+	 *
+	 * @return array
+	 */
+	public function getData(){
+		return $this->data;
+	}
+
+	/**
 	 * setter for table name
 	 *
 	 * @param string $table

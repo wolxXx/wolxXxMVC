@@ -84,6 +84,7 @@ class DatabaseManager{
 		try{
 			$this->log($resultObject, $start, $end);
 		}catch (Exception $exception){
+			Helper::logToFile('query exception: '.$exception->getMessage(), 'queryexceptionlog');
 		}
 		return $resultObject;
 	}
@@ -98,7 +99,6 @@ class DatabaseManager{
 	 * @param float $end
 	 */
 	protected function log($queryResultObject, $start, $end){
-		return;
 		$result = $queryResultObject->getResult();
 		$query = $queryResultObject->getQuery();
 		$execution = $end - $start;
@@ -116,7 +116,10 @@ class DatabaseManager{
 			$resultsText = "Affected rows:\t";
 		}
 		$originalTrace = debug_backtrace(0);
-		$start = 5;
+		$start = 100;
+		while(false === isset($originalTrace[$start])){
+			$start--;
+		}
 		$trace = $originalTrace[$start];
 		while(false === isset($trace['file'])){
 			$trace = $originalTrace[--$start];

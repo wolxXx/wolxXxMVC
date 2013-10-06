@@ -16,6 +16,21 @@ class MockUser extends Result{
  */
 class AuthTest extends  PHPUnit_Framework_TestCase{
 
+	public function testIsUserPasswordOk(){
+		$this->assertFalse(Auth::isUserPasswordOk('blubb', new MockUser()));
+		$user = new MockUser();
+		$user->password = Auth::hashPassword('foobar');
+		$this->assertTrue(Auth::isUserPasswordOk('foobar', $user));
+	}
+
+	public function testHashPassword(){
+		$this->assertSame(md5('foobar'), Auth::hashPassword('foobar'));
+	}
+
+	public function testSaltingPassword(){
+		$this->assertSame('foobar', Auth::saltPassword('foobar'));
+	}
+
 	public function testLogin(){
 		Auth::logout();
 		$_POST[Stack::getInstance()->get(CREDENTIALUSERID)] = 'god@linux.org';

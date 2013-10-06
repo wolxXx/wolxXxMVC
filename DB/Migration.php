@@ -68,7 +68,7 @@ abstract class Migration{
 	 *
 	 * @return Migration
 	 */
-	protected function insertMigrationToDB(){
+	protected final function insertMigrationToDB(){
 		$save = new SaveObject('migrations');
 		$save->number = $this->getRevision();
 		$save->created = Helper::getDate();
@@ -80,6 +80,22 @@ abstract class Migration{
 	 * this is where the main procedure takes place. drop your code here!
 	 */
 	public abstract function run();
+
+	/**
+	 * bridge to the database manager
+	 *
+	 * @param string $quuery
+	 * @return QueryResultObject
+	 */
+	protected function query($query){
+		$result = null;
+		try{
+			$result = DatabaseManager::getInstance()->query(new QueryString($query));
+		}catch(Exception $x){
+			Helper::debug($x, $result);
+		}
+		return $result;
+	}
 
 	/**
 	 * returns a new instance of a migration

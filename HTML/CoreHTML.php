@@ -19,11 +19,13 @@ class CoreHTML{
 	 */
 	public static function Factory($type, $args = array()){
 		$type = ucfirst($type);
+		if(false === AutoLoader::isLoadable($type)){
+			throw new Exception('can not load class "'.$type.'"');
+		}
 		$object = new $type();
 		if(!$object instanceof DomElementAbstract){
 			throw new Exception('"'.$type.'" is not a supported class from html factory');
 		}
-		$object->init();
 		foreach($args as $key => $value){
 			$object->set($key, $value);
 		}
@@ -64,8 +66,8 @@ class CoreHTML{
 				case 'renderCheckbox':{
 					$default = array_merge($default, Checkbox::getDefaultConf());
 				}break;
-				case 'renderOption':{
-					$default = array_merge($default, DropdownElement::getDefaultConf());
+				case 'renderDate':{
+					$default = array_merge($default, Date::getDefaultConf());
 				}break;
 				case 'renderFormStart':{
 					$default = array_merge($default, Form::getDefaultConf());
@@ -78,6 +80,9 @@ class CoreHTML{
 				}break;
 				case 'renderLabel':{
 					$default = array_merge($default, Label::getDefaultConf());
+				}break;
+				case 'renderOption':{
+					$default = array_merge($default, DropdownElement::getDefaultConf());
 				}break;
 				case 'renderOptionGroupStart':{
 					$default = array_merge($default, DropdownGroup::getDefaultConf());
@@ -102,7 +107,8 @@ class CoreHTML{
 				}break;
 			}
 		}
-		return (object) array_merge($default, $conf);
+		$default = (object) array_merge(array('style' => null), $default, $conf);
+		return $default;
 	}
 
 	/**
@@ -119,12 +125,14 @@ class CoreHTML{
 	/**
 	 * opens a single tag like <img />
 	 *
-	 * @param unknown_type $name
-	 * @param unknown_type $args
+	 * @param string $name
+	 * @param array $args
 	 * @return string
 	 */
 	public static function openSingleTag($name, $args = array()){
 		$return = sprintf('<%s', $name);
+		unset($args['required']);
+
 		foreach($args as $key => $value){
 			if(null === $value){
 				continue;
@@ -172,17 +180,11 @@ class CoreHTML{
 	 */
 	public static function renderTextarea($conf = array()){
 		$conf = self::mergeConf($conf);
-		echo self::openTag('textarea', array(
-			'id' => $conf->id,
-			'name' => $conf->name,
-			'rows' => $conf->rows,
-			'cols' => $conf->cols,
-			'class' => $conf->class
-		));
-		self::out(
-			$conf->text,
-			self::closeTag('textarea')
-		);
+		$text = $conf->text;
+		unset($conf->text);
+		echo self::openTag('textarea', (array) $conf);
+		echo $text;
+		echo self::closeTag('textarea');
 	}
 
 	/**
@@ -194,13 +196,7 @@ class CoreHTML{
 	public static function renderSubmit($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openSingleTag('input', array(
-				'class' => $conf->class,
-				'type' => 'submit',
-				'id' => $conf->id,
-				'name' => $conf->name,
-				'value' => $conf->value
-			)),
+			self::openSingleTag('input', (array) $conf),
 			self::closeSingleTag()
 		);
 	}
@@ -223,31 +219,38 @@ class CoreHTML{
 	public static function renderCheckbox($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openSingleTag('input', array(
-				'checked' => $conf->checked,
-				'class' => $conf->class,
-				'name' => $conf->name,
-				'value' => $conf->value,
-				'id' => $conf->id,
-				'type' => 'checkbox'
-			)),
+			self::openSingleTag('input', (array) $conf),
 			self::closeSingleTag()
 		);
 	}
 
 	/**
 	 * renders a span element
+	 *
 	 * @param array $conf
 	 */
 	public static function renderSpan($conf = array()){
 		$conf = self::mergeConf($conf);
+		$text = $conf->text;
+		unset($conf->text);
 		self::out(
-			self::openTag('span', array(
-				'class' => $conf->class,
-				'id' => $conf->id,
-			)),
-			$conf->text,
+			self::openTag('span', (array) $conf),
+			$text,
 			self::closeTag('span')
+		);
+	}
+
+	/**
+	 * renders a date input field
+	 * conf array can contain id, name, value, class, placeholder, type
+	 *
+	 * @param array $conf
+	 */
+	public static function renderDate($conf = array()){
+		$conf = self::mergeConf($conf);
+		self::out(
+			self::openSingleTag('input', (array) $conf),
+			self::closeSingleTag()
 		);
 	}
 
@@ -260,15 +263,7 @@ class CoreHTML{
 	public static function renderInput($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openSingleTag('input', array(
-				'class' => $conf->class,
-				'type' => $conf->type,
-				'id' => $conf->id,
-				'name' => $conf->name,
-				'value' => $conf->value,
-				'autocomplete' => $conf->autocomplete,
-				'readonly' => true === $conf->readonly? 'readonly' : $conf->readonly
-			)),
+			self::openSingleTag('input', (array) $conf),
 			self::closeSingleTag()
 		);
 	}
@@ -281,13 +276,7 @@ class CoreHTML{
 	public static function renderRadioOption($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openSingleTag('input', array(
-				'id' => $conf->id,
-				'name' => $conf->name,
-				'value' => $conf->value,
-				'type' => 'radio',
-				'checked' => $conf->checked
-			)),
+			self::openSingleTag('input', (array) $conf),
 			self::closeSingleTag('input')
 		);
 	}
@@ -301,11 +290,7 @@ class CoreHTML{
 	public static function renderPassword($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openSingleTag('input', array(
-				'id' => $conf->id,
-				'name' => $conf->name,
-				'type' => 'password',
-			)),
+			self::openSingleTag('input', (array) $conf),
 			self::closeSingleTag()
 		);
 	}
@@ -317,9 +302,11 @@ class CoreHTML{
 	 */
 	public static function renderHeadline($conf = array()){
 		$conf = self::mergeConf($conf);
+		$text = $conf->text;
+		unset($conf->text);
 		self::out(
-			self::openTag('h'.$conf->size),
-			$conf->text,
+			self::openTag('h'.$conf->size, (array) $conf),
+			$text,
 			self::closeTag('h'.$conf->size)
 		);
 	}
@@ -333,13 +320,7 @@ class CoreHTML{
 	public static function renderFormStart($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openTag('form', array(
-				'method' => $conf->method,
-				'action' => $conf->action,
-				'class' => $conf->class,
-				'id' => $conf->id,
-				'enctype' => $conf->enctype
-			))
+			self::openTag('form', (array) $conf)
 		);
 	}
 
@@ -360,13 +341,11 @@ class CoreHTML{
 	 */
 	public static function renderLabel($conf = array()){
 		$conf = self::mergeConf($conf);
+		$text = $conf->text;
+		unset($conf->text);
 		self::out(
-			self::openTag('label', array(
-				'for' => $conf->for,
-				'id' => $conf->id,
-				'class' => $conf->class
-			)),
-			$conf->text,
+			self::openTag('label', (array) $conf),
+			$text,
 			self::closeTag('label')
 		);
 	}
@@ -389,11 +368,7 @@ class CoreHTML{
 	public static function renderSelectStart($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openTag('select', array(
-				'name' => $conf->name,
-				'id' => $conf->id,
-				'class' => $conf->class
-			))
+			self::openTag('select', (array) $conf)
 		);
 	}
 
@@ -414,11 +389,7 @@ class CoreHTML{
 	public static function renderOptionGroupStart($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openTag('optgroup', array(
-				'name' => $conf->name,
-				'id' => $conf->id,
-				'label' => $conf->label
-			))
+			self::openTag('optgroup', (array) $conf)
 		);
 	}
 
@@ -439,11 +410,7 @@ class CoreHTML{
 	public static function renderOption($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openTag('option', array(
-				'value' => $conf->value,
-				'id' => $conf->id,
-				'selected' => $conf->selected
-			)),
+			self::openTag('option', (array) $conf),
 			$conf->text,
 			self::closeTag('option')
 		);
@@ -457,9 +424,7 @@ class CoreHTML{
 	public static function renderButton($conf = array()){
 		$conf = self::mergeConf($conf);
 		self::out(
-			self::openTag('button', array(
-				'id' => $conf->id,
-			)),
+			self::openTag('button', (array) $conf),
 			$conf->text,
 			self::closeTag('button')
 		);

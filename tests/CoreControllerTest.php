@@ -103,7 +103,7 @@ class CoreControllerTest extends  PHPUnit_Framework_TestCase{
 		Auth::setIsLoggedIn(true);
 		$user = new stdClass();
 		$user->id = 0;
-		$user->type = USER_TYPE_WOLXXX;
+		$user->type = USER_TYPE_ADMIN;
 		$user->nick = 'linus torvalds';
 		Auth::setUser($user);
 		$controller = new TestController();
@@ -145,7 +145,7 @@ class CoreControllerTest extends  PHPUnit_Framework_TestCase{
 		$user->nick = 'linus torvalds';
 		Auth::setUser($user);
 		$controller = new TestController();
-		$controller->getAccessChecker()->clearRules()->addRule(new AccessRule('pewpew', true, USER_TYPE_WOLXXX));
+		$controller->getAccessChecker()->clearRules()->addRule(new AccessRule('pewpew', true, USER_TYPE_ADMIN));
 		$controller->setActionAndView('test', 'pewpew', '1337');
 		$controller->checkAccess();
 	}
@@ -154,11 +154,11 @@ class CoreControllerTest extends  PHPUnit_Framework_TestCase{
 		Auth::setIsLoggedIn(true);
 		$user = new stdClass();
 		$user->id = 0;
-		$user->type = USER_TYPE_WOLXXX;
+		$user->type = USER_TYPE_ADMIN;
 		$user->nick = 'linus torvalds';
 		Auth::setUser($user);
 		$controller = new TestController();
-		$controller->getAccessChecker()->clearRules()->addRule(new AccessRule('pewpew', true, USER_TYPE_WOLXXX));
+		$controller->getAccessChecker()->clearRules()->addRule(new AccessRule('pewpew', true, USER_TYPE_ADMIN));
 		$controller->setActionAndView('test', 'pewpew', '1337');
 		$controller->checkAccess();
 	}

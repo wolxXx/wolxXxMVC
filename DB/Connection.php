@@ -158,6 +158,9 @@ class Connection{
 	 * @return string
 	 */
 	public function escape($string){
+		if(false === is_string($string)){
+			return $string;
+		}
 		return $this->connection->real_escape_string($string);
 	}
 

@@ -61,7 +61,9 @@ class Stack{
 	 * @return Stack
 	 */
 	public static function getClearInstance(){
-		session_destroy();
+		if('' !== session_id()){
+			session_destroy();
+		}
 		self::$instance = null;
 		return self::getInstance();
 	}

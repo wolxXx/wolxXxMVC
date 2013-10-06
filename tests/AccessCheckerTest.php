@@ -58,4 +58,13 @@ class AccessCheckerTest extends  PHPUnit_Framework_TestCase{
 		$accessChecker->addRule(new AccessRule('pewpew', true, 3));
 		$this->assertTrue($accessChecker->checkAccess('pewpew'));
 	}
+
+	/**
+	 * @expectedException ApocalypseException
+	 */
+	public function testCheckForApocalypseException(){
+		$accessChecker = new AccessChecker();
+		$accessChecker->addRule(new AccessRule('foobar'));
+		$this->assertTrue($accessChecker->checkAccess('pewpew'));
+	}
 }

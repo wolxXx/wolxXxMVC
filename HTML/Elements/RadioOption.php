@@ -14,7 +14,8 @@ class RadioOption extends DomElementAbstract{
 	 */
 	public static function getDefaultConf(){
 		return array(
-			'checked' => null
+			'checked' => null,
+			'type' => 'radio'
 		);
 	}
 
